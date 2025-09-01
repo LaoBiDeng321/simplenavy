@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Simple NAVY</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -241,7 +241,7 @@
             padding: 12px 28px;
             font-size: 1.1rem;
             border-radius: 5px;
-            cursor: pointer;
+            cursor: button;
             transition: var(--transition);
             margin: 10px;
             text-decoration: none;
@@ -342,11 +342,14 @@
             padding: 25px;
             margin-bottom: 25px;
             transition: var(--transition);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .dev-log:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.2);
+            border: 1px solid rgba(100, 255, 218, 0.3);
         }
 
         .dev-log h4 {
@@ -410,11 +413,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100, 255, 218, 0.1);
         }
 
         .team-member:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(100, 255, 218, 0.2);
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.2);
+            border: 1px solid rgba(100, 255, 218, 0.3);
         }
 
         .member-avatar {
@@ -466,12 +472,13 @@
             text-align: center;
             border: 1px solid rgba(100, 255, 218, 0.1);
             transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .tier:hover {
-            border: 1px solid var(--accent);
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(100, 255, 218, 0.2);
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.2);
+            border: 1px solid rgba(100, 255, 218, 0.3);
         }
 
         .tier h3 {
@@ -584,6 +591,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            letter-spacing: 0.5px;
         }
 
         .copyright {
@@ -592,6 +600,71 @@
             font-size: 0.9rem;
         }
 
+        /* 我们的使命卡片样式 */
+        .mission-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            text-align: center;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.2);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+
+        .mission-card h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .mission-card p {
+            line-height: 1.8;
+            color: var(--light-text);
+        }
+
+        /* 赞助说明卡片样式 */
+        .sponsor-info-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 50px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            text-align: center;
+        }
+
+        .sponsor-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.2);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+
+        .sponsor-info-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sponsor-info-card p {
+            line-height: 1.6;
+            color: var(--light-text);
+        }
 
         /* 响应式设计 */
         @media (max-width: 968px) {
@@ -657,6 +730,16 @@
             .cta-button {
                 padding: 9px 18px;
                 font-size: 0.95rem;
+            }
+            
+            .sponsor-tiers {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tier {
+                width: 100%;
+                max-width: 320px;
             }
         }
 
@@ -736,7 +819,6 @@
         <div class="mobile-nav-overlay"></div>
     </header>
 
-    <!-- 英雄区域 -->
     <!-- 英雄区域 -->
     <section class="hero">
         <h1 class="animate">Simple NAVY</h1>
@@ -833,7 +915,7 @@
             
             <div>
                 <i class="fas fa-play-circle"></i>
-                <a href="https://www.bilibili.com/video/BV1xthYzwEkR/?spm_id_from=333.1391.0.0&amp;vd_source=839527aaa3bbf03b1b1834f00484f849" target="_blank">点击前往Bilibili观看完整演示视频</a>
+               <a href="https://www.bilibili.com/video/BV1xthYzwEkR/?spm_id_from=333.1387.homepage.video_card.click" target="_blank">点击前往Bilibili观看完整演示视频</a>
             </div>
         </div>
         
@@ -890,8 +972,7 @@
             <h2>关于我们</h2>
         </div>
         
-       
-            <div class="team-container">
+        <div class="team-container">
             <div class="team-member animate">
                 <div class="member-avatar">
                     <img src="img-head/SuperQ_Louis.jpg" alt="xy_black_cross" style="width: 115px; height: 115px; border-radius: 50%;">
@@ -919,9 +1000,9 @@
             </div>
         </div>
         
-        <div style="margin-top: 50px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;" class="animate delay-2">
-            <h3 style="color: var(--accent); margin-bottom: 20px;"><i class="fas fa-rocket"></i> 我们的使命</h3>
-            <p style="line-height: 1.8;">
+        <div class="mission-card animate delay-2">
+            <h3><i class="fas fa-rocket"></i> 我们的使命</h3>
+            <p>
                 全体目光向我看齐，跟大家宣布个事啊。<br>
                 我是个傻逼。
             </p>
@@ -938,7 +1019,8 @@
             感谢您考虑支持我们的项目！您的赞助将直接用于游戏开发和网站维护。<br>
             请选择您想要支持的档位，并扫描对应的二维码进行赞助。
         </p>
-         <h2 style="text-align: center; color: var(--accent); margin-top: 10px;">请选择赞助档位</h2>
+        <h2 style="text-align: center; color: var(--accent); margin-top: 10px;">请选择赞助档位</h2>
+        
         <div class="sponsor-tiers">
             <!-- 第一档 -->
             <div class="tier animate">
@@ -1007,9 +1089,9 @@
             </div>
         </div>
         
-        <div style="margin: 0 auto; margin-top: 50px; text-align: center; background: var(--card-bg); padding: 25px; border-radius: 20px;max-width: 600px;" class="animate delay-2">
-            <h3 style="color: var(--accent); margin-bottom: 15px;"><i class="fas fa-info-circle"></i> 赞助说明</h3>
-            <p style="line-height: 1.6;">
+        <div class="sponsor-info-card animate delay-2">
+            <h3><i class="fas fa-info-circle"></i> 赞助说明</h3>
+            <p>
                 赞助后请通过QQ群联系我们，提供您的付款截图和希望使用的名称。<br>
                 QQ群号为：586424072<br>我们会在确认收款后尽快为您安排相应的权益！感谢您的支持!
             </p>
