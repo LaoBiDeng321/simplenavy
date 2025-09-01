@@ -1,69 +1,69 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!DOCTYPE html>   <！DOCTYPE html   超文本标记语言 >   <！DOCTYPE html   超文本标记语言 >   <！DOCTYPE html   超文本标记语言   超文本标记语言 >
+<html lang="zh-CN">   < html lang = "应用" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simple NAVY</title>
+    <title>Simple NAVY</title><标题>简单海军< /标题>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #0a192f;
-            --secondary: #112240;
-            --accent: #64ffda;
-            --text: #ccd6f6;
-            --light-text: #a8b2d1;
-            --card-bg: rgba(17, 34, 64, 0.7);
-            --transition: all 0.3s ease;
+    <style>   < >风格
+        :root {   :根{
+            --primary: #0a192f;   ——主:# 0 a192f;
+            --secondary: #112240;   ——二级:# 112240;
+            --accent: #64ffda;   …accent: # 64ffda;
+            --text: #ccd6f6;   …文字:# ccd6f6;
+            --light-text: #a8b2d1;   ——浅色文本:# a8b2d1;
+            --card-bg: rgba(17, 34, 64, 0.7);——card-bg: rgba(17,34,64,0.7)；
+            --transition: all 0.3s ease;-过渡：所有0.3秒轻松；
         }
 
         * {
-            margin: 0;
-            padding: 0;
+            margin: 0;   保证金:0;
+            padding: 0;   填充:0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;来源:segoe uii, Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background: linear-gradient(135deg, var(--primary) 0%, #020c1b 100%);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a192f"/><path d="M0 0L100 100M100 0L0 100" stroke="%23112240" stroke-width="0.5"/></svg>');
+        body {   身体{
+            background: linear-gradient(135deg, var(--primary) 0%, #020c1b 100%);背景：线性梯度（135度，var（—primary） 0%, #020c1b 100%）；
+            color: var(--text);   颜色:var(文本);
+            min-height: 100vh;   最小高度:100 vh;
+            overflow-x: hidden;   overflow-x:隐藏;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a192f"/><path d="M0 0L100 100M100 0L0 100" stroke="%23112240" stroke-width="0.5"/></svg>');background-image: url('data:image/svg xml;utf8,');
             background-size: 100px;
-            line-height: 1.6;
+            line-height: 1.6;   行高:1.6;
         }
 
         /* 导航栏样式 */
-        header {
-            background-color: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 0.8rem 5%;
-            position: sticky;
-            top: 0;
+        header {   标题{
+            background-color: rgba(10, 25, 47, 0.95);Background-color: rgba(10,25,47,0.95)；
+            backdrop-filter: blur(10px);backdrop-filter:模糊(10 px);
+            padding: 0.8rem 5%;   填充：0.8rem 5%；
+            position: sticky;   位置:粘性;
+            top: 0;   上图:0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);Box-shadow: 0 4px 20px rgba(0,0,0,0.3)；
+            display: flex;   显示:flex;
+            justify-content: space-between;justify-content:之间的空间;
+            align-items: center;   对齐项目:中心;
+            height: 70px;   身高:70 px;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .logo-container {   ．logo-container {
+            display: flex;   显示:flex;
+            align-items: center;   对齐项目:中心;
+            gap: 12px;   差距:12 px;
         }
 
-        .logo-container img {
-            width: 40px;
-            height: 40px;
+        .logo-container img {   ．标识-容器img {
+            width: 40px;   宽度:40像素;
+            height: 40px;   高度:40像素;
         }
 
-        .game-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--accent), #4db5ff);
-            -webkit-background-clip: text;
+        .game-title {   ．game-title {
+            font-size: 1.5rem;   字体大小:1.5快速眼动;
+            font-weight: 700;   粗细:700;
+            background: linear-gradient(90deg, var(--accent), #4db5ff);背景：线性渐变（90度，var（——accent）， #4db5ff）；
+            -webkit-background-clip: text;-webkit-background-clip:文本;
             background-clip: text;
             color: transparent;
             letter-spacing: 0.5px;
@@ -123,7 +123,7 @@
             background: transparent;
             border: none;
             cursor: pointer;
-            padding: 0;
+            padding: 0;   填充:0;
             z-index: 1001;
         }
 
@@ -231,7 +231,7 @@
             max-width: 800px;
             margin: 0 auto 2.5rem;
             color: var(--light-text);
-            line-height: 1.6;
+            line-height: 1.6;   行高:1.6;
         }
 
         .cta-button {
@@ -624,7 +624,7 @@
             color: var(--accent);
             margin-bottom: 20px;
             font-size: 1.5rem;
-            display: flex;
+            display: flex;   显示:flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
@@ -664,7 +664,7 @@
         }
 
         .sponsor-info-card p {
-            line-height: 1.6;
+            line-height: 1.6;   行高:1.6;
             color: var(--light-text);
         }
 
@@ -678,7 +678,7 @@
                 display: flex;
             }
             
-            header {
+            header {   差距:12 px;
                 padding: 0.7rem 4%;
                 height: 65px;
             }
@@ -706,7 +706,7 @@
             .logo-container img {
                 width: 35px;
                 height: 35px;
-            }
+            }   差距:12 px;
             
             .game-title {
                 font-size: 1.3rem;
@@ -717,7 +717,7 @@
                 min-height: 80vh;
             }
             
-            .hero h1 {
+            .hero h1 {   差距:12 px;
                 font-size: 1.9rem;
             }
             
@@ -760,7 +760,7 @@
 
         /* 内容卡片样式 */
         .card {
-            background: var(--card-bg);
+            background: var(--card-bg);   差距:12 px;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 25px;
@@ -812,7 +812,7 @@
             margin-top: 10vh;
             padding-top: 5rem;
         }
-        
+           差距:12 px;
        
     </style>
 </head>
@@ -870,7 +870,7 @@
     </section>
 
     <!-- 游戏介绍 -->
-    <section class="section" id="game-intro" style="margin: a 200px 100px 200px">
+    <section class="section" id="game-intro" style="margin: a 200px 100px 200px">   差距:12 px;
         <div class="section-title">
             <h2>游戏介绍</h2>
         </div>
@@ -905,7 +905,7 @@
             <h2>游戏下载</h2>
         </div>
 
-        <div class="card animate" style="height: 800px">
+<div class="card animate" style="height: 800px @media(max-width:767px){height: auto   汽车}">
             <div class="card-header">
                 <h3>最新版本：Simple_NAVY_2025_7_27</h3>
             </div>
@@ -1238,3 +1238,4 @@
     </script>
 </body>
 </html>
+
