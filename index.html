@@ -408,7 +408,8 @@
             text-align: center;
             padding: 30px 20px;
             background: var(--card-bg);
-            border-radius: 10px;
+			border-radius: 30px 30px;
+         
             transition: var(--transition);
             display: flex;
             flex-direction: column;
@@ -603,13 +604,15 @@
         /* 我们的使命卡片样式 */
         .mission-card {
             background: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 600px 100px;
             padding: 30px;
             margin-top: 30px;
             transition: var(--transition);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(100, 255, 218, 0.1);
+            border: 2px solid rgba(100, 255, 218, 0.1);
             text-align: center;
+			width: 500px;
+			margin: 50px auto;
         }
 
         .mission-card:hover {
@@ -756,7 +759,7 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
-        /* 示例内容卡片样式 */
+        /* 内容卡片样式 */
         .card {
             background: var(--card-bg);
             border-radius: 10px;
@@ -776,11 +779,47 @@
             color: var(--light-text);
             line-height: 1.6;
         }
+
+        /* 开发日志折叠相关样式 */
+        .log-toggle-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 auto 30px;
+            display: block;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .log-toggle-btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        .dev-logs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .dev-log.hidden {
+            display: none;
+        }
+        #game-intro {
+            margin-top: 10vh;
+            padding-top: 5rem;
+        }
+        
+       
     </style>
 </head>
-<body>
+<body id="top">
     <!-- 导航栏 -->
-    <header>
+     <header>
         <div class="logo-container">
             <div><img src="logo.png" alt="Simple NAVY Logo" style="border-radius: 50%;"></div>
             <div class="game-title">Simple NAVY</div>
@@ -789,6 +828,7 @@
         <!-- 桌面导航 -->
         <nav class="desktop-nav">
             <ul>
+                <li><a href="#top"><i class="fas fa-home"></i>首页</a></li>
                 <li><a href="#game-intro"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
                 <li><a href="#download"><i class="fas fa-download"></i>游戏下载</a></li>
                 <li><a href="#dev-log"><i class="fas fa-book"></i>开发日志</a></li>
@@ -807,6 +847,7 @@
         <!-- 移动端导航菜单 -->
         <nav class="mobile-nav">
             <ul>
+                <li><a href="#top"><i class="fas fa-home"></i>首页</a></li>
                 <li><a href="#game-intro"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
                 <li><a href="#download"><i class="fas fa-download"></i>游戏下载</a></li>
                 <li><a href="#dev-log"><i class="fas fa-book"></i>开发日志</a></li>
@@ -819,6 +860,7 @@
         <div class="mobile-nav-overlay"></div>
     </header>
 
+
     <!-- 英雄区域 -->
     <section class="hero">
         <h1 class="animate">Simple NAVY</h1>
@@ -829,7 +871,7 @@
     </section>
 
     <!-- 游戏介绍 -->
-    <section class="section" id="game-intro">
+    <section class="section" id="game-intro" style="margin: a 200px 100px 200px">
         <div class="section-title">
             <h2>游戏介绍</h2>
         </div>
@@ -903,71 +945,77 @@
         <div class="section-title">
             <h2>开发日志</h2>
         </div>
+                <!-- 添加查看更多按钮 -->
+        <button class="log-toggle-btn" id="logToggleBtn">
+            <i class="fas fa-plus"></i> 查看全部开发日志
+        </button>
         
-        <div class="dev-log animate">
-            <h4>吕佐夫号登场！颜色与武器改装功能演示_[自制海战游戏开发进度记录NO.4]</h4>
-            <span class="date">2025年08月30日</span>
-            <p>啊，改素材真是累死我力……本来想把武器配置一块做了再发布的，诶，已经月底了
-            本次新版本的Demo包体要等一段时间才能打出来……因为还要调数值，还要接着调美术
-            感兴趣的话可以加我主页的q群，不定期有福利！
-            我是不是应该安排一期读评论送圣杯ꉂ(ˊᗜˋ*)？
-            纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ</p>
-            
-            <div>
-                <i class="fas fa-play-circle"></i>
-               <a href="https://www.bilibili.com/video/BV1xthYzwEkR/?spm_id_from=333.1387.homepage.video_card.click" target="_blank">点击前往Bilibili观看完整演示视频</a>
+        <div class="dev-logs-container">
+            <div class="dev-log animate delay-1 hidden">
+                <h4>吕佐夫号登场！颜色与武器改装功能演示_[自制海战游戏开发进度记录NO.4]</h4>
+                <span class="date">2025年08月30日</span>
+                <p>啊，改素材真是累死我力……本来想把武器配置一块做了再发布的，诶，已经月底了
+                本次新版本的Demo包体要等一段时间才能打出来……因为还要调数值，还要接着调美术
+                感兴趣的话可以加我主页的q群，不定期有福利！
+                我是不是应该安排一期读评论送圣杯ꉂ(ˊᗜˋ*)？
+                纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ</p>
+                
+                <div>
+                    <i class="fas fa-play-circle"></i>
+                   <a href="https://www.bilibili.com/video/BV1xthYzwEkR/?spm_id_from=333.1387.homepage.video_card.click" target="_blank">点击前往Bilibili观看完整演示视频</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="dev-log animate delay-1">
-            <h4>黎塞留级登场！基础AI完成，开放Demo下载_[自制海战游戏开发进度记录NO.3]</h4>
-            <span class="date">2025年07月23日</span>
-            <p>遵守了本周更新的约定 Demo的下载方式详见评论区置顶 黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ</p>
             
-            <div>
-                <i class="fas fa-play-circle"></i>
-                <a href="https://www.bilibili.com/video/BV1kS8GzaE2w/?spm_id_from=333.1387.collection.video_card.click&amp;vd_source=839527aaa3bbf03b1b1834f00484f849" target="_blank">点击前往Bilibili观看完整演示视频</a>
+            <div class="dev-log animate delay-1 hidden">
+                <h4>黎塞留级登场！基础AI完成，开放Demo下载_[自制海战游戏开发进度记录NO.3]</h4>
+                <span class="date">2025年07月23日</span>
+                <p>遵守了本周更新的约定 Demo的下载方式详见评论区置顶 黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ</p>
+                
+                <div>
+                    <i class="fas fa-play-circle"></i>
+                    <a href="https://www.bilibili.com/video/BV1kS8GzaE2w/?spm_id_from=333.1387.collection.video_card.click&amp;vd_source=839527aaa3bbf03b1b1834f00484f849" target="_blank">点击前往Bilibili观看完整演示视频</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="dev-log animate delay-1">
-            <h4>英王乔治五世级登场！以及新的实验性载具_[自制海战游戏开发进度记录NO.2]</h4>
-            <span class="date">2025年06月22日</span>
-            <p>此为第三期视频更新，主要更新了英王乔治五世级战列舰以及新的直升机载具，当然一些bug修复以及优化（譬如子弹池）是没有展示出来的…… PS:上班真累啊，还要抽空更新这个，点点关注，给主包点动力罢ᕕ(◠ڼ◠)ᕗ</p>
             
-            <div>
-                <i class="fas fa-play-circle"></i>
-                <a href="https://www.bilibili.com/video/BV1c1NQzGEFV/?spm_id_from=333.1387.collection.video_card.click&amp;vd_source=839527aaa3bbf03b1b1834f00484f849" target="_blank">点击前往Bilibili观看完整演示视频</a>
+            <div class="dev-log animate delay-1 hidden">
+                <h4>英王乔治五世级登场！以及新的实验性载具_[自制海战游戏开发进度记录NO.2]</h4>
+                <span class="date">2025年06月22日</span>
+                <p>此为第三期视频更新，主要更新了英王乔治五世级战列舰以及新的直升机载具，当然一些bug修复以及优化（譬如子弹池）是没有展示出来的…… PS:上班真累啊，还要抽空更新这个，点点关注，给主包点动力罢ᕕ(◠ڼ◠)ᕗ</p>
+                
+                <div>
+                    <i class="fas fa-play-circle"></i>
+                    <a href="https://www.bilibili.com/video/BV1c1NQzGEFV/?spm_id_from=333.1387.collection.video_card.click&amp;vd_source=839527aaa3bbf03b1b1834f00484f849" target="_blank">点击前往Bilibili观看完整演示视频</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="dev-log animate delay-2">
-            <h4>为了玩到大和，我自己手搓了个游戏！？_[自制海战游戏开发进度记录NO.1]</h4>
-            <span class="date">2025年05月09日</span>
-            <p>建模是真费事，图纸参考是扫描件，建到后面拼起来发现歪了，就这还花了我15块钱 同时进行了第一轮压测，发现战斗中21艘大和号只能跑到17帧……没办法舰炮的组件层次大调整了一波，殃及绝大多数业务逻辑（重写）， 所以鸽了这么久，实在抱歉哈 为了流量，本次更新尽可能地提炼主要内容，缩减了时长以提高完播率，同时取了个相对比较引流的标题，还制作了封面，诶嘿嘿~</p>
             
-            <div>
-                <i class="fas fa-play-circle"></i>
-                <a href="https://www.bilibili.com/video/BV1PR5gz4EqW/?spm_id_from=333.1387.collection.video_card.click" target="_blank">点击前往Bilibili观看完整演示视频</a>
+            <div class="dev-log animate delay-2 hidden">
+                <h4>为了玩到大和，我自己手搓了个游戏！？_[自制海战游戏开发进度记录NO.1]</h4>
+                <span class="date">2025年05月09日</span>
+                <p>建模是真费事，图纸参考是扫描件，建到后面拼起来发现歪了，就这还花了我15块钱 同时进行了第一轮压测，发现战斗中21艘大和号只能跑到17帧……没办法舰炮的组件层次大调整了一波，殃及绝大多数业务逻辑（重写）， 所以鸽了这么久，实在抱歉哈 为了流量，本次更新尽可能地提炼主要内容，缩减了时长以提高完播率，同时取了个相对比较引流的标题，还制作了封面，诶嘿嘿~</p>
+                
+                <div>
+                    <i class="fas fa-play-circle"></i>
+                    <a href="https://www.bilibili.com/video/BV1PR5gz4EqW/?spm_id_from=333.1387.collection.video_card.click" target="_blank">点击前往Bilibili观看完整演示视频</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="dev-log animate delay-2">
-            <h4>萌新尝试自制的海战小游戏_[自制海战游戏开发进度记录NO.0]</h4>
-            <span class="date">2025年04月15日</span>
-            <p>工具链介绍:游戏引擎→UE5.5，建模→blender，UI元素制作→即时设计，架构设计→Xmind，视频剪辑→必剪
-            主要内容:建档、船只管理、港口管理，自定义战斗配置，船体机动模块，武器系统模块，各项功能与UI的交互等等
-            补充:本来是打算把AI做好了再发的，但是因为一些原因耽误了进度，再加上已经答应别人了，所以提前发了，因为木有音效也木有特效，所以目前实现的效果很粗糙，但毕竟是demo嘛，问题不大（ '▿ ' ）也算是在逐步完成自己的小梦想罢……</p>
             
-            <div>
-                <i class="fas fa-play-circle"></i>
-                <a href="https://www.bilibili.com/video/BV1PKdZYnEUd/?spm_id_from=333.1387.homepage.video_card.click" target="_blank">点击前往Bilibili观看完整演示视频</a>
+            <div class="dev-log animate delay-2 hidden">
+                <h4>萌新尝试自制的海战小游戏_[自制海战游戏开发进度记录NO.0]</h4>
+                <span class="date">2025年04月15日</span>
+                <p>工具链介绍:游戏引擎→UE5.5，建模→blender，UI元素制作→即时设计，架构设计→Xmind，视频剪辑→必剪
+                主要内容:建档、船只管理、港口管理，自定义战斗配置，船体机动模块，武器系统模块，各项功能与UI的交互等等
+                补充:本来是打算把AI做好了再发的，但是因为一些原因耽误了进度，再加上已经答应别人了，所以提前发了，因为木有音效也木有特效，所以目前实现的效果很粗糙，但毕竟是demo嘛，问题不大（ '▿ ' ）也算是在逐步完成自己的小梦想罢……</p>
+                
+                <div>
+                    <i class="fas fa-play-circle"></i>
+                    <a href="https://www.bilibili.com/video/BV1PKdZYnEUd/?spm_id_from=333.1387.homepage.video_card.click" target="_blank">点击前往Bilibili观看完整演示视频</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 关于我们 -->
-    <section class="section" id="about">
+    <section class="section" id="about" style="margin-bottom: 145px">
         <div class="section-title">
             <h2>关于我们</h2>
         </div>
@@ -1151,6 +1199,27 @@
                     });
                 }
             });
+        });
+
+        // 开发日志折叠/展开功能
+        const logToggleBtn = document.getElementById('logToggleBtn');
+        const hiddenLogs = document.querySelectorAll('.dev-log.hidden');
+        let logsVisible = false;
+
+        logToggleBtn.addEventListener('click', function() {
+            logsVisible = !logsVisible;
+            
+            // 切换日志显示状态
+            hiddenLogs.forEach(log => {
+                log.classList.toggle('hidden', !logsVisible);
+            });
+            
+            // 更新按钮文本和图标
+            if (logsVisible) {
+                logToggleBtn.innerHTML = '<i class="fas fa-minus"></i> 收起';
+            } else {
+                logToggleBtn.innerHTML = '<i class="fas fa-plus"></i> 查看全部';
+            }
         });
     </script>
 </body>
