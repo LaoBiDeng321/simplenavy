@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Simple NAVY</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
     <style>
         :root {
             --primary: #0a192f;
@@ -604,14 +606,15 @@
         /* 我们的使命卡片样式 */
         .mission-card {
             background: var(--card-bg);
-            border-radius: 60px 100px;
+            border-radius: 600px 100px;
             padding: 30px;
             margin-top: 30px;
             transition: var(--transition);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 2px solid rgba(100, 255, 218, 0.1);
             text-align: center;
-			margin: auto;
+			width: 500px;
+			margin: 50px auto;
         }
 
         .mission-card:hover {
@@ -820,7 +823,7 @@
     <!-- 导航栏 -->
      <header>
         <div class="logo-container">
-            <div><img src="favicon.png" alt="Simple NAVY Logo" style="border-radius: 50%;"></div>
+            <div><img src="logo.png" alt="Simple NAVY Logo" style="border-radius: 50%;"></div>
             <div class="game-title">Simple NAVY</div>
         </div>
         
@@ -870,7 +873,7 @@
     </section>
 
     <!-- 游戏介绍 -->
-    <section class="section" id="game-intro" style="margin: a 200px 100px 200px">
+    <section class="section" id="game-intro">
         <div class="section-title">
             <h2>游戏介绍</h2>
         </div>
@@ -905,9 +908,9 @@
             <h2>游戏下载</h2>
         </div>
 
-        <div class="card animate" style="height: 800px @media(max-width:767px){height: auto}">
+        <div class="card animate">
             <div class="card-header">
-                <h3>最新版本：Simple_NAVY_2025_7_27</h3>
+                <h3>当前版本：Simple_NAVY_2025_7_27</h3>
             </div>
             <div class="card-body">
                 <p>Demo 已发布，支持 Windows，解压即可运行。请选择你喜欢的网盘下载：</p>
@@ -936,21 +939,6 @@
                     </ul>
                 </div>
             </div>
-			 <div class="card-header">
-                <h3>历史版本：暂无</h3>
-            </div>
-			<p>历史版本已发布，支持 Windows，解压即可运行。请选择你喜欢的网盘下载：</p>
-			<div class="download-buttons">
-                    <a  class="download-btn" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-cloud-download-alt"></i>
-                            暂无网盘链接
-                    </a>
-                    
-                    <a  class="download-btn" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-cloud-download-alt"></i>
-                        	暂无网盘链接
-                    </a>
-                </div>
         </div>
     </section>
 
@@ -1029,7 +1017,7 @@
     </section>
 
     <!-- 关于我们 -->
-    <section class="section" id="about" style="margin-bottom: 145px">
+    <section class="section" id="about">
         <div class="section-title">
             <h2>关于我们</h2>
         </div>
@@ -1062,7 +1050,7 @@
             </div>
         </div>
         
-        <div class="mission-card animate delay-2" style="margin: 100px 15px">
+        <div class="mission-card animate delay-2">
             <h3><i class="fas fa-rocket"></i> 我们的使命</h3>
             <p>
                 全体目光向我看齐，跟大家宣布个事啊。<br>
