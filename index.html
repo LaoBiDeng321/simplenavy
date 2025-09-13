@@ -820,7 +820,7 @@
     <!-- 导航栏 -->
      <header>
         <div class="logo-container">
-            <div><img src="logo.png" alt="Simple NAVY Logo" style="border-radius: 50%;"></div>
+            <div><img src="favicon.png" alt="Simple NAVY Logo" style="border-radius: 50%;"></div>
             <div class="game-title">Simple NAVY</div>
         </div>
         
@@ -900,59 +900,84 @@
     </section>
 
     <!-- 游戏下载 -->
-    <section class="section" id="download">
-        <div class="section-title">
-            <h2>游戏下载</h2>
-        </div>
+<section class="section" id="download">
+    <div class="section-title">
+        <h2>游戏下载</h2>
+    </div>
 
-        <div class="card animate" style="height: 800px @media(max-width:767px){height: auto}">
-            <div class="card-header">
-                <h3>最新版本：Simple_NAVY_2025_7_27</h3>
-            </div>
-            <div class="card-body">
-                <p>Demo 已发布，支持 Windows，解压即可运行。请选择你喜欢的网盘下载：</p>
-
-                <div class="download-buttons">
-                    <a href="https://pan.baidu.com/s/1oZMdS1gXaZbpBeoolVONzQ?pwd=SN00" class="download-btn" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-cloud-download-alt"></i>
-                        百度网盘下载
-                    </a>
-                    
-                    <a href="https://pan.quark.cn/s/c2a63cd8a68f" class="download-btn" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-cloud-download-alt"></i>
-                        夸克网盘下载
-                    </a>
+    <div class="card animate" style="height: auto;">
+        <div class="download-platforms" style="display: flex; flex-wrap: wrap; gap: 30px;">
+            <!-- 左侧：电脑版下载 -->
+            <div class="platform pc-download" style="flex: 1; min-width: 300px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-desktop"></i> &nbsp;电脑版下载</h3>
                 </div>
+                <div class="card-body">
+                    <p>最新版本：Simple_NAVY_2025_7_27</p>
+                    <p>Demo 已发布，支持 Windows，解压即可运行。请选择你喜欢的网盘下载：</p>
 
-                <div style="margin-top: 30px; background: var(--secondary); padding: 15px; border-radius: 5px;">
+                    <div class="download-buttons">
+                        <a href="https://pan.baidu.com/s/1oZMdS1gXaZbpBeoolVONzQ?pwd=SN00" class="download-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            百度网盘下载
+                        </a>
+                        
+                        <a href="https://pan.quark.cn/s/c2a63cd8a68f" class="download-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            夸克网盘下载
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 30px; background: var(--secondary); padding: 15px; border-radius: 5px;">
+                        <h4 style="margin-bottom: 10px; color: var(--accent);">
+                            <i class="fas fa-exclamation-circle"></i> 最低系统要求（未确认）
+                        </h4>
+                        <ul style="list-style: none; padding-left: 10px;">
+                            <li><i class="fas fa-microchip"></i> 处理器: Intel i5-6600K / AMD Ryzen 5 1600</li>
+                            <li><i class="fas fa-memory"></i> 内存: 8 GB RAM</li>
+                            <li><i class="fas fa-video"></i> 显卡: NVIDIA GTX 1060 / AMD RX 580</li>
+                            <li><i class="fas fa-hdd"></i> 存储: 1 GB 可用空间</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：手机版下载 -->
+            <div class="platform mobile-download" style="flex: 1; min-width: 300px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-mobile-alt"></i> &nbsp; 手机版下载</h3>
+                </div>
+                <div class="card-body">
+                  <p>最新版本：XXXXXXXXXXXXXXXXX</p>
+                    <p>Domo已发布，支持 Android  系统，解压即可运行。请选择你喜欢的网盘下载：</p>
+                    
+                        <div class="download-buttons">
+                   <a class="download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-cloud-download-alt"></i>
+                        暂无网盘链接
+                    </a>
+                        
+                      <a class="download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-cloud-download-alt"></i>
+                        暂无网盘链接
+                    </a>
+                    </div>
+
+                  <div style="margin-top: 30px; background: var(--secondary); padding: 15px; border-radius: 5px;">
                     <h4 style="margin-bottom: 10px; color: var(--accent);">
-                        <i class="fas fa-exclamation-circle"></i> 最低系统要求（未确认）
+                            <i class="fas fa-info-circle"></i> 最低系统要求（未确定）
                     </h4>
-                    <ul style="list-style: none; padding-left: 10px;">
-                        <li><i class="fas fa-microchip"></i> 处理器: Intel i5-6600K / AMD Ryzen 5 1600</li>
-                        <li><i class="fas fa-memory"></i> 内存: 8 GB RAM</li>
-                        <li><i class="fas fa-video"></i> 显卡: NVIDIA GTX 1060 / AMD RX 580</li>
-                        <li><i class="fas fa-hdd"></i> 存储: 1 GB 可用空间</li>
-                    </ul>
+                      <ul style="list-style: none; padding-left: 10px;">
+						  <li><i class="fab fa-android"></i> Android: 8.0 及以上版本</li>
+						  <li><i class="fas fa-microchip"></i> 天玑XXX或高通骁龙XXX</li>
+                          <li><i class="fas fa-memory"></i> 内存: 8GB RAM</li>
+                          <li><i class="fas fa-hdd"></i> 存储: 1 GB 可用空间</li>
+                      </ul>
+                  </div>
                 </div>
             </div>
-			 <div class="card-header">
-                <h3>历史版本：暂无</h3>
-            </div>
-			<p>历史版本已发布，支持 Windows，解压即可运行。请选择你喜欢的网盘下载：</p>
-			<div class="download-buttons">
-                    <a  class="download-btn" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-cloud-download-alt"></i>
-                            暂无网盘链接
-                    </a>
-                    
-                    <a  class="download-btn" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-cloud-download-alt"></i>
-                        	暂无网盘链接
-                    </a>
-                </div>
         </div>
-    </section>
+</section>
 
     <!-- 开发日志 -->
     <section class="section" id="dev-log">
