@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simple NAVY - 主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body id="top">
+    <!-- 导航栏 -->
+     <header>
+        <div class="logo-container">
+            <div><img src="favicon.png" alt="Simple NAVY Logo" style="border-radius: 50%;"></div>
+            <div class="game-title">Simple NAVY</div>
+        </div>
+        
+        <!-- 桌面导航 -->
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i>首页</a></li>
+                <li><a href="game-intro.html"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
+                <li><a href="download.html"><i class="fas fa-download"></i>游戏下载</a></li>
+                <li><a href="devlog00.html"><i class="fas fa-book"></i>开发日志</a></li>
+                <li><a href="about.html"><i class="fas fa-users"></i>关于我们</a></li>
+                <li><a href="sponsor.html"><i class="fas fa-heart"></i>赞助支持</a></li>
+            </ul>
+        </nav>
+        
+        <!-- 移动端汉堡菜单按钮 -->
+        <button class="mobile-menu-btn" aria-label="切换菜单">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- 移动端导航菜单 -->
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i>首页</a></li>
+                <li><a href="game-intro.html"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
+                <li><a href="download.html"><i class="fas fa-download"></i>游戏下载</a></li>
+                <li><a href="devlog00.html"><i class="fas fa-book"></i>开发日志</a></li>
+                <li><a href="about.html"><i class="fas fa-users"></i>关于我们</a></li>
+                <li><a href="sponsor.html"><i class="fas fa-heart"></i>赞助支持</a></li>
+            </ul>
+        </nav>
+        
+        <!-- 移动端导航菜单遮罩 -->
+        <div class="mobile-nav-overlay"></div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <h1 class="animate">Simple NAVY</h1>
+        <p class="animate delay-1">一款以现代海军战争为背景的策略模拟游戏，指挥你的舰队，制定战术，在广阔海洋上展开激烈对抗！</p>
+        <div class="animate delay-2">
+            <a href="download.html" class="cta-button primary">立即下载</a>
+            <a href="game-intro.html" class="cta-button">了解更多</a>
+        </div>
+    </section>
+
+   
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Simple NAVY</div>
+            <p>以海为战，智谋决胜！</p>
+                       
+            <div class="copyright">
+                © 2025 Simple NAVY Development Team. 保留所有权利。
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
