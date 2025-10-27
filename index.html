@@ -3,13 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simple NAVY - 主页</title>
+    <title>Simple NAVY - 官方网站</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
+    <style>
+        /* 添加一些额外的样式来支持单页面导航 */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: var(--accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        .back-to-top:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+    </style>
 </head>
-<body id="top">
+<body>
+    <!-- 返回顶部按钮 -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- 导航栏 -->
-     <header>
+    <header>
         <div class="logo-container">
             <div><img src="favicon.png" alt="Simple NAVY Logo" style="border-radius: 50%;"></div>
             <div class="game-title">Simple NAVY</div>
@@ -18,12 +55,12 @@
         <!-- 桌面导航 -->
         <nav class="desktop-nav">
             <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i>首页</a></li>
-                <li><a href="game-intro.html"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
-                <li><a href="download.html"><i class="fas fa-download"></i>游戏下载</a></li>
-                <li><a href="devlog00.html"><i class="fas fa-book"></i>开发日志</a></li>
-                <li><a href="about.html"><i class="fas fa-users"></i>关于我们</a></li>
-                <li><a href="sponsor.html"><i class="fas fa-heart"></i>赞助支持</a></li>
+                <li><a href="#top"><i class="fas fa-home"></i>首页</a></li>
+                <li><a href="#game-intro"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
+                <li><a href="#download"><i class="fas fa-download"></i>游戏下载</a></li>
+                <li><a href="#devlog"><i class="fas fa-book"></i>开发日志</a></li>
+                <li><a href="#about"><i class="fas fa-users"></i>关于我们</a></li>
+                <li><a href="#sponsor"><i class="fas fa-heart"></i>赞助支持</a></li>
             </ul>
         </nav>
         
@@ -37,12 +74,12 @@
         <!-- 移动端导航菜单 -->
         <nav class="mobile-nav">
             <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i>首页</a></li>
-                <li><a href="game-intro.html"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
-                <li><a href="download.html"><i class="fas fa-download"></i>游戏下载</a></li>
-                <li><a href="devlog00.html"><i class="fas fa-book"></i>开发日志</a></li>
-                <li><a href="about.html"><i class="fas fa-users"></i>关于我们</a></li>
-                <li><a href="sponsor.html"><i class="fas fa-heart"></i>赞助支持</a></li>
+                <li><a href="#top"><i class="fas fa-home"></i>首页</a></li>
+                <li><a href="#game-intro"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
+                <li><a href="#download"><i class="fas fa-download"></i>游戏下载</a></li>
+                <li><a href="#devlog"><i class="fas fa-book"></i>开发日志</a></li>
+                <li><a href="#about"><i class="fas fa-users"></i>关于我们</a></li>
+                <li><a href="#sponsor"><i class="fas fa-heart"></i>赞助支持</a></li>
             </ul>
         </nav>
         
@@ -50,30 +87,815 @@
         <div class="mobile-nav-overlay"></div>
     </header>
 
-    <!-- 英雄区域 -->
-    <section class="hero">
+    <!-- 首页区域 -->
+    <section class="hero" id="top">
         <h1 class="animate">Simple NAVY</h1>
         <p class="animate delay-1">一款以现代海军战争为背景的策略模拟游戏，指挥你的舰队，制定战术，在广阔海洋上展开激烈对抗！</p>
         <div class="animate delay-2">
-            <a href="download.html" class="cta-button primary">立即下载</a>
-            <a href="game-intro.html" class="cta-button">了解更多</a>
+            <a href="#download" class="cta-button primary">立即下载</a>
+            <a href="#game-intro" class="cta-button">了解更多</a>
         </div>
     </section>
 
-   
+    <!-- 游戏介绍区域 -->
+    <section class="section" id="game-intro">
+        <div class="section-title">
+            <h2><i class="fas fa-info-circle"></i> 游戏介绍</h2>
+        </div>
+        <div class="cards-container">
+            <div class="card animate">
+                <div class="card-header">
+                    <h3><i class="fas fa-gamepad"></i> 核心玩法</h3>
+                </div>
+                <div class="card-body">
+                    <p>想怎么玩怎么玩。<br>
+                    你看我干嘛，该不会想让我教你怎么玩吧。</p>
+                </div>
+            </div>
+            
+            <div class="card animate delay-1">
+                <div class="card-header">
+                    <h3><i class="fas fa-chess-rook"></i> 特色系统</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>特色是吧，主策划特色。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏下载区域 -->
+    <section class="section" id="download">
+        <div class="section-title">
+            <h2><i class="fas fa-download"></i> 游戏下载</h2>
+        </div>
+        <div class="card animate" style="height: auto;">
+            <div class="download-platforms" style="display: flex; flex-wrap: wrap; gap: 30px;">
+                <!-- 左侧：电脑版下载 -->
+                <div class="platform pc-download" style="flex: 1; min-width: 300px;">
+                    <div class="card-header">
+                        <h3><i class="fas fa-desktop"></i> &nbsp;电脑版下载</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>最新版本：Simple_NAVY_2025_9_21</p>
+                        <p>Demo 已发布，支持 Windows，解压即可运行。请选择你喜欢的网盘下载：</p>
+                        <p>如果嫌弃网盘限速，可加入QQ群在群文件中下载。</p>
+                        
+                        <div class="download-buttons" style="flex-direction: column; align-items: center;">
+                            <a href="https://qm.qq.com/q/BwBRRRa4jS" class="download-btn" target="_blank" rel="noopener noreferrer" style="width: 100%; max-width: 250px; margin-bottom: 10px; justify-content: center;">
+                                加入QQ群
+                            </a>
+                            <a href="https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS#list/path=%2F%E7%89%A2Q%E7%9A%84%E8%87%AA%E5%88%B6%E6%B8%B8%E6%88%8F%E5%88%86%E4%BA%AB%2FSimple%20NAVY%2FSimple_NAVY_2025_09_21%2FWindows" class="download-btn" target="_blank" rel="noopener noreferrer" style="width: 100%; max-width: 250px; margin-bottom: 10px; justify-content: center;">
+                                <i class="fas fa-cloud-download-alt"></i>
+                                百度网盘下载
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 30px; background: var(--secondary); padding: 15px; border-radius: 5px;">
+                          <h4 style="margin-bottom: 10px; color: var(--accent);">
+                                <i class="fas fa-exclamation-circle"></i> 最低系统要求（未确认）
+                            </h4>
+                            <ul style="list-style: none; padding-left: 10px;">
+                                <li><i class="fas fa-microchip"></i> 处理器: Intel i5-6600K</li>
+                                <li><i class="fas fa-memory"></i> 内存: 8 GB RAM</li>
+                                <li><i class="fas fa-video"></i> 显卡: NVIDIA GTX 1060 / AMD RX 580</li>
+                                <li><i class="fas fa-hdd"></i> 存储: 1 GB 可用空间</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 中侧：手机版下载 -->
+                <div class="platform mobile-download" style="flex: 1; min-width: 300px;">
+                    <div class="card-header">
+                        <h3><i class="fas fa-mobile-alt"></i> &nbsp; 手机版下载</h3>
+                    </div>
+                    <div class="card-body">
+                      <p>最新版本：Simple_NAVY_2025_9_21</p>
+                      <p>发行包已发布，支持 Android，解压即可运行。请选择你喜欢的网盘下载：</p>
+                      <p>如果嫌弃网盘限速，可加入QQ群在群文件中下载。</p>
+                       
+                      <div class="download-buttons" style="flex-direction: column; align-items: center;">
+                        <a href="https://qm.qq.com/q/BwBRRRa4jS" class="download-btn" target="_blank" rel="noopener noreferrer" style="width: 100%; max-width: 250px; margin-bottom: 10px; justify-content: center;">
+                            加入QQ群
+                        </a>
+                        <a href="https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS#list/path=%2F%E7%89%A2Q%E7%9A%84%E8%87%AA%E5%88%B6%E6%B8%B8%E6%88%8F%E5%88%86%E4%BA%AB%2FSimple%20NAVY%2FSimple_NAVY_2025_09_21%2FAndroid" class="download-btn" target="_blank" rel="noopener noreferrer" style="width: 100%; max-width: 250px; margin-bottom: 10px; justify-content: center;">
+                                <i class="fas fa-cloud-download-alt"></i>
+                                百度网盘下载
+                            </a>
+                        
+                      </div>
+
+                      <div style="margin-top: 30px; background: var(--secondary); padding: 15px; border-radius: 5px;">
+                        <h4 style="margin-bottom: 10px; color: var(--accent);">
+                                <i class="fas fa-info-circle"></i> 最低系统要求（未确定）
+                        </h4>
+                          <ul style="list-style: none; padding-left: 10px;">
+                              <li><i class="fab fa-android"></i> Android: 8.0 及以上版本</li>
+                              <li><i class="fas fa-microchip"></i> 天玑XXX或高通骁龙XXX</li>
+                              <li><i class="fas fa-memory"></i> 内存: 8GB RAM</li>
+                              <li><i class="fas fa-hdd"></i> 存储: 1 GB 可用空间</li>
+                          </ul>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 开发日志区域 -->
+    <section class="section" id="devlog">
+        <div class="section-title">
+            <h2><i class="fas fa-book"></i> 开发日志</h2>
+        </div>
+        
+        <!-- 日志编号导航 -->
+        <div class="log-number-navigation" style="display: flex; justify-content: center; gap: 15px; margin: 30px 0;">
+            <a href="#devlog" class="log-number-btn" data-log="00">00</a>
+            <a href="#devlog" class="log-number-btn" data-log="01">01</a>
+            <a href="#devlog" class="log-number-btn" data-log="02">02</a>
+            <a href="#devlog" class="log-number-btn" data-log="03">03</a>
+            <a href="#devlog" class="log-number-btn" data-log="04">04</a>
+            <a href="#devlog" class="log-number-btn" data-log="05">05</a>
+            <a href="#devlog" class="log-number-btn" data-log="06">06</a>
+        </div>
+        
+        <!-- 横向滚动的开发日志容器 -->
+        <div class="dev-logs-container-horizontal" style="overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; margin-bottom: 20px; padding-bottom: 20px;">
+            <div class="dev-logs-wrapper" style="display: flex; gap: 30px; min-width: max-content;">
+                <!-- 开发日志 #00 -->
+                <div class="dev-log-horizontal">
+                    <h4>项目启动!我们的第一个海战游戏开发进度记录_[自制海战游戏开发进度记录NO.0]</h4>
+                    <p>这是一个关于我开发一个海战游戏的视频系列，主要记录我从零开始制作游戏的过程，这个游戏目前暂定名为 Simple NAVY</p>
+                    <!-- 视频容器 -->
+                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
+                        <!-- 点击播放区域 -->
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                            <!-- 播放按钮 -->
+                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
+                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
+                            </div>
+                            
+                            <!-- 隐藏的视频播放器 -->
+                            <iframe id="game-video-00" class="embedded-video" 
+                                    data-src="https://player.bilibili.com/player.html?bvid=BV1PKdZYnEUd&page=1&high_quality=1&danmaku=0" 
+                                    scrolling="no" frameborder="0" 
+                                    allowfullscreen="true" 
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 开发日志 #01 -->
+                <div class="dev-log-horizontal">
+                    <h4>自制海战游戏!首个对战场景实装_[自制海战游戏开发进度记录NO.1]</h4>
+                    <p>首个对战场景完成了，加入了基础的战斗功能，现在可以进行简单的对战啦！！！
+PS:我也是第一次做海战类游戏，经验不足，有很多需要改进的地方，希望大家多多担待。</p>
+                    <!-- 视频容器 -->
+                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
+                        <!-- 点击播放区域 -->
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                            <!-- 播放按钮 -->
+                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
+                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
+                            </div>
+                            
+                            <!-- 隐藏的视频播放器 -->
+                            <iframe id="game-video-01" class="embedded-video" 
+                                    data-src="https://player.bilibili.com/player.html?bvid=BV1PR5gz4EqW&page=1&high_quality=1&danmaku=0" 
+                                    scrolling="no" frameborder="0" 
+                                    allowfullscreen="true" 
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 开发日志 #02 -->
+                <div class="dev-log-horizontal">
+                    <h4>英王乔治五世级登场！以及新的实验性载具_[自制海战游戏开发进度记录NO.2]</h4>
+                    <p>此为第三期视频更新，主要更新了英王乔治五世级战列舰以及新的直升机载具，当然一些bug修复以及优化（譬如子弹池）是没有展示出来的……
+                    PS:上班真累啊，还要抽空更新这个，点点关注，给主包点动力罢ᕕ(◠ڼ◠)ᕗ</p>
+                    <!-- 视频容器 -->
+                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
+                        <!-- 点击播放区域 -->
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                            <!-- 播放按钮 -->
+                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
+                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
+                            </div>
+                            
+                            <!-- 隐藏的视频播放器 -->
+                            <iframe id="game-video-02" class="embedded-video" 
+                                    data-src="https://player.bilibili.com/player.html?bvid=BV1c1NQzGEFV&page=1&high_quality=1&danmaku=0" 
+                                    scrolling="no" frameborder="0" 
+                                    allowfullscreen="true" 
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 开发日志 #03 -->
+                <div class="dev-log-horizontal">
+                    <h4>黎塞留级登场！基础AI完成，开放Demo下载_[自制海战游戏开发进度记录NO.3]</h4>
+                    <p>遵守了本周更新的约定
+Demo的下载方式详见评论区置顶
+黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ</p>
+                    <!-- 视频容器 -->
+                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
+                        <!-- 点击播放区域 -->
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                            <!-- 播放按钮 -->
+                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
+                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
+                            </div>
+                            
+                            <!-- 隐藏的视频播放器 -->
+                            <iframe id="game-video-03" class="embedded-video" 
+                                    data-src="https://player.bilibili.com/player.html?bvid=BV1kS8GzaE2w&page=1&high_quality=1&danmaku=0" 
+                                    scrolling="no" frameborder="0" 
+                                    allowfullscreen="true" 
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 开发日志 #04 -->
+                <div class="dev-log-horizontal">
+                    <h4>吕佐夫号登场！颜色与武器改装功能演示_[自制海战游戏开发进度记录NO.4]</h4>
+                    <p>啊，改素材真是累死我力……本来想把武器配置一块做了再发布的，诶，已经月底了
+本次新版本的Demo包体要等一段时间才能打出来……因为还要调数值，还要接着调美术
+感兴趣的话可以加我主页的q群，不定期有福利！
+我是不是应该安排一期读评论送圣杯ꉂ(ˊᗜˋ*)？
+纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ</p>
+                    <!-- 视频容器 -->
+                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
+                        <!-- 点击播放区域 -->
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                            <!-- 播放按钮 -->
+                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
+                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
+                            </div>
+                            
+                            <!-- 隐藏的视频播放器 -->
+                            <iframe id="game-video-04" class="embedded-video" 
+                                    data-src="https://player.bilibili.com/player.html?bvid=BV1xthYzwEkR&page=1&high_quality=1&danmaku=0" 
+                                    scrolling="no" frameborder="0" 
+                                    allowfullscreen="true" 
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 开发日志 #05 -->
+                <div class="dev-log-horizontal">
+                    <h4>额啊~阿B送的流量券快要过期辣！！！[自制海战游戏开发进度记录NO.5]</h4>
+                    <p>主包只是没吃饭＆第1次录比较紧张而已，身体挺得住ᕕ(◠ڼ◠)ᕗ</p>
+                    <!-- 视频容器 -->
+                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
+                        <!-- 点击播放区域 -->
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                            <!-- 播放按钮 -->
+                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
+                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
+                            </div>
+                            
+                            <!-- 隐藏的视频播放器 -->
+                            <iframe id="game-video-05" class="embedded-video" 
+                                    data-src="https://player.bilibili.com/player.html?bvid=BV1YKJmzpEih&page=1&high_quality=1&danmaku=0" 
+                                    scrolling="no" frameborder="0" 
+                                    allowfullscreen="true" 
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 开发日志 #06 -->
+                <div class="dev-log-horizontal">
+                    <h4>去催更啊看我干嘛？</h4>
+                    <h4>这只是占位的</h4>
+                </div>
+            </div>
+        </div>
+        
+        <style>
+            /* 自定义滚动条样式 */
+            .dev-logs-container-horizontal::-webkit-scrollbar {
+                height: 8px;
+            }
+            
+            .dev-logs-container-horizontal::-webkit-scrollbar-track {
+                background: rgba(17, 34, 64, 0.5);
+                border-radius: 4px;
+            }
+            
+            .dev-logs-container-horizontal::-webkit-scrollbar-thumb {
+                background: var(--accent);
+                border-radius: 4px;
+            }
+            
+            .dev-logs-container-horizontal::-webkit-scrollbar-thumb:hover {
+                background: rgba(100, 255, 218, 0.8);
+            }
+            
+            /* 日志编号按钮样式 */
+            .log-number-btn {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                background-color: rgba(17, 34, 64, 0.7);
+                color: var(--light-text);
+                border: 1px solid transparent;
+                transition: var(--transition);
+                font-weight: 600;
+                font-size: 18px;
+            }
+            
+            .log-number-btn:hover {
+                background-color: rgba(100, 255, 218, 0.2);
+                border-color: var(--accent);
+                color: var(--accent);
+                transform: translateY(-3px);
+            }
+            
+            .log-number-btn.active {
+                background-color: var(--accent);
+                color: var(--primary);
+                border-color: var(--accent);
+            }
+            
+            /* 横向开发日志卡片样式 */
+            .dev-log-horizontal {
+                width: 950px;
+                padding: 25px;
+                background-color: var(--secondary);
+                border-radius: 8px;
+                border: 1px solid rgba(100, 255, 218, 0.1);
+                flex-shrink: 0;
+            }
+            
+            .dev-log-horizontal h4 {
+                color: var(--accent);
+                margin-bottom: 15px;
+                font-size: 1.2rem;
+                line-height: 1.4;
+            }
+            
+            .dev-log-horizontal p {
+                margin-bottom: 20px;
+                line-height: 1.6;
+            }
+            
+            /* 响应式设计 */
+            @media (max-width: 1024px) {
+                .dev-log-horizontal {
+                    width: 800px;
+                }
+                
+                .video-play-trigger {
+                    width: 750px !important;
+                    height: 420px !important;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .dev-log-horizontal {
+                    width: calc(100vw - 40px);
+                }
+                
+                .video-play-trigger {
+                    width: 100% !important;
+                    height: 300px !important;
+                }
+                
+                .log-number-btn {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 16px;
+                }
+            }
+            
+            /* 视频播放按钮样式 */
+            .video-play-trigger:hover .play-button {
+                background: rgba(100, 255, 218, 0.3);
+                transform: scale(1.1);
+            }
+        </style>
+    </section>
+
+    <!-- 关于我们区域 -->
+    <section class="section" id="about">
+        <div class="section-title">
+            <h2><i class="fas fa-users"></i> 关于我们</h2>
+        </div>
+        
+        <div class="team-container">
+            <div class="team-member animate">
+                <div class="member-avatar">
+                    <img src="img-head/SuperQ_Louis.jpg" alt="SuperQ_Louis" style="width: 115px; height: 115px; border-radius: 50%;">
+                </div>
+                <h3 class="member-name">SuperQ_Louis</h3>
+                <p class="member-role">主策划</p>
+                <p>游戏的模型以及Ui的设计者，主策划，是一位来自某个卖服务器的公司的悲苦实习生（经常加班），最喜欢的零食是虾味薯条...</p>
+                <div class="features" style="justify-content: center; margin-top: 15px;">
+                    <span class="feature">游戏设计</span>
+                    <span class="feature">美术设计</span>
+                    <span class="feature">UI设计</span>
+                </div>
+            </div>
+            
+            <div class="team-member animate delay-1">
+                <div class="member-avatar">
+                    <img src="img-head/xy_black_cross.jpg" alt="xy_black_cross" style="width: 115px; height: 115px; border-radius: 50%;">
+                </div>
+                <h3 class="member-name">xy_black_cross</h3>
+                <p class="member-role">副策划</p>
+                <p style="margin-bottom: 1.5em;">游戏的主要脚本编写者，副策划（SuperQ_Louis的另一个人格，活跃于晚上23:00之后）</p>
+                <div class="features" style="justify-content: center; margin-top: 15px;">
+                    <span class="feature">程序开发</span>
+                    <span class="feature">脚本编写</span>
+                    <span class="feature">系统策划</span>
+                </div>
+            </div>
+              
+            <div class="team-member animate delay-2">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="member-name">老闭灯</h3>
+                <p class="member-role">网页维护与设计</p>
+                <p style="margin-bottom: 1.5em;">不参与游戏直接开发，只管理网页设计与维护的内容。</p>
+                <div class="features" style="justify-content: center; margin-top: 15px;">
+                    <span class="feature">网页设计</span>
+                    <span class="feature">网站维护</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 赞助支持区域 -->
+    <section class="section" id="sponsor">
+        <div class="section-title">
+            <h2><i class="fas fa-heart"></i> 赞助支持</h2>
+        </div>
+        
+        <div class="sponsor-info-card animate delay-2" id="QQ_QR">
+            <h3><i class="fas fa-info-circle"></i> 赞助说明</h3>
+            <p>
+                赞助后请通过QQ群联系我们，提供您的付款截图和希望使用的名称。<br>
+                我们会在确认收款后尽快为您安排相应的权益！感谢您的支持!<br>
+                如有任何问题，请随时联系我们的客服团队。
+            </p>
+            <div class="download-buttons" style="flex-direction: column; align-items: center; margin-top: 30px;">
+                <a href="https://qm.qq.com/q/BwBRRRa4jS" class="download-btn" target="_blank" rel="noopener noreferrer" style="width: 100%; max-width: 250px; margin-bottom: 10px; justify-content: center;">
+                    <i class="fas fa-user-plus"></i>
+                    点击加入QQ群
+                </a>
+            </div>
+        </div>
+        
+        <div class="section-title" style="margin-top: 50px;">
+            <h2>感谢名单</h2>
+        </div>
+        
+        <div class="card animate">
+            <div class="card-header">
+                <h3><i class="fas fa-trophy"></i> 特别感谢</h3>
+                <h4>排名不分先后</h4>
+            </div>
+            <div class="card-body">
+                <li>永远の白--3362626163</li>
+            </div>
+        </div>
+        <div class="card animate">
+                <p>祝上述各位老板长命百岁。</p>
+        </div>
+    </section>
 
     <!-- 页脚 -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Simple NAVY</div>
             <p>以海为战，智谋决胜！</p>
-                       
+                        
             <div class="copyright">
                 © 2025 Simple NAVY Development Team. 保留所有权利。
             </div>
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script>
+        // 移动端菜单功能
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+        const body = document.body;
+
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileNavOverlay.addEventListener('click', toggleMobileMenu);
+
+        // 点击移动菜单中的链接后关闭菜单
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 开发日志横向滚动功能
+        
+        // 视频播放逻辑 - 确保视频只在用户点击时加载和播放
+        (function() {
+            // 简化的视频初始化函数
+            function initVideoPlayers() {
+                // 获取所有视频触发容器
+                const videoTriggers = document.querySelectorAll('.video-play-trigger');
+                
+                videoTriggers.forEach(trigger => {
+                    const playButton = trigger.querySelector('.play-button');
+                    const iframe = trigger.querySelector('.embedded-video');
+                    
+                    if (!iframe || !playButton) return;
+                    
+                    // 确保iframe默认隐藏
+                    iframe.style.display = 'none';
+                    
+                    // 添加点击事件 - 只在用户点击时加载视频
+                    trigger.addEventListener('click', function() {
+                        // 先隐藏所有视频并显示所有播放按钮，停止所有视频
+                        document.querySelectorAll('.embedded-video').forEach(video => {
+                            video.style.display = 'none';
+                            // 彻底移除src以停止播放并释放资源
+                            if (video.src) {
+                                video.removeAttribute('src');
+                            }
+                        });
+                        
+                        document.querySelectorAll('.play-button').forEach(btn => {
+                            btn.style.display = 'flex';
+                        });
+                        
+                        // 只在点击时才设置src并显示当前视频
+                        if (iframe.dataset.src) {
+                            iframe.src = iframe.dataset.src;
+                            iframe.style.display = 'block';
+                            playButton.style.display = 'none';
+                        }
+                    });
+                    
+                    // 鼠标悬停效果
+                    trigger.addEventListener('mouseenter', function() {
+                        if (playButton.style.display !== 'none') {
+                            playButton.style.transform = 'scale(1.1)';
+                            playButton.style.background = 'rgba(100, 255, 218, 0.3)';
+                        }
+                    });
+                    
+                    trigger.addEventListener('mouseleave', function() {
+                        if (playButton.style.display !== 'none') {
+                            playButton.style.transform = 'scale(1)';
+                            playButton.style.background = 'rgba(100, 255, 218, 0.2)';
+                        }
+                    });
+                });
+            }
+            
+            // 在DOM加载完成后初始化
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initVideoPlayers);
+            } else {
+                initVideoPlayers();
+            }
+        })();
+        
+        // 日志编号导航功能 - 横向滚动版本
+        const logButtons = document.querySelectorAll('.log-number-btn');
+        const devLogs = document.querySelectorAll('.dev-log-horizontal');
+        const logsContainer = document.querySelector('.dev-logs-container-horizontal');
+        
+        logButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const logNumber = this.getAttribute('data-log');
+                const logIndex = parseInt(logNumber);
+                
+                // 先记录当前的滚动位置
+                const currentScrollY = window.scrollY;
+                
+                // 更新按钮状态
+                logButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // 先滚动到开发日志区域顶部，但使用固定的偏移量确保高度一致
+                const devlogSection = document.getElementById('devlog');
+                if (devlogSection) {
+                    // 计算固定的目标位置 - 最终调整，使开发日志标题完全紧贴导航栏
+                    const targetScrollY = devlogSection.offsetTop; // 移除所有偏移量
+                    
+                    // 直接设置滚动位置，避免平滑滚动可能导致的不一致
+                    window.scrollTo({
+                        top: targetScrollY,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // 延迟滚动到对应的开发日志
+                setTimeout(() => {
+                    const targetLog = devLogs[logIndex];
+                    if (targetLog && logsContainer) {
+                        // 计算要滚动的位置，考虑容器的padding和视口中心
+                        const containerRect = logsContainer.getBoundingClientRect();
+                        const targetRect = targetLog.getBoundingClientRect();
+                        const scrollAmount = logsContainer.scrollLeft + (targetRect.left - containerRect.left) - (containerRect.width / 2) + (targetRect.width / 2);
+                        
+                        // 平滑滚动到目标日志，居中显示
+                        logsContainer.scrollTo({
+                            left: scrollAmount,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 500); // 调整延迟时间
+            });
+        });
+        
+        // 初始设置第一个日志按钮为激活状态
+        if (logButtons.length > 0) {
+            logButtons[0].classList.add('active');
+        }
+
+        // 返回顶部按钮功能
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 页面板块导航功能 - 极简版：下滑直接跳转到下一个板块
+        (function() {
+            // 获取所有板块元素，按照在页面中出现的顺序
+            const sections = [
+                document.getElementById('top'),
+                document.getElementById('game-intro'),
+                document.getElementById('download'),
+                document.getElementById('devlog'),
+                document.getElementById('about'),
+                document.getElementById('sponsor')
+            ].filter(Boolean); // 过滤掉可能不存在的元素
+            
+            let isAnimating = false; // 防止滚动动画过程中重复触发
+            const ANIMATION_DURATION = 1000; // 动画持续时间
+            
+            // 获取当前视口中最上方的板块索引
+            function getCurrentSectionIndex() {
+                const viewportHeight = window.innerHeight;
+                
+                // 遍历所有板块，找到视口中显示最多的那个
+                let closestSectionIndex = 0;
+                let maxVisibleArea = 0;
+                
+                sections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+                    
+                    // 计算板块在视口中的可见部分
+                    const visibleTop = Math.max(0, rect.top);
+                    const visibleBottom = Math.min(viewportHeight, rect.bottom);
+                    const visibleArea = visibleBottom - visibleTop;
+                    
+                    // 如果板块完全在视口内或部分在视口内
+                    if (visibleArea > maxVisibleArea) {
+                        maxVisibleArea = visibleArea;
+                        closestSectionIndex = index;
+                    }
+                });
+                
+                return closestSectionIndex;
+            }
+            
+            // 跳转到指定板块
+            function goToSection(index) {
+                if (index >= 0 && index < sections.length && !isAnimating) {
+                    isAnimating = true;
+                    
+                    // 直接滚动到目标板块
+                    window.scrollTo({
+                        top: sections[index].offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 动画结束后重置标志
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, ANIMATION_DURATION);
+                }
+            }
+            
+            // PC端：监听滚轮事件
+            let lastWheelTime = 0;
+            const WHEEL_THRESHOLD = 50; // 滚轮触发阈值
+            
+            window.addEventListener('wheel', function(e) {
+                // 如果正在滚动动画中，阻止默认行为
+                if (isAnimating) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                // 限制滚轮事件触发频率
+                const now = Date.now();
+                if (now - lastWheelTime < 500) {
+                    return;
+                }
+                
+                // 只有当滚轮移动距离足够大时才触发
+                if (Math.abs(e.deltaY) > WHEEL_THRESHOLD) {
+                    e.preventDefault(); // 阻止默认滚动
+                    lastWheelTime = now;
+                    
+                    const currentIndex = getCurrentSectionIndex();
+                    
+                    if (e.deltaY > 0) {
+                        // 向下滚动 -> 下一个板块
+                        goToSection(currentIndex + 1);
+                    } else {
+                        // 向上滚动 -> 上一个板块
+                        goToSection(currentIndex - 1);
+                    }
+                }
+            }, { passive: false });
+            
+            // 移动端：监听触摸滑动事件
+            let touchStartY = 0;
+            let touchStartTime = 0;
+            const TOUCH_THRESHOLD = 100; // 触摸滑动触发阈值
+            
+            window.addEventListener('touchstart', function(e) {
+                if (isAnimating) return;
+                touchStartY = e.touches[0].clientY;
+                touchStartTime = Date.now();
+            }, { passive: true });
+            
+            window.addEventListener('touchend', function(e) {
+                if (isAnimating) return;
+                
+                const touchEndY = e.changedTouches[0].clientY;
+                const touchDuration = Date.now() - touchStartTime;
+                const diff = touchStartY - touchEndY;
+                
+                // 只有当滑动距离足够大且速度合理时才触发
+                if (Math.abs(diff) > TOUCH_THRESHOLD && touchDuration < 500) {
+                    const currentIndex = getCurrentSectionIndex();
+                    
+                    if (diff > 0) {
+                        // 向下滑动 -> 下一个板块
+                        goToSection(currentIndex + 1);
+                    } else {
+                        // 向上滑动 -> 上一个板块
+                        goToSection(currentIndex - 1);
+                    }
+                }
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>
