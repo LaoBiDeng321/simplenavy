@@ -2,8 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simple NAVY - 官方网站</title>
+    <title>Simple NAVY - 首页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
     <style>
@@ -64,27 +63,7 @@
             </ul>
         </nav>
         
-        <!-- 移动端汉堡菜单按钮 -->
-        <button class="mobile-menu-btn" aria-label="切换菜单">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        
-        <!-- 移动端导航菜单 -->
-        <nav class="mobile-nav">
-            <ul>
-                <li><a href="#top"><i class="fas fa-home"></i>首页</a></li>
-                <li><a href="#game-intro"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
-                <li><a href="#download"><i class="fas fa-download"></i>游戏下载</a></li>
-                <li><a href="#devlog"><i class="fas fa-book"></i>开发日志</a></li>
-                <li><a href="#about"><i class="fas fa-users"></i>关于我们</a></li>
-                <li><a href="#sponsor"><i class="fas fa-heart"></i>赞助支持</a></li>
-            </ul>
-        </nav>
-        
-        <!-- 移动端导航菜单遮罩 -->
-        <div class="mobile-nav-overlay"></div>
+
     </header>
 
     <!-- 首页区域 -->
@@ -166,38 +145,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 中侧：手机版下载 -->
-                <div class="platform mobile-download" style="flex: 1; min-width: 300px;">
-                    <div class="card-header">
-                        <h3><i class="fas fa-mobile-alt"></i> &nbsp; 手机版下载</h3>
-                    </div>
-                    <div class="card-body">
-                      <p>最新版本：Simple_NAVY_2025_9_21</p>
-                      <p>发行包已发布，支持 Android，解压即可运行。请选择你喜欢的网盘下载：</p>
-                      <p>如果嫌弃网盘限速，可加入QQ群在群文件中下载。</p>
-                       
-                      <div class="download-buttons" style="flex-direction: column; align-items: center;">
-                        <a href="https://qm.qq.com/q/BwBRRRa4jS" class="download-btn" target="_blank" rel="noopener noreferrer" style="width: 100%; max-width: 250px; margin-bottom: 10px; justify-content: center;">
-                            加入QQ群
-                        </a>
-                        <a href="https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS#list/path=%2F%E7%89%A2Q%E7%9A%84%E8%87%AA%E5%88%B6%E6%B8%B8%E6%88%8F%E5%88%86%E4%BA%AB%2FSimple%20NAVY%2FSimple_NAVY_2025_09_21%2FAndroid" class="download-btn" target="_blank" rel="noopener noreferrer" style="width: 100%; max-width: 250px; margin-bottom: 10px; justify-content: center;">
-                                <i class="fas fa-cloud-download-alt"></i>
-                                百度网盘下载
-                            </a>
-                        
-                      </div>
-
-                      <div style="margin-top: 30px; background: var(--secondary); padding: 15px; border-radius: 5px;">
-                        <h4 style="margin-bottom: 10px; color: var(--accent);">
-                                <i class="fas fa-info-circle"></i> 最低系统要求（未确定）
-                        </h4>
-                          <ul style="list-style: none; padding-left: 10px;">
-                              <li><i class="fab fa-android"></i> Android: 8.0 及以上版本</li>
-                              <li><i class="fas fa-microchip"></i> 天玑XXX或高通骁龙XXX</li>
-                              <li><i class="fas fa-memory"></i> 内存: 8GB RAM</li>
-                              <li><i class="fas fa-hdd"></i> 存储: 1 GB 可用空间</li>
-                          </ul>
-                      </div>
                     </div>
                 </div>
             </div>
@@ -210,16 +157,7 @@
             <h2><i class="fas fa-book"></i> 开发日志</h2>
         </div>
         
-        <!-- 日志编号导航 -->
-        <div class="log-number-navigation" style="display: flex; justify-content: center; gap: 15px; margin: 30px 0;">
-            <a href="#devlog" class="log-number-btn" data-log="00">00</a>
-            <a href="#devlog" class="log-number-btn" data-log="01">01</a>
-            <a href="#devlog" class="log-number-btn" data-log="02">02</a>
-            <a href="#devlog" class="log-number-btn" data-log="03">03</a>
-            <a href="#devlog" class="log-number-btn" data-log="04">04</a>
-            <a href="#devlog" class="log-number-btn" data-log="05">05</a>
-            <a href="#devlog" class="log-number-btn" data-log="06">06</a>
-        </div>
+        <!-- 开发日志横向滚动容器 -->
         
         <!-- 横向滚动的开发日志容器 -->
         <div class="dev-logs-container-horizontal" style="overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; margin-bottom: 20px; padding-bottom: 20px;">
@@ -230,7 +168,7 @@
                     <!-- 视频容器 -->
                     <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
                         <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
                             <!-- 播放按钮 -->
                             <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
                                 <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
@@ -245,7 +183,7 @@
                                     style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
                         </div>
                     </div>
-                    <p style="width: 640px; margin: 0 auto;">工具链介绍:游戏引擎→UE5.5，建模→blender，UI元素制作→即时设计，架构设计→Xmind，视频剪辑→必剪 主要内容:建档、船只管理、港口管理，自定义战斗配置，船体机动模块，武器系统模块，各项功能与UI的交互等等 补充:本来是打算把AI做好了再发的，但是因为一些原因耽误了进度，再加上已经答应别人了，所以提前发了，因为木有音效也木有特效，所以目前实现的效果很粗糙，但毕竟是demo嘛，问题不大（ '▿ ' ）也算是在逐步完成自己的小梦想罢…… 呃…还有就是，感谢你看到这里啦(ﾉ∇︎〃 )</p>
+                    <p style="width: 540px; margin: 0 auto;">工具链介绍:游戏引擎→UE5.5，建模→blender，UI元素制作→即时设计，架构设计→Xmind，视频剪辑→必剪 主要内容:建档、船只管理、港口管理，自定义战斗配置，船体机动模块，武器系统模块，各项功能与UI的交互等等 补充:本来是打算把AI做好了再发的，但是因为一些原因耽误了进度，再加上已经答应别人了，所以提前发了，因为木有音效也木有特效，所以目前实现的效果很粗糙，但毕竟是demo嘛，问题不大（ '▿ ' ）也算是在逐步完成自己的小梦想罢…… 呃…还有就是，感谢你看到这里啦(ﾉ∇︎〃 )</p>
                 </div>
                 
                 <!-- 开发日志 #01 -->
@@ -254,7 +192,7 @@
                     <!-- 视频容器 -->
                     <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
                         <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
                             <!-- 播放按钮 -->
                             <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
                                 <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
@@ -269,7 +207,7 @@
                                     style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
                         </div>
                     </div>
-                    <p style="width: 640px; margin: 0 auto;">建模是真费事，图纸参考是扫描件，建到后面拼起来发现歪了，就这还花了我15块钱 同时进行了第一轮压测，发现战斗中21艘大和号只能跑到17帧……没办法舰炮的组件层次大调整了一波，殃及绝大多数业务逻辑（重写）， 所以鸽了这么久，实在抱歉哈 为了流量，本次更新尽可能地提炼主要内容，缩减了时长以提高完播率，同时娶了个相对比较引流的标题，还制作了封面，诶嘿嘿~</p>
+                    <p style="width: 540px; margin: 0 auto;">建模是真费事，图纸参考是扫描件，建到后面拼起来发现歪了，就这还花了我15块钱 同时进行了第一轮压测，发现战斗中21艘大和号只能跑到17帧……没办法舰炮的组件层次大调整了一波，殃及绝大多数业务逻辑（重写）， 所以鸽了这么久，实在抱歉哈 为了流量，本次更新尽可能地提炼主要内容，缩减了时长以提高完播率，同时娶了个相对比较引流的标题，还制作了封面，诶嘿嘿~</p>
                 </div>
                 
                 <!-- 开发日志 #02 -->
@@ -278,7 +216,7 @@
                     <!-- 视频容器 -->
                     <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
                         <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
                             <!-- 播放按钮 -->
                             <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
                                 <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
@@ -293,7 +231,7 @@
                                     style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
                         </div>
                     </div>
-                    <p style="width: 640px; margin: 0 auto;">此为第三期视频更新，主要更新了英王乔治五世级战列舰以及新的直升机载具，当然一些bug修复以及优化（譬如子弹池）是没有展示出来的……
+                    <p style="width: 540px; margin: 0 auto;">此为第三期视频更新，主要更新了英王乔治五世级战列舰以及新的直升机载具，当然一些bug修复以及优化（譬如子弹池）是没有展示出来的……
                     PS:上班真累啊，还要抽空更新这个，点点关注，给主包点动力罢ᕕ(◠ڼ◠)ᕗ</p>
                 </div>
                 
@@ -303,7 +241,7 @@
                     <!-- 视频容器 -->
                     <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
                         <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
                             <!-- 播放按钮 -->
                             <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
                                 <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
@@ -318,7 +256,7 @@
                                     style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
                         </div>
                     </div>
-                    <p style="width: 640px; margin: 0 auto;">遵守了本周更新的约定
+                    <p style="width: 540px; margin: 0 auto;">遵守了本周更新的约定
 Demo的下载方式详见评论区置顶
 黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ</p>
                 </div>
@@ -329,7 +267,7 @@ Demo的下载方式详见评论区置顶
                     <!-- 视频容器 -->
                     <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
                         <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
                             <!-- 播放按钮 -->
                             <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
                                 <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
@@ -344,7 +282,7 @@ Demo的下载方式详见评论区置顶
                                     style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
                         </div>
                     </div>
-                    <p style="width: 640px; margin: 0 auto;">啊，改素材真是累死我力……本来想把武器配置一块做了再发布的，诶，已经月底了
+                    <p style="width: 540px; margin: 0 auto;">啊，改素材真是累死我力……本来想把武器配置一块做了再发布的，诶，已经月底了
 本次新版本的Demo包体要等一段时间才能打出来……因为还要调数值，还要接着调美术
 感兴趣的话可以加我主页的q群，不定期有福利！
 我是不是应该安排一期读评论送圣杯ꉂ(ˊᗜˋ*)？
@@ -357,7 +295,7 @@ Demo的下载方式详见评论区置顶
                     <!-- 视频容器 -->
                     <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
                         <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 640px; height: 360px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
+                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
                             <!-- 播放按钮 -->
                             <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
                                 <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
@@ -372,7 +310,7 @@ Demo的下载方式详见评论区置顶
                                     style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
                         </div>
                     </div>
-                    <p style="width: 640px; margin: 0 auto;">主包只是没吃饭＆第1次录比较紧张而已，身体挺得住ᕕ(◠ڼ◠)ᕗ</p>
+                    <p style="width: 540px; margin: 0 auto;">主包只是没吃饭＆第1次录比较紧张而已，身体挺得住ᕕ(◠ڼ◠)ᕗ</p>
                 </div>
                 
                 <!-- 开发日志 #06 -->
@@ -435,8 +373,8 @@ Demo的下载方式详见评论区置顶
             
             /* 横向开发日志卡片样式 */
             .dev-log-horizontal {
-                width: 950px;
-                padding: 25px;
+                width: 800px;
+                padding: 20px;
                 background-color: var(--secondary);
                 border-radius: 8px;
                 border: 1px solid rgba(100, 255, 218, 0.1);
@@ -455,35 +393,7 @@ Demo的下载方式详见评论区置顶
                 line-height: 1.6;
             }
             
-            /* 响应式设计 */
-            @media (max-width: 1024px) {
-                .dev-log-horizontal {
-                    width: 800px;
-                }
-                
-                .video-play-trigger {
-                    width: 750px !important;
-                    height: 420px !important;
-                }
-            }
-            
-            @media (max-width: 768px) {
-                .dev-log-horizontal {
-                    width: calc(100vw - 40px);
-                }
-                
-                .video-play-trigger {
-                    width: 100% !important;
-                    height: 300px !important;
-                }
-                
-                .log-number-btn {
-                    width: 40px;
-                    height: 40px;
-                    font-size: 16px;
-                }
-            }
-            
+          
             /* 视频播放按钮样式 */
             .video-play-trigger:hover .play-button {
                 background: rgba(100, 255, 218, 0.3);
@@ -607,14 +517,7 @@ Demo的下载方式详见评论区置顶
             body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
         }
 
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        mobileNavOverlay.addEventListener('click', toggleMobileMenu);
-
-        // 点击移动菜单中的链接后关闭菜单
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', toggleMobileMenu);
-        });
+        // 平滑滚动到锚点
 
         // 平滑滚动到锚点
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -696,61 +599,7 @@ Demo的下载方式详见评论区置顶
             }
         })();
         
-        // 日志编号导航功能 - 横向滚动版本
-        const logButtons = document.querySelectorAll('.log-number-btn');
-        const devLogs = document.querySelectorAll('.dev-log-horizontal');
-        const logsContainer = document.querySelector('.dev-logs-container-horizontal');
-        
-        logButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const logNumber = this.getAttribute('data-log');
-                const logIndex = parseInt(logNumber);
-                
-                // 先记录当前的滚动位置
-                const currentScrollY = window.scrollY;
-                
-                // 更新按钮状态
-                logButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // 先滚动到开发日志区域顶部，但使用固定的偏移量确保高度一致
-                const devlogSection = document.getElementById('devlog');
-                if (devlogSection) {
-                    // 计算固定的目标位置 - 最终调整，使开发日志标题完全紧贴导航栏
-                    const targetScrollY = devlogSection.offsetTop; // 移除所有偏移量
-                    
-                    // 直接设置滚动位置，避免平滑滚动可能导致的不一致
-                    window.scrollTo({
-                        top: targetScrollY,
-                        behavior: 'smooth'
-                    });
-                }
-                
-                // 延迟滚动到对应的开发日志
-                setTimeout(() => {
-                    const targetLog = devLogs[logIndex];
-                    if (targetLog && logsContainer) {
-                        // 计算要滚动的位置，考虑容器的padding和视口中心
-                        const containerRect = logsContainer.getBoundingClientRect();
-                        const targetRect = targetLog.getBoundingClientRect();
-                        const scrollAmount = logsContainer.scrollLeft + (targetRect.left - containerRect.left) - (containerRect.width / 2) + (targetRect.width / 2);
-                        
-                        // 平滑滚动到目标日志，居中显示
-                        logsContainer.scrollTo({
-                            left: scrollAmount,
-                            behavior: 'smooth'
-                        });
-                    }
-                }, 500); // 调整延迟时间
-            });
-        });
-        
-        // 初始设置第一个日志按钮为激活状态
-        if (logButtons.length > 0) {
-            logButtons[0].classList.add('active');
-        }
+        // 开发日志横向滚动功能 - 已移除跳转按钮功能
 
         // 返回顶部按钮功能
         const backToTopBtn = document.getElementById('backToTop');
@@ -770,7 +619,7 @@ Demo的下载方式详见评论区置顶
             });
         });
         
-        // 页面板块导航功能 - 极简版：下滑直接跳转到下一个板块
+        // 页面板块导航功能 - 启用自然平滑滚动
         (function() {
             // 获取所有板块元素，按照在页面中出现的顺序
             const sections = [
@@ -782,117 +631,19 @@ Demo的下载方式详见评论区置顶
                 document.getElementById('sponsor')
             ].filter(Boolean); // 过滤掉可能不存在的元素
             
-            let isAnimating = false; // 防止滚动动画过程中重复触发
-            const ANIMATION_DURATION = 1000; // 动画持续时间
-            
-            // 获取当前视口中最上方的板块索引
-            function getCurrentSectionIndex() {
-                const viewportHeight = window.innerHeight;
-                
-                // 遍历所有板块，找到视口中显示最多的那个
-                let closestSectionIndex = 0;
-                let maxVisibleArea = 0;
-                
-                sections.forEach((section, index) => {
-                    const rect = section.getBoundingClientRect();
-                    
-                    // 计算板块在视口中的可见部分
-                    const visibleTop = Math.max(0, rect.top);
-                    const visibleBottom = Math.min(viewportHeight, rect.bottom);
-                    const visibleArea = visibleBottom - visibleTop;
-                    
-                    // 如果板块完全在视口内或部分在视口内
-                    if (visibleArea > maxVisibleArea) {
-                        maxVisibleArea = visibleArea;
-                        closestSectionIndex = index;
-                    }
-                });
-                
-                return closestSectionIndex;
-            }
-            
-            // 跳转到指定板块
-            function goToSection(index) {
-                if (index >= 0 && index < sections.length && !isAnimating) {
-                    isAnimating = true;
-                    
-                    // 直接滚动到目标板块
-                    window.scrollTo({
-                        top: sections[index].offsetTop,
-                        behavior: 'smooth'
-                    });
-                    
-                    // 动画结束后重置标志
-                    setTimeout(() => {
-                        isAnimating = false;
-                    }, ANIMATION_DURATION);
-                }
-            }
-            
-            // PC端：监听滚轮事件
-            let lastWheelTime = 0;
-            const WHEEL_THRESHOLD = 50; // 滚轮触发阈值
-            
+            // 启用自然平滑滚动，不阻止默认滚动行为
             window.addEventListener('wheel', function(e) {
-                // 如果正在滚动动画中，阻止默认行为
-                if (isAnimating) {
-                    e.preventDefault();
-                    return;
-                }
-                
-                // 限制滚轮事件触发频率
-                const now = Date.now();
-                if (now - lastWheelTime < 500) {
-                    return;
-                }
-                
-                // 只有当滚轮移动距离足够大时才触发
-                if (Math.abs(e.deltaY) > WHEEL_THRESHOLD) {
-                    e.preventDefault(); // 阻止默认滚动
-                    lastWheelTime = now;
-                    
-                    const currentIndex = getCurrentSectionIndex();
-                    
-                    if (e.deltaY > 0) {
-                        // 向下滚动 -> 下一个板块
-                        goToSection(currentIndex + 1);
-                    } else {
-                        // 向上滚动 -> 上一个板块
-                        goToSection(currentIndex - 1);
-                    }
-                }
-            }, { passive: false });
+                // 允许浏览器处理默认的平滑滚动
+                // 不阻止默认行为，让滚动自然进行
+            }, { passive: true });
             
-            // 移动端：监听触摸滑动事件
-            let touchStartY = 0;
-            let touchStartTime = 0;
-            const TOUCH_THRESHOLD = 100; // 触摸滑动触发阈值
-            
+            // 移动端：启用自然触摸滚动
             window.addEventListener('touchstart', function(e) {
-                if (isAnimating) return;
-                touchStartY = e.touches[0].clientY;
-                touchStartTime = Date.now();
+                // 允许浏览器处理默认的触摸滚动
             }, { passive: true });
             
             window.addEventListener('touchend', function(e) {
-                if (isAnimating) return;
-                
-                const touchEndY = e.changedTouches[0].clientY;
-                const touchDuration = Date.now() - touchStartTime;
-                const diff = touchStartY - touchEndY;
-                
-                // 只有当滑动距离足够大且速度合理时才触发
-                if (Math.abs(diff) > TOUCH_THRESHOLD && touchDuration < 500) {
-                    const currentIndex = getCurrentSectionIndex();
-                    
-                    if (diff > 0) {
-                        // 向下滑动 -> 下一个板块
-                        goToSection(currentIndex + 1);
-                    } else {
-                        // 向上滑动 -> 上一个板块
-                        goToSection(currentIndex - 1);
-                    }
-                }
+                // 允许浏览器处理默认的触摸滚动
             }, { passive: true });
         })();
     </script>
