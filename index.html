@@ -2,809 +2,103 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Simple NAVY - 首页</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
     <style>
-        /* 添加一些额外的样式来支持单页面导航 */
-        section[id] {
-            scroll-margin-top: 80px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--secondary);
-            color: var(--accent);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 999;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            min-height: 100vh;
+            background-color: #f5f7fa;
+            padding: 20px;
         }
-        .back-to-top.visible {
-            opacity: 1;
+        
+        .notification {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 0.5s ease-out;
         }
-        .back-to-top:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-            transform: translateY(-5px);
+        
+        .notification-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #ff9800;
+        }
+        
+        .notification-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .notification-message {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .notification-action {
+            display: inline-block;
+            background-color: #4a6ee0;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .notification-action:hover {
+            background-color: #3a5bc7;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 480px) {
+            .notification {
+                padding: 30px 20px;
+            }
+            
+            .notification-icon {
+                font-size: 50px;
+            }
+            
+            .notification-title {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 返回顶部按钮 -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
+    <div class="notification">
+        <div class="notification-icon">
+            <!-- 暂停图标 -->
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5V19M16 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <h1 class="notification-title">网页暂停服务</h1>
+        <p class="notification-message">该网页由于某些原因暂停服务，给您带来不便敬请谅解。</p>
+        <a href="#" class="notification-action">返回首页</a>
     </div>
-
-    <!-- 导航栏 -->
-    <header>
-        <div class="logo-container">
-            <div><img src="favicon.png" alt="Simple NAVY Logo" style="border-radius: 50%;"></div>
-            <div class="game-title">Simple NAVY</div>
-        </div>
-        
-        <!-- 桌面导航 -->
-        <nav class="desktop-nav">
-            <ul>
-                <li><a href="#top"><i class="fas fa-home"></i>首页</a></li>
-                <li><a href="#game-intro"><i class="fas fa-info-circle"></i>游戏介绍</a></li>
-                <li><a href="#download"><i class="fas fa-download"></i>游戏下载</a></li>
-                <li><a href="#devlog"><i class="fas fa-book"></i>开发日志</a></li>
-                <li><a href="#about"><i class="fas fa-users"></i>关于我们</a></li>
-                <li><a href="#sponsor"><i class="fas fa-heart"></i>赞助支持</a></li>
-            </ul>
-        </nav>
-        
-
-    </header>
-
-    <!-- 首页区域 -->
-    <section class="hero" id="top">
-        <h1 class="animate">Simple NAVY</h1>
-        <p class="animate delay-1">一款以现代海军战争为背景的策略模拟游戏，指挥你的舰队，制定战术，在广阔海洋上展开激烈对抗！</p>
-        <div class="animate delay-2">
-            <a href="#download" class="cta-button primary">立即下载</a>
-            <a href="#game-intro" class="cta-button">了解更多</a>
-        </div>
-    </section>
-
-    <!-- 游戏介绍区域 -->
-    <section class="section" id="game-intro">
-        <div class="section-title">
-            <h2><i class="fas fa-info-circle"></i> 游戏介绍</h2>
-        </div>
-        <div class="cards-container">
-            <div class="card animate">
-                <div class="card-header">
-                    <h3><i class="fas fa-gamepad"></i> 核心玩法</h3>
-                </div>
-                <div class="card-body">
-                    <p>想怎么玩怎么玩。<br>
-                    你看我干嘛，该不会想让我教你怎么玩吧。</p>
-                </div>
-            </div>
-            
-            <div class="card animate delay-1">
-                <div class="card-header">
-                    <h3><i class="fas fa-chess-rook"></i> 特色系统</h3>
-                </div>
-                <div class="card-body">
-                    <ul>
-                        <li>特色是吧，主策划特色。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 游戏下载区域 -->
-    <section class="section" id="download">
-        <div class="section-title">
-            <h2><i class="fas fa-download"></i> 游戏下载</h2>
-        </div>
-        
-        <!-- 横向滚动的下载容器 -->
-        <div class="download-container-horizontal">
-            <div class="download-wrapper">
-                <!-- 电脑版下载 -->
-                <div class="download-item-horizontal">
-                    <div class="card animate">
-                        <div class="card-header">
-                            <h3><i class="fas fa-desktop"></i> &nbsp;电脑版下载</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>最新版本：Simple_NAVY_2025_9_21</p>
-                            <p>Demo 已发布，支持 Windows，解压即可运行。</p>
-                            
-                            <div class="download-buttons">
-                                <a href="https://qm.qq.com/q/BwBRRRa4jS" class="download-btn" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-user-plus"></i>
-                                    点击加入QQ群
-                                </a>
-                                <a href="https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS#list/path=%2F%E7%89%A2Q%E7%9A%84%E8%87%AA%E5%88%B6%E6%B8%B8%E6%88%8F%E5%88%86%E4%BA%AB%2FSimple%20NAVY%2FSimple_NAVY_2025_09_21%2FWindows" class="download-btn" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-cloud-download-alt"></i>
-                                    百度网盘下载
-                                </a>
-                            </div>
-
-                            <div class="system-requirements">
-                                <h4><i class="fas fa-exclamation-circle"></i> 最低系统要求（未确认）</h4>
-                                <ul>
-                                    <li><i class="fas fa-microchip"></i> 处理器: Intel i5-6600K</li>
-                                    <li><i class="fas fa-memory"></i> 内存: 8 GB RAM</li>
-                                    <li><i class="fas fa-video"></i> 显卡: NVIDIA GTX 1060 / AMD RX 580</li>
-                                    <li><i class="fas fa-hdd"></i> 存储: 1 GB 可用空间</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 手机版下载 -->
-                <div class="download-item-horizontal">
-                    <div class="card animate">
-                        <div class="card-header">
-                            <h3><i class="fas fa-mobile-alt"></i> &nbsp;手机版下载</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>最新版本：Simple_NAVY_2025_9_21</p>
-                            <p>发行包已发布，支持 Android，解压即可运行。</p>
-                            
-                            <div class="download-buttons">
-                                <a href="https://qm.qq.com/q/BwBRRRa4jS" class="download-btn" target="_blank" rel="noopener noreferrer">
-                                    加入QQ群
-                                </a>
-                                <a href="https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS#list/path=%2F%E7%89%A2Q%E7%9A%84%E8%87%AA%E5%88%B6%E6%B8%B8%E6%88%8F%E5%88%86%E4%BA%AB%2FSimple%20NAVY%2FSimple_NAVY_2025_09_21%2FAndroid" class="download-btn" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-cloud-download-alt"></i>
-                                    百度网盘下载
-                                </a>
-                            </div>
-
-                            <div class="system-requirements">
-                                <h4><i class="fas fa-info-circle"></i> 最低系统要求（未确定）</h4>
-                                <ul>
-                                    <li><i class="fab fa-android"></i> Android: 8.0 及以上版本</li>
-                                    <li><i class="fas fa-microchip"></i> 天玑XXX或高通骁龙XXX</li>
-                                    <li><i class="fas fa-memory"></i> 内存: 8GB RAM</li>
-                                    <li><i class="fas fa-hdd"></i> 存储: 1 GB 可用空间</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 过往版本下载 -->
-                <div class="download-item-horizontal">
-                    <div class="card animate">
-                        <div class="card-header">
-                            <h3><i class="fas fa-history"></i> &nbsp;过往版本下载</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>这里提供过往发布的版本下载</p>
-                            <p>包含早期其他版本</p>
-                            <p>需要特定版本的玩家。</p>
-                            
-                            <div class="download-buttons">
-                                <a href="https://qm.qq.com/q/BwBRRRa4jS" class="download-btn" target="_blank" rel="noopener noreferrer">
-                                    加入QQ群
-                                </a>
-                                <a href="https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS#list/path=%2F%E7%89%A2Q%E7%9A%84%E8%87%AA%E5%88%B6%E6%B8%B8%E6%88%8F%E5%88%86%E4%BA%AB%2FSimple%20NAVY&parentPath=%2F" class="download-btn" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-cloud-download-alt"></i>
-                                    百度网盘下载
-                                </a>
-                            </div>
-
-                            <div class="system-requirements">
-                                <h4><i class="fas fa-info-circle"></i> 版本说明</h4>
-                                <ul>
-                                    <li><i class="fas fa-archive"></i> 包含发布的所有版本</li>
-                                    <li><i class="fas fa-exclamation-triangle"></i> 旧版本可能存在已知问题</li>
-                                    <li><i class="fas fa-sticky-note"></i> 建议查看版本更新日志</li>
-                                    <li><i class="fas fa-download"></i> 部分版本可能不再维护</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <style>
-            /* 下载模块样式 */
-            .download-container-horizontal {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scroll-behavior: smooth;
-                margin-bottom: 20px;
-                padding-bottom: 20px;
-                padding-top: 15px; /* 为悬停效果预留顶部空间 */
-            }
-            
-            .download-wrapper {
-                display: flex;
-                gap: 30px;
-                min-width: max-content;
-                padding: 15px 0; /* 为悬停效果预留垂直空间 */
-            }
-            
-            .download-item-horizontal {
-                flex-shrink: 0;
-                width: 540px;
-            }
-            
-            .download-item-horizontal .card {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            }
-            
-            /* 添加悬停效果 */
-            .download-item-horizontal .card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 15px 40px rgba(100, 255, 218, 0.2);
-                border: 1px solid rgba(100, 255, 218, 0.3);
-            }
-            
-            .download-item-horizontal .card-body {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .download-buttons {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin: 20px 0;
-                gap: 10px;
-            }
-            
-            .download-buttons .download-btn {
-                width: 100%;
-                max-width: 250px;
-                justify-content: center;
-            }
-            
-            .system-requirements {
-                background: var(--secondary);
-                padding: 15px;
-                border-radius: 5px;
-                margin-top: auto;
-            }
-            
-            .system-requirements h4 {
-                margin-bottom: 10px;
-                color: var(--accent);
-            }
-            
-            .system-requirements ul {
-                list-style: none;
-                padding-left: 10px;
-            }
-            
-            /* 下载模块滚动条样式 - 与开发日志保持一致 */
-            .download-container-horizontal::-webkit-scrollbar {
-                height: 8px;
-            }
-            
-            .download-container-horizontal::-webkit-scrollbar-track {
-                background: rgba(17, 34, 64, 0.5);
-                border-radius: 4px;
-            }
-            
-            .download-container-horizontal::-webkit-scrollbar-thumb {
-                background: var(--accent);
-                border-radius: 4px;
-            }
-            
-            .download-container-horizontal::-webkit-scrollbar-thumb:hover {
-                background: rgba(100, 255, 218, 0.8);
-            }
-        </style>
-    </section>
-
-    <!-- 开发日志区域 -->
-    <section class="section" id="devlog">
-        <div class="section-title">
-            <h2><i class="fas fa-book"></i> 开发日志</h2>
-        </div>
-        
-        <!-- 开发日志横向滚动容器 -->
-        
-        <!-- 横向滚动的开发日志容器 -->
-        <div class="dev-logs-container-horizontal" style="overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; margin-bottom: 20px; padding-bottom: 20px;">
-            <div class="dev-logs-wrapper" style="display: flex; gap: 30px; min-width: max-content;">
-                <!-- 开发日志 #00 -->
-                <div class="dev-log-horizontal">
-                    <h4 style="text-align: center;"> վ'ᴗ' ի萌新尝试自制的海战小游戏_[自制海战游戏开发进度记录NO.0]</h4>
-                    <!-- 视频容器 -->
-                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
-                        <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
-                            <!-- 播放按钮 -->
-                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
-                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
-                            </div>
-                            
-                            <!-- 隐藏的视频播放器 -->
-                            <iframe id="game-video-00" class="embedded-video" 
-                                    data-src="https://player.bilibili.com/player.html?bvid=BV1PKdZYnEUd&page=1&high_quality=1&danmaku=0" 
-                                    scrolling="no" frameborder="0" 
-                                    allowfullscreen="true" 
-                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
-                        </div>
-                    </div>
-                    <p style="width: 540px; margin: 0 auto;">工具链介绍:游戏引擎→UE5.5，建模→blender，UI元素制作→即时设计，架构设计→Xmind，视频剪辑→必剪 主要内容:建档、船只管理、港口管理，自定义战斗配置，船体机动模块，武器系统模块，各项功能与UI的交互等等 补充:本来是打算把AI做好了再发的，但是因为一些原因耽误了进度，再加上已经答应别人了，所以提前发了，因为木有音效也木有特效，所以目前实现的效果很粗糙，但毕竟是demo嘛，问题不大（ '▿ ' ）也算是在逐步完成自己的小梦想罢…… 呃…还有就是，感谢你看到这里啦(ﾉ∇︎〃 )</p>
-                </div>
-                
-                <!-- 开发日志 #01 -->
-                <div class="dev-log-horizontal">
-                    <h4 style="text-align: center;">为了玩到大和，我自己手搓了个游戏！？_[自制海战游戏开发进度记录NO.1]</h4>
-                    <!-- 视频容器 -->
-                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
-                        <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
-                            <!-- 播放按钮 -->
-                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
-                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
-                            </div>
-                            
-                            <!-- 隐藏的视频播放器 -->
-                            <iframe id="game-video-01" class="embedded-video" 
-                                    data-src="https://player.bilibili.com/player.html?bvid=BV1PR5gz4EqW&page=1&high_quality=1&danmaku=0" 
-                                    scrolling="no" frameborder="0" 
-                                    allowfullscreen="true" 
-                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
-                        </div>
-                    </div>
-                    <p style="width: 540px; margin: 0 auto;">建模是真费事，图纸参考是扫描件，建到后面拼起来发现歪了，就这还花了我15块钱 同时进行了第一轮压测，发现战斗中21艘大和号只能跑到17帧……没办法舰炮的组件层次大调整了一波，殃及绝大多数业务逻辑（重写）， 所以鸽了这么久，实在抱歉哈 为了流量，本次更新尽可能地提炼主要内容，缩减了时长以提高完播率，同时娶了个相对比较引流的标题，还制作了封面，诶嘿嘿~</p>
-                </div>
-                
-                <!-- 开发日志 #02 -->
-                <div class="dev-log-horizontal">
-                    <h4 style="text-align: center;">英王乔治五世级登场！以及新的实验性载具_[自制海战游戏开发进度记录NO.2]</h4>
-                    <!-- 视频容器 -->
-                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
-                        <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
-                            <!-- 播放按钮 -->
-                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
-                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
-                            </div>
-                            
-                            <!-- 隐藏的视频播放器 -->
-                            <iframe id="game-video-02" class="embedded-video" 
-                                    data-src="https://player.bilibili.com/player.html?bvid=BV1c1NQzGEFV&page=1&high_quality=1&danmaku=0" 
-                                    scrolling="no" frameborder="0" 
-                                    allowfullscreen="true" 
-                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
-                        </div>
-                    </div>
-                    <p style="width: 540px; margin: 0 auto;">此为第三期视频更新，主要更新了英王乔治五世级战列舰以及新的直升机载具，当然一些bug修复以及优化（譬如子弹池）是没有展示出来的……
-                    PS:上班真累啊，还要抽空更新这个，点点关注，给主包点动力罢ᕕ(◠ڼ◠)ᕗ</p>
-                </div>
-                
-                <!-- 开发日志 #03 -->
-                <div class="dev-log-horizontal">
-                    <h4 style="text-align: center;">黎塞留级登场！基础AI完成，开放Demo下载_[自制海战游戏开发进度记录NO.3]</h4>
-                    <!-- 视频容器 -->
-                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
-                        <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
-                            <!-- 播放按钮 -->
-                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
-                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
-                            </div>
-                            
-                            <!-- 隐藏的视频播放器 -->
-                            <iframe id="game-video-03" class="embedded-video" 
-                                    data-src="https://player.bilibili.com/player.html?bvid=BV1kS8GzaE2w&page=1&high_quality=1&danmaku=0" 
-                                    scrolling="no" frameborder="0" 
-                                    allowfullscreen="true" 
-                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
-                        </div>
-                    </div>
-                    <p style="width: 540px; margin: 0 auto;">遵守了本周更新的约定
-Demo的下载方式详见评论区置顶
-黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ</p>
-                </div>
-                
-                <!-- 开发日志 #04 -->
-                <div class="dev-log-horizontal">
-                    <h4 style="text-align: center;">吕佐夫号登场！颜色与武器改装功能演示_[自制海战游戏开发进度记录NO.4]</h4>
-                    <!-- 视频容器 -->
-                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
-                        <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
-                            <!-- 播放按钮 -->
-                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
-                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
-                            </div>
-                            
-                            <!-- 隐藏的视频播放器 -->
-                            <iframe id="game-video-04" class="embedded-video" 
-                                    data-src="https://player.bilibili.com/player.html?bvid=BV1xthYzwEkR&page=1&high_quality=1&danmaku=0" 
-                                    scrolling="no" frameborder="0" 
-                                    allowfullscreen="true" 
-                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
-                        </div>
-                    </div>
-                    <p style="width: 540px; margin: 0 auto;">啊，改素材真是累死我力……本来想把武器配置一块做了再发布的，诶，已经月底了
-本次新版本的Demo包体要等一段时间才能打出来……因为还要调数值，还要接着调美术
-感兴趣的话可以加我主页的q群，不定期有福利！
-我是不是应该安排一期读评论送圣杯ꉂ(ˊᗜˋ*)？
-纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ</p>
-                </div>
-                
-                <!-- 开发日志 #05 -->
-                <div class="dev-log-horizontal">
-                    <h4 style="text-align: center;">额啊~阿B送的流量券快要过期辣！！！[自制海战游戏开发进度记录NO.5]</h4>
-                    <!-- 视频容器 -->
-                    <div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
-                        <!-- 点击播放区域 -->
-                        <div class="video-play-trigger" style="cursor: pointer; position: relative; width: 540px; height: 304px; background: var(--secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(100, 255, 218, 0.1);">
-                            <!-- 播放按钮 -->
-                            <div class="play-button" style="width: 80px; height: 80px; background: rgba(100, 255, 218, 0.2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);">
-                                <i class="fas fa-play" style="color: var(--accent); font-size: 24px; margin-left: 5px;"></i>
-                            </div>
-                            
-                            <!-- 隐藏的视频播放器 -->
-                            <iframe id="game-video-05" class="embedded-video" 
-                                    data-src="https://player.bilibili.com/player.html?bvid=BV1YKJmzpEih&page=1&high_quality=1&danmaku=0" 
-                                    scrolling="no" frameborder="0" 
-                                    allowfullscreen="true" 
-                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    style="display: none; width: 100%; height: 100%; border-radius: 8px;"></iframe>
-                        </div>
-                    </div>
-                    <p style="width: 540px; margin: 0 auto;">主包只是没吃饭＆第1次录比较紧张而已，身体挺得住ᕕ(◠ڼ◠)ᕗ</p>
-                </div>
-                
-                <!-- 开发日志 #06 -->
-                <div class="dev-log-horizontal">
-                    <h4 style="text-align: center;">去催更啊看我干嘛？</h4>
-                    <h4 style="text-align: center;">这只是占位的</h4>
-                </div>
-            </div>
-        </div>
-        
-        <style>
-            /* 自定义滚动条样式 */
-            .dev-logs-container-horizontal::-webkit-scrollbar {
-                height: 8px;
-            }
-            
-            .dev-logs-container-horizontal::-webkit-scrollbar-track {
-                background: rgba(17, 34, 64, 0.5);
-                border-radius: 4px;
-            }
-            
-            .dev-logs-container-horizontal::-webkit-scrollbar-thumb {
-                background: var(--accent);
-                border-radius: 4px;
-            }
-            
-            .dev-logs-container-horizontal::-webkit-scrollbar-thumb:hover {
-                background: rgba(100, 255, 218, 0.8);
-            }
-            
-            /* 日志编号按钮样式 */
-            .log-number-btn {
-                width: 45px;
-                height: 45px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                background-color: rgba(17, 34, 64, 0.7);
-                color: var(--light-text);
-                border: 1px solid transparent;
-                transition: var(--transition);
-                font-weight: 600;
-                font-size: 18px;
-            }
-            
-            .log-number-btn:hover {
-                background-color: rgba(100, 255, 218, 0.2);
-                border-color: var(--accent);
-                color: var(--accent);
-                transform: translateY(-3px);
-            }
-            
-            .log-number-btn.active {
-                background-color: var(--accent);
-                color: var(--primary);
-                border-color: var(--accent);
-            }
-            
-            /* 横向开发日志卡片样式 */
-            .dev-log-horizontal {
-                width: 800px;
-                padding: 20px;
-                background-color: var(--secondary);
-                border-radius: 8px;
-                border: 1px solid rgba(100, 255, 218, 0.1);
-                flex-shrink: 0;
-            }
-            
-            .dev-log-horizontal h4 {
-                color: var(--accent);
-                margin-bottom: 15px;
-                font-size: 1.2rem;
-                line-height: 1.4;
-            }
-            
-            .dev-log-horizontal p {
-                margin-bottom: 20px;
-                line-height: 1.6;
-            }
-            
-          
-            /* 视频播放按钮样式 */
-            .video-play-trigger:hover .play-button {
-                background: rgba(100, 255, 218, 0.3);
-                transform: scale(1.1);
-            }
-        </style>
-    </section>
-
-    <!-- 关于我们区域 -->
-    <section class="section" id="about">
-        <div class="section-title">
-            <h2><i class="fas fa-users"></i> 关于我们</h2>
-        </div>
-        
-        <div class="team-container">
-            <div class="team-member animate">
-                <div class="member-avatar">
-                    <img src="img-head/SuperQ_Louis.jpg" alt="SuperQ_Louis" style="width: 115px; height: 115px; border-radius: 50%;">
-                </div>
-                <h3 class="member-name">SuperQ_Louis</h3>
-                <p class="member-role">主策划</p>
-                <p>游戏的模型以及Ui的设计者，主策划，是一位来自某个卖服务器的公司的悲苦实习生（经常加班），最喜欢的零食是虾味薯条...</p>
-                <div class="features" style="justify-content: center; margin-top: 15px;">
-                    <span class="feature">游戏设计</span>
-                    <span class="feature">美术设计</span>
-                    <span class="feature">UI设计</span>
-                </div>
-            </div>
-            
-            <div class="team-member animate delay-1">
-                <div class="member-avatar">
-                    <img src="img-head/xy_black_cross.jpg" alt="xy_black_cross" style="width: 115px; height: 115px; border-radius: 50%;">
-                </div>
-                <h3 class="member-name">xy_black_cross</h3>
-                <p class="member-role">副策划</p>
-                <p style="margin-bottom: 1.5em;">游戏的主要脚本编写者，副策划（SuperQ_Louis的另一个人格，活跃于晚上23:00之后）</p>
-                <div class="features" style="justify-content: center; margin-top: 15px;">
-                    <span class="feature">程序开发</span>
-                    <span class="feature">脚本编写</span>
-                    <span class="feature">系统策划</span>
-                </div>
-            </div>
-              
-            <div class="team-member animate delay-2">
-                <div class="member-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <h3 class="member-name">老闭灯</h3>
-                <p class="member-role">网页维护与设计</p>
-                <p style="margin-bottom: 1.5em;">不参与游戏直接开发，只管理网页设计与维护的内容。</p>
-                <div class="features" style="justify-content: center; margin-top: 15px;">
-                    <span class="feature">网页设计</span>
-                    <span class="feature">网站维护</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 赞助支持区域 -->
-    <section class="section" id="sponsor">
-        <div class="section-title">
-            <h2><i class="fas fa-heart"></i> 赞助支持</h2>
-        </div>
-        
-        <div class="sponsor-info-card animate delay-2" id="QQ_QR">
-            <h3><i class="fas fa-info-circle"></i> 赞助说明</h3>
-            <p>
-                赞助后请通过QQ群联系我们，提供您的付款截图和希望使用的名称。<br>
-                我们会在确认收款后尽快为您安排相应的权益！感谢您的支持!<br>
-                如有任何问题，请随时联系我们的客服团队。
-            </p>
-            <div class="download-buttons" style="flex-direction: column; align-items: center; margin-top: 30px;">
-                <a href="https://qm.qq.com/q/BwBRRRa4jS" class="download-btn" target="_blank" rel="noopener noreferrer" style="width: 100%; max-width: 250px; margin-bottom: 10px; justify-content: center;">
-                    <i class="fas fa-user-plus"></i>
-                    点击加入QQ群
-                </a>
-            </div>
-        </div>
-        
-        <div class="section-title" style="margin-top: 50px;">
-            <h2>感谢名单</h2>
-        </div>
-        
-        <div class="card animate">
-            <div class="card-header">
-                <h3><i class="fas fa-trophy"></i> 特别感谢</h3>
-                <h4>排名不分先后</h4>
-            </div>
-            <div class="card-body">
-                <li>永远の白--3362626163</li>
-            </div>
-        </div>
-        <div class="card animate">
-                <p>祝上述各位老板长命百岁。</p>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">Simple NAVY</div>
-            <p>以海为战，智谋决胜！</p>
-                        
-            <div class="copyright">
-                © 2025 Simple NAVY Development Team. 保留所有权利。
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // 移动端菜单功能
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileNav = document.querySelector('.mobile-nav');
-        const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-        const body = document.body;
-
-        function toggleMobileMenu() {
-            mobileMenuBtn.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            mobileNavOverlay.classList.toggle('active');
-            body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
-        }
-
-        // 平滑滚动到锚点
-
-        // 平滑滚动到锚点
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // 开发日志横向滚动功能
-        
-        // 视频播放逻辑 - 确保视频只在用户点击时加载和播放
-        (function() {
-            // 简化的视频初始化函数
-            function initVideoPlayers() {
-                // 获取所有视频触发容器
-                const videoTriggers = document.querySelectorAll('.video-play-trigger');
-                
-                videoTriggers.forEach(trigger => {
-                    const playButton = trigger.querySelector('.play-button');
-                    const iframe = trigger.querySelector('.embedded-video');
-                    
-                    if (!iframe || !playButton) return;
-                    
-                    // 确保iframe默认隐藏
-                    iframe.style.display = 'none';
-                    
-                    // 添加点击事件 - 只在用户点击时加载视频
-                    trigger.addEventListener('click', function() {
-                        // 先隐藏所有视频并显示所有播放按钮，停止所有视频
-                        document.querySelectorAll('.embedded-video').forEach(video => {
-                            video.style.display = 'none';
-                            // 彻底移除src以停止播放并释放资源
-                            if (video.src) {
-                                video.removeAttribute('src');
-                            }
-                        });
-                        
-                        document.querySelectorAll('.play-button').forEach(btn => {
-                            btn.style.display = 'flex';
-                        });
-                        
-                        // 只在点击时才设置src并显示当前视频
-                        if (iframe.dataset.src) {
-                            iframe.src = iframe.dataset.src;
-                            iframe.style.display = 'block';
-                            playButton.style.display = 'none';
-                        }
-                    });
-                    
-                    // 鼠标悬停效果
-                    trigger.addEventListener('mouseenter', function() {
-                        if (playButton.style.display !== 'none') {
-                            playButton.style.transform = 'scale(1.1)';
-                            playButton.style.background = 'rgba(100, 255, 218, 0.3)';
-                        }
-                    });
-                    
-                    trigger.addEventListener('mouseleave', function() {
-                        if (playButton.style.display !== 'none') {
-                            playButton.style.transform = 'scale(1)';
-                            playButton.style.background = 'rgba(100, 255, 218, 0.2)';
-                        }
-                    });
-                });
-            }
-            
-            // 在DOM加载完成后初始化
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initVideoPlayers);
-            } else {
-                initVideoPlayers();
-            }
-        })();
-        
-        // 返回顶部按钮功能
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // 页面板块导航功能 - 启用自然平滑滚动
-        (function() {
-            // 获取所有板块元素，按照在页面中出现的顺序
-            const sections = [
-                document.getElementById('top'),
-                document.getElementById('game-intro'),
-                document.getElementById('download'),
-                document.getElementById('devlog'),
-                document.getElementById('about'),
-                document.getElementById('sponsor')
-            ].filter(Boolean); // 过滤掉可能不存在的元素
-            
-            // 启用自然平滑滚动，不阻止默认滚动行为
-            window.addEventListener('wheel', function(e) {
-                // 允许浏览器处理默认的平滑滚动
-                // 不阻止默认行为，让滚动自然进行
-            }, { passive: true });
-            
-            // 移动端：启用自然触摸滚动
-            window.addEventListener('touchstart', function(e) {
-                // 允许浏览器处理默认的触摸滚动
-            }, { passive: true });
-            
-            window.addEventListener('touchend', function(e) {
-                // 允许浏览器处理默认的触摸滚动
-            }, { passive: true });
-        })();
-    </script>
 </body>
 </html>
