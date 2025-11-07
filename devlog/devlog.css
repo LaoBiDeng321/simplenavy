@@ -1,0 +1,230 @@
+/* 开发日志子站点专用样式 */
+
+/* 内容展开/收起功能样式 */
+.devlog-content {
+    position: relative;
+    max-height: 4.8em; /* 三行文字高度 */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    line-height: 1.6;
+}
+
+.devlog-content.expanded {
+    max-height: none;
+}
+
+.expand-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.expand-btn:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-1px);
+}
+
+.expand-btn::after {
+    content: '▼';
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.expand-btn.collapsed::after {
+    transform: rotate(-90deg);
+}
+
+/* 整行布局样式 */
+.devlog-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.devlog-card {
+    width: 100%;
+    max-width: none;
+}
+
+/* 隐藏日期 */
+.devlog-date {
+    display: none;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--secondary);
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--accent);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: var(--light-text);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 1001;
+}
+
+.close:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+#videoPlayer {
+    width: 100%;
+    height: 560px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.devlog-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.devlog-card:nth-child(1) { animation-delay: 0.1s; }
+.devlog-card:nth-child(2) { animation-delay: 0.2s; }
+.devlog-card:nth-child(3) { animation-delay: 0.3s; }
+.devlog-card:nth-child(4) { animation-delay: 0.4s; }
+.devlog-card:nth-child(5) { animation-delay: 0.5s; }
+.devlog-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 15px;
+    }
+    
+    #videoPlayer {
+        height: 400px;
+    }
+    
+    .devlog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .devlog-title {
+        font-size: 1.8rem;
+    }
+    
+    .devlog-subtitle {
+        font-size: 1rem;
+    }
+    
+    .devlog-card {
+        padding: 15px;
+    }
+    
+    #videoPlayer {
+        height: 320px;
+    }
+}
+
+
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(100, 255, 218, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--accent);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 工具提示 */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--primary);
+    color: var(--light-text);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid var(--accent);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 打印样式 */
+@media print {
+    .back-to-main,
+    .video-placeholder {
+        display: none;
+    }
+    
+    .devlog-card {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+}

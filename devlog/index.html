@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple NAVY - 开发日志</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="devlog.css">
+    <style>
+        /* 简化版样式 */
+        .devlog-header {
+            background: var(--primary);
+            padding: 6rem 5%; /* 与主站保持一致 */
+            text-align: center;
+            position: relative;
+            padding-top: 80px; /* 为导航栏留出空间 */
+        }
+        
+        /* 导航栏样式 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(17, 34, 64, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 30px;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .desktop-nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .desktop-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .desktop-nav li {
+            margin: 0;
+        }
+        
+        .desktop-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .desktop-nav a:hover {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+        }
+        
+        .devlog-title {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .devlog-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        .devlog-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 5%; /* 与主站保持一致 */
+        }
+        
+        .devlog-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .devlog-card {
+            background: var(--secondary);
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            padding: 25px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .devlog-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 删除数字标识 */
+        .devlog-number {
+            display: none;
+        }
+        
+        .devlog-title-small {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        .devlog-date {
+            display: none; /* 隐藏日期显示 */
+        }
+        
+        .devlog-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .devlog-video {
+            margin: 20px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            position: relative;
+            aspect-ratio: 16 / 9;
+            max-width: 800px; /* 限制最大宽度 */
+            width: 100%; /* 在小屏幕上占满宽度 */
+            display: block;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: rgba(100, 255, 218, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .video-placeholder:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+        
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .video-placeholder:hover {
+            background: linear-gradient(135deg, 
+                rgba(100, 255, 218, 0.2) 0%, 
+                rgba(100, 255, 218, 0.1) 100%);
+            transform: scale(1.02);
+        }
+        
+        .video-placeholder:hover::before {
+            left: 100%;
+        }
+        
+        .play-icon {
+            color: var(--accent);
+            font-size: 3.5rem;
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-placeholder:hover .play-icon {
+            transform: scale(1.1);
+        }
+        
+        .devlog-footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 50px 0;
+            border-top: 1px solid rgba(100, 255, 218, 0.2);
+            background: linear-gradient(180deg, 
+                transparent 0%, 
+                rgba(17, 34, 64, 0.3) 100%);
+        }
+        
+        /* 新增头部样式 */
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .devlog-title i {
+            margin-right: 15px;
+            font-style: normal;
+            font-size: 3rem;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        /* 回到顶部按钮样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(100, 255, 218, 0.4);
+        }
+        
+        .back-to-top:active {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
+        .stat {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .stat:hover {
+            background: rgba(100, 255, 218, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+        
+        .stat i {
+            margin-right: 8px;
+            font-style: normal;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: floatRandom 8s ease-in-out infinite;
+        }
+        
+        .element-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .element-2 { top: 60%; left: 85%; animation-delay: 2s; }
+        .element-3 { top: 80%; left: 15%; animation-delay: 4s; }
+        .element-4 { top: 30%; left: 90%; animation-delay: 6s; }
+        
+        @keyframes floatRandom {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg); 
+                opacity: 0.3;
+            }
+            25% { 
+                transform: translate(20px, -20px) rotate(90deg); 
+                opacity: 0.5;
+            }
+            50% { 
+                transform: translate(-10px, 10px) rotate(180deg); 
+                opacity: 0.2;
+            }
+            75% { 
+                transform: translate(15px, 15px) rotate(270deg); 
+                opacity: 0.4;
+            }
+        }
+        
+        /* 新增卡片样式 */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .devlog-title-small {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .card-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tag-new {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        
+        .tag-planning {
+            background: rgba(33, 150, 243, 0.2);
+            color: #2196f3;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+        
+        .tag-development {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+        
+        .play-overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .play-text {
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+        
+        .card-footer {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            flex: 1;
+            min-width: 120px;
+            background: linear-gradient(135deg, var(--accent), #64b5f6);
+            color: var(--primary);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(100, 255, 218, 0.3);
+        }
+        
+        .action-btn.secondary {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+        
+        .action-btn.secondary:hover {
+            background: rgba(100, 255, 218, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .devlog-title {
+                font-size: 2.5rem;
+            }
+            
+            .devlog-title i {
+                font-size: 2rem;
+                margin-right: 10px;
+            }
+            
+            .devlog-subtitle {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+            
+            .devlog-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .devlog-container {
+                padding: 3rem 5%; /* 与主站移动端保持一致 */
+            }
+            
+            .devlog-header {
+                padding: 4rem 5%; /* 移动端头部内边距调整 */
+            }
+            
+            .back-to-main {
+                top: 15px;
+                left: 15px;
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+            
+            .header-stats {
+                gap: 15px;
+            }
+            
+            .stat {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .devlog-title-small {
+                padding-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .card-footer {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                min-width: 100%;
+            }
+            
+            .floating-element {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .devlog-header {
+                padding: 60px 0;
+            }
+            
+            .devlog-title {
+                font-size: 2rem;
+            }
+            
+            .devlog-subtitle {
+                font-size: 1rem;
+            }
+            
+            .header-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .devlog-card {
+                padding: 20px;
+            }
+            
+            .devlog-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <!-- 桌面导航 -->
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="../index.html"><i class="fas fa-home"></i>返回首页</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 开发日志内容区域 -->
+    <main class="devlog-container">
+        <div class="devlog-grid">
+            <!-- 开发日志 #00 -->
+            <div class="devlog-card">
+                <div class="devlog-number">00</div>
+                <div class="card-header">
+                    <h3 class="devlog-title-small">վ'ᴗ' ի萌新尝试自制的海战小游戏_[自制海战游戏开发进度记录NO.0]</h3>
+                    <div class="card-tags">
+                        <span class="tag tag-new">新项目</span>
+                        <span class="tag tag-planning">规划</span>
+                    </div>
+                </div>
+                <div class="devlog-content">
+                    <p>工具链介绍:游戏引擎→UE5.5，建模→blender，UI元素制作→即时设计，架构设计→Xmind，视频剪辑→必剪</p>
+                    <p>主要内容:建档、船只管理、港口管理，自定义战斗配置，船体机动模块，武器系统模块，各项功能与UI的交互等等</p>
+                    <p>补充:本来是打算把AI做好了再发的，但是因为一些原因耽误了进度，再加上已经答应别人了，所以提前发了，因为木有音效也木有特效，所以目前实现的效果很粗糙，但毕竟是demo嘛，问题不大（ '▿ ' ）也算是在逐步完成自己的小梦想罢…… 呃…还有就是，感谢你看到这里啦(ﾉ∇︎〃 )</p>
+                </div>
+                <div class="devlog-video">
+                    <div class="video-placeholder" onclick="playVideo('00', 'https://player.bilibili.com/player.html?bvid=BV1PKdZYnEUd&page=1&high_quality=1&danmaku=0')">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                            <span class="play-text">观看视频</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开发日志 #01 -->
+            <div class="devlog-card">
+                <div class="devlog-number">01</div>
+                <div class="card-header">
+                    <h3 class="devlog-title-small">为了玩到大和，我自己手搓了个游戏！？_[自制海战游戏开发进度记录NO.1]</h3>
+                    <div class="card-tags">
+                        <span class="tag tag-development">开发</span>
+                        <span class="tag tag-planning">建模</span>
+                    </div>
+                </div>
+                <div class="devlog-content">
+                    <p>建模是真费事，图纸参考是扫描件，建到后面拼起来发现歪了，就这还花了我15块钱</p>
+                    <p>同时进行了第一轮压测，发现战斗中21艘大和号只能跑到17帧……没办法舰炮的组件层次大调整了一波，殃及绝大多数业务逻辑（重写）， 所以鸽了这么久，实在抱歉哈</p>
+                    <p>为了流量，本次更新尽可能地提炼主要内容，缩减了时长以提高完播率，同时娶了个相对比较引流的标题，还制作了封面，诶嘿嘿~</p>
+                </div>
+                <div class="devlog-video">
+                    <div class="video-placeholder" onclick="playVideo('01', 'https://player.bilibili.com/player.html?bvid=BV1PR5gz4EqW&page=1&high_quality=1&danmaku=0')">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                            <span class="play-text">观看视频</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开发日志 #02 -->
+            <div class="devlog-card">
+                <div class="devlog-number">02</div>
+                <div class="card-header">
+                    <h3 class="devlog-title-small">英王乔治五世级登场！以及新的实验性载具_[自制海战游戏开发进度记录NO.2]</h3>
+                    <div class="card-tags">
+                        <span class="tag tag-development">开发</span>
+                        <span class="tag tag-planning">新功能</span>
+                    </div>
+                </div>
+                <div class="devlog-content">
+                    <p>此为第三期视频更新，主要更新了英王乔治五世级战列舰以及新的直升机载具，当然一些bug修复以及优化（譬如子弹池）是没有展示出来的……</p>
+                    <p>PS:上班真累啊，还要抽空更新这个，点点关注，给主包点动力罢ᕕ(◠ڼ◠)ᕗ</p>
+                </div>
+                <div class="devlog-video">
+                    <div class="video-placeholder" onclick="playVideo('02', 'https://player.bilibili.com/player.html?bvid=BV1c1NQzGEFV&page=1&high_quality=1&danmaku=0')">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                            <span class="play-text">观看视频</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开发日志 #03 -->
+            <div class="devlog-card">
+                <div class="devlog-number">03</div>
+                <div class="card-header">
+                    <h3 class="devlog-title-small">黎塞留级登场！基础AI完成，开放Demo下载_[自制海战游戏开发进度记录NO.3]</h3>
+                    <div class="card-tags">
+                        <span class="tag tag-development">开发</span>
+                        <span class="tag tag-planning">AI系统</span>
+                    </div>
+                </div>
+                <div class="devlog-content">
+                    <p>遵守了本周更新的约定</p>
+                    <p>Demo的下载方式详见评论区置顶</p>
+                    <p>黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ黎塞留真好看呐ᕕ(◠ڼ◠)ᕗ</p>
+                </div>
+                <div class="devlog-video">
+                    <div class="video-placeholder" onclick="playVideo('03', 'https://player.bilibili.com/player.html?bvid=BV1kS8GzaE2w&page=1&high_quality=1&danmaku=0')">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                            <span class="play-text">观看视频</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开发日志 #04 -->
+            <div class="devlog-card">
+                <div class="devlog-number">04</div>
+                <div class="card-header">
+                    <h3 class="devlog-title-small">吕佐夫号登场！颜色与武器改装功能演示_[自制海战游戏开发进度记录NO.4]</h3>
+                    <div class="card-tags">
+                        <span class="tag tag-development">开发</span>
+                        <span class="tag tag-planning">改装系统</span>
+                    </div>
+                </div>
+                <div class="devlog-content">
+                    <p>啊，改素材真是累死我力……本来想把武器配置一块做了再发布的，诶，已经月底了</p>
+                    <p>本次新版本的Demo包体要等一段时间才能打出来……因为还要调数值，还要接着调美术</p>
+                    <p>感兴趣的话可以加我主页的q群，不定期有福利！</p>
+                    <p>我是不是应该安排一期读评论送圣杯ꉂ(ˊᗜˋ*)？</p>
+                    <p>纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ纯白大和真好看呐ᕕ(◠ڼ◠)ᕗ</p>
+                </div>
+                <div class="devlog-video">
+                    <div class="video-placeholder" onclick="playVideo('04', 'https://player.bilibili.com/player.html?bvid=BV1xthYzwEkR&page=1&high_quality=1&danmaku=0')">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                            <span class="play-text">观看视频</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开发日志 #05 -->
+            <div class="devlog-card">
+                <div class="devlog-number">05</div>
+                <div class="card-header">
+                    <h3 class="devlog-title-small">额啊~阿B送的流量券快要过期辣！！！[自制海战游戏开发进度记录NO.5]</h3>
+                    <div class="card-tags">
+                        <span class="tag tag-development">开发</span>
+                        <span class="tag tag-planning">更新</span>
+                    </div>
+                </div>
+                <div class="devlog-content">
+                    <p>主包只是没吃饭＆第1次录比较紧张而已，身体挺得住ᕕ(◠ڼ◠)ᕗ</p>
+                </div>
+                <div class="devlog-video">
+                    <div class="video-placeholder" onclick="playVideo('05', 'https://player.bilibili.com/player.html?bvid=BV1YKJmzpEih&page=1&high_quality=1&danmaku=0')">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                            <span class="play-text">观看视频</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 开发日志 #06 -->
+            <div class="devlog-card">
+                <div class="devlog-number">06</div>
+                <div class="card-header">
+                    <h3 class="devlog-title-small">去催更啊看我干嘛？</h3>
+                    <div class="card-tags">
+                        <span class="tag tag-new">即将更新</span>
+                        <span class="tag tag-planning">敬请期待</span>
+                    </div>
+                </div>
+                <div class="devlog-content">
+                    <p>这只是占位的</p>
+                    <p>更多精彩内容正在开发中……</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="devlog-footer">
+        <div class="footer-content">
+            <div class="footer-logo">Simple NAVY - 开发日志</div>
+            <div class="copyright">
+                © 2025 Simple NAVY Development Team. 保留所有权利。
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="back-to-top" aria-label="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div id="videoModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="videoPlayer" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script src="devlog.js"></script>
+</body>
+</html>
