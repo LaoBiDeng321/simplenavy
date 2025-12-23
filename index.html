@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple NAVY - 首页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/christmas.css">
+    <link rel="stylesheet" href="css/christmas.css" media="(min-width: 768px)">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -316,6 +316,13 @@
     </footer>
 
     <script type="module" src="js/main.js"></script>
-    <script src="js/christmas.js"></script>
+    <script>
+        // 只在桌面设备上加载圣诞节雪花效果
+        if (window.innerWidth >= 768) {
+            const script = document.createElement('script');
+            script.src = 'js/christmas.js';
+            document.body.appendChild(script);
+        }
+    </script>
 </body>
 </html>
