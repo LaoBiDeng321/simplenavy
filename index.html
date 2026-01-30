@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple_NAVY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="image/favicon.png" type="image/png">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="image/favicon.png" alt="Logo" class="nav-logo">
+            Simple_NAVY
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#download" class="nav-link active" data-page="download">游戏下载</a></li>
+            <li><a href="#sponsor" class="nav-link" data-page="sponsor">赞助支持</a></li>
+            <li><a href="#sponsors" class="nav-link" data-page="sponsors">赞助名单</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <!-- 游戏下载模块 -->
+        <section id="download" class="page active">
+            <div class="container">
+                <div class="game-info" id="gameInfo">
+                    <div class="loading">加载中...</div>
+                </div>
+                <div class="download-section" id="downloadSection">
+                    <div class="loading">加载中...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 赞助模块 -->
+        <section id="sponsor" class="page">
+            <div class="container">
+                <div class="sponsor-header">
+                    <h1>赞助支持</h1>
+                    <p>您的支持是我们前进的动力</p>
+                </div>
+                <div class="sponsor-content" id="sponsorContent">
+                    <div class="loading">加载中...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 赞助名单模块 -->
+        <section id="sponsors" class="page">
+            <div class="container">
+                <div class="sponsors-header">
+                    <h1>赞助名单</h1>
+                    <p>感谢以下热心玩家的支持</p>
+                </div>
+                <div class="sponsors-stats" id="sponsorsStats">
+                    <div class="loading">加载中...</div>
+                </div>
+                <div class="sponsors-list" id="sponsorsList">
+                    <div class="loading">加载中...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
