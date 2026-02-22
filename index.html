@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>Simple_NAVY</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="image/favicon.png" type="image/png">
@@ -20,6 +21,14 @@
         </ul>
     </nav>
 
+    <!-- 控制按钮区域 -->
+    <div class="control-panel">
+        <button id="themeToggle" class="control-btn theme-btn" aria-label="切换主题">
+            <span class="icon light"><img src="svg/sun.svg" alt="浅色模式" width="20" height="20"></span>
+            <span class="icon dark"><img src="svg/moon-fill.svg" alt="深色模式" width="20" height="20"></span>
+        </button>
+    </div>
+
     <main class="main-content">
         <!-- 游戏下载模块 -->
         <section id="download" class="page active">
@@ -36,10 +45,6 @@
         <!-- 赞助模块 -->
         <section id="sponsor" class="page">
             <div class="container">
-                <div class="sponsor-header">
-                    <h1>赞助支持</h1>
-                    <p>您的支持是我们前进的动力</p>
-                </div>
                 <div class="sponsor-content" id="sponsorContent">
                     <div class="loading">加载中...</div>
                 </div>
@@ -49,10 +54,6 @@
         <!-- 赞助名单模块 -->
         <section id="sponsors" class="page">
             <div class="container">
-                <div class="sponsors-header">
-                    <h1>赞助名单</h1>
-                    <p>感谢以下热心玩家的支持</p>
-                </div>
                 <div class="sponsors-stats" id="sponsorsStats">
                     <div class="loading">加载中...</div>
                 </div>

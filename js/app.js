@@ -11,13 +11,19 @@ const App = {
     // 当前选中的赞助方式和金额
     selectedMethod: null,
     selectedAmount: null,
+    
+    // 页面加载状态
+    pageLoaded: {
+        download: false,
+        sponsor: false,
+        sponsors: false
+    },
 
     // 初始化
     init() {
         this.bindEvents();
+        // 只加载默认页面（游戏下载页面）
         this.loadDownloadPage();
-        this.loadSponsorPage();
-        this.loadSponsorsPage();
     },
 
     // 绑定事件
@@ -48,8 +54,29 @@ const App = {
         });
         document.getElementById(pageName).classList.add('active');
 
+        // 按需加载页面数据
+        this.loadPageData(pageName);
+
         // 更新URL hash
         window.location.hash = pageName;
+    },
+    
+    // 按需加载页面数据
+    loadPageData(pageName) {
+        if (!this.pageLoaded[pageName]) {
+            switch (pageName) {
+                case 'download':
+                    this.loadDownloadPage();
+                    break;
+                case 'sponsor':
+                    this.loadSponsorPage();
+                    break;
+                case 'sponsors':
+                    this.loadSponsorsPage();
+                    break;
+            }
+            this.pageLoaded[pageName] = true;
+        }
     },
 
     // 加载游戏下载页面
@@ -61,21 +88,32 @@ const App = {
 
             if (gameInfoRes.success && gameInfoRes.data) {
                 const game = gameInfoRes.data;
+                // 确保中英文描述之间有换行
+                let descriptionWithBreak = game.description;
+                // 检查是否已经有换行符，如果没有则添加
+                if (!descriptionWithBreak.includes('<br>')) {
+                    descriptionWithBreak = descriptionWithBreak.replace(/\n/g, '<br>');
+                    // 如果没有换行符，尝试根据中英文文本分割
+                    if (!descriptionWithBreak.includes('<br>')) {
+                        // 查找英文句子结束和中文开始的位置
+                        const match = descriptionWithBreak.match(/([^。]+)\s*([^<]+)/);
+                        if (match && match.length === 3) {
+                            descriptionWithBreak = match[1] + '<br>' + match[2];
+                        }
+                    }
+                }
                 setHTML(gameInfoEl, `
                     <div class="game-cover">${game.icon}</div>
                     <div class="game-details">
                         <h1>${game.name}</h1>
                         <div class="game-meta">
                             <span class="version">${game.version}</span>
-                            <span> ${game.developer}</span>
-                            <span> ${game.releaseDate}</span>
-                            <span> ${game.size}</span>
                         </div>
-                        <p class="game-description">${game.description}</p>
+                        <p class="game-description">${descriptionWithBreak}</p>
                     </div>
                 `);
             } else {
-                setHTML(gameInfoEl, '<div class="no-data">暂无游戏信息</div>');
+                setHTML(gameInfoEl, `<div class="no-data">暂无数据</div>`);
             }
 
             // 获取下载链接
@@ -90,7 +128,7 @@ const App = {
                         ${downloads.map(item => `
                             <div class="download-card">
                                     <div class="platform">${item.icon} ${item.platform}</div>
-                                    <div class="size">${item.platform === '加入QQ交流群' ? item.version : `版本 ${item.version} · ${item.size}`}</div>
+                                    <div class="size">${item.platform === '加入QQ交流群' ? item.version : `版本：${item.version}<br>${item.size}`}</div>
                                     <a href="${item.url}" target="_blank" class="download-btn" style="display: block; text-align: center; text-decoration: none;">
                                         ${item.platform === '加入QQ交流群' ? '加入交流群' : '立即下载'}
                                     </a>
@@ -99,12 +137,12 @@ const App = {
                     </div>
                 `);
             } else {
-                setHTML(downloadEl, '<div class="no-data">暂无下载链接</div>');
+                setHTML(downloadEl, `<div class="no-data">暂无数据</div>`);
             }
         } catch (error) {
             console.error('加载下载页面失败:', error);
-            setHTML(document.getElementById('gameInfo'), '<div class="no-data">加载失败，请刷新重试</div>');
-            setHTML(document.getElementById('downloadSection'), '<div class="no-data">加载失败，请刷新重试</div>');
+            setHTML(document.getElementById('gameInfo'), `<div class="no-data">暂无数据</div>`);
+            setHTML(document.getElementById('downloadSection'), `<div class="no-data">暂无数据</div>`);
         }
     },
 
@@ -134,8 +172,8 @@ const App = {
                             ${methods.map(method => `
                                 <div class="method-card" data-method="${method.id}" onclick="App.selectMethod('${method.id}')">
                                     <div class="icon">
-                                        ${method.id === 'alipay' ? '<img src="image/alipay.ico" alt="支付宝" style="width: 32px; height: 32px;">' : ''}
-                                        ${method.id === 'wechat' ? '<img src="image/wechatpay.webp" alt="微信支付" style="width: 32px; height: 32px;">' : ''}
+                                        ${method.id === 'alipay' ? '<img src="svg/alipay.svg" alt="支付宝" style="width: 32px; height: 32px;">' : ''}
+                                        ${method.id === 'wechat' ? '<img src="svg/wechat.svg" alt="微信支付" style="width: 32px; height: 32px;">' : ''}
                                     </div>
                                     <div class="name">${method.name}</div>
                                 </div>
@@ -146,11 +184,18 @@ const App = {
                         <h3>选择赞助金额</h3>
                         <div class="amount-grid">
                             ${amounts.map(item => `
-                                <div class="amount-card disabled" data-amount="${item.amount}" onclick="App.selectAmount(${item.amount})">
-                                    <div class="amount">${item.amount}</div>
+                                <div class="amount-card disabled" data-amount="${item.amount}" onclick="App.selectAmount(${item.amount})"><div class="amount">${item.amount}</div>
                                     <div class="unit">${item.unit}</div>
                                 </div>
                             `).join('')}
+                            <div class="amount-card disabled custom-amount-card">
+                                <div class="amount">
+                                    <input type="number" id="customAmountInput" class="custom-amount-input" placeholder="请输入金额" min="1" max="100" step="0.01" oninput="App.handleCustomAmountInput(this)" onblur="App.formatCustomAmount(this)">
+                                </div>
+                                <div class="unit">元/yuan</div>
+                                <div class="error-message" id="customAmountError"></div>
+                                <div class="success-message" id="customAmountSuccess"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="sponsor-action">
@@ -158,14 +203,13 @@ const App = {
                     </div>
                 `);
             } else {
-                setHTML(sponsorEl, '<div class="no-data">暂无赞助信息</div>');
+                setHTML(sponsorEl, `<div class="no-data">暂无数据</div>`);
             }
         } catch (error) {
             console.error('加载赞助页面失败:', error);
-            setHTML(document.getElementById('sponsorContent'), '<div class="no-data">加载失败，请刷新重试</div>');
+            setHTML(document.getElementById('sponsorContent'), `<div class="no-data">暂无数据</div>`);
         }
     },
-
     // 选择支付方式
     selectMethod(methodId) {
         this.selectedMethod = methodId;
@@ -183,6 +227,12 @@ const App = {
         amountCards.forEach(card => {
             card.classList.remove('disabled');
         });
+        
+        // 启用自定义金额输入框
+        const customAmountInput = document.getElementById('customAmountInput');
+        if (customAmountInput) {
+            customAmountInput.disabled = false;
+        }
         
         // 更新金额选项主题
         const sponsorContent = document.getElementById('sponsorContent');
@@ -209,6 +259,60 @@ const App = {
         
         // 检查是否可以启用确认按钮
         this.checkSponsorButton();
+    },
+    
+    // 处理自定义金额输入
+    handleCustomAmountInput(input) {
+        const amount = parseFloat(input.value);
+        const errorElement = document.getElementById('customAmountError');
+        const successElement = document.getElementById('customAmountSuccess');
+        const customAmountCard = document.querySelector('.custom-amount-card');
+        
+        // 验证输入有效性
+        if (isNaN(amount) || amount <= 0) {
+            errorElement.textContent = '当然仅支持正数，不要玩了';
+            successElement.textContent = '';
+            this.selectedAmount = null;
+            customAmountCard.classList.remove('active');
+        } else if (amount < 1) {
+            errorElement.textContent = '为了避免赞助冲击，暂时不支持小于1.00元，请见谅';
+            successElement.textContent = '';
+            this.selectedAmount = null;
+            customAmountCard.classList.remove('active');
+        } else if (amount > 100) {
+            errorElement.textContent = '太多了，不敢要';
+            successElement.textContent = '';
+            this.selectedAmount = null;
+            customAmountCard.classList.remove('active');
+        } else {
+            errorElement.textContent = '';
+            successElement.textContent = '有效金额';
+            this.selectedAmount = amount;
+            
+            // 移除其他金额卡片的激活状态
+            document.querySelectorAll('.amount-card').forEach(card => {
+                if (!card.classList.contains('custom-amount-card')) {
+                    card.classList.remove('active');
+                }
+            });
+            
+            // 激活自定义金额卡片
+            customAmountCard.classList.add('active');
+        }
+        
+        // 检查是否可以启用确认按钮
+        this.checkSponsorButton();
+    },
+    
+    // 格式化自定义金额（在失去焦点时）
+    formatCustomAmount(input) {
+        const value = input.value;
+        if (value) {
+            const amount = parseFloat(value);
+            if (!isNaN(amount)) {
+                input.value = amount.toFixed(2);
+            }
+        }
     },
 
     // 检查是否可以启用确认赞助按钮
@@ -287,27 +391,51 @@ const App = {
                         </table>
                     `);
                 } else {
-                    setHTML(listEl, '<div class="no-data">暂无赞助记录</div>');
+                    setHTML(listEl, `<div class="no-data">暂无数据</div>`);
                 }
             } else {
-                setHTML(statsEl, '<div class="no-data">暂无统计数据</div>');
-                setHTML(listEl, '<div class="no-data">暂无赞助记录</div>');
+                setHTML(statsEl, `<div class="no-data">暂无数据</div>`);
+                setHTML(listEl, `<div class="no-data">暂无数据</div>`);
             }
         } catch (error) {
             console.error('加载赞助名单失败:', error);
-            setHTML(document.getElementById('sponsorsStats'), '<div class="no-data">加载失败</div>');
-            setHTML(document.getElementById('sponsorsList'), '<div class="no-data">加载失败</div>');
+            setHTML(document.getElementById('sponsorsStats'), `<div class="no-data">暂无数据</div>`);
+            setHTML(document.getElementById('sponsorsList'), `<div class="no-data">暂无数据</div>`);
         }
     }
 };
 
-// 页面加载完成后初始化
+// 主题切换功能
+const ThemeManager = {
+    init() {
+        // 强制使用深色模式作为默认值
+        this.applyTheme('dark');
+        // 保存深色模式到localStorage
+        localStorage.setItem('themePreference', 'dark');
+
+        // 绑定主题切换按钮事件
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                this.applyTheme(newTheme);
+                localStorage.setItem('themePreference', newTheme);
+            });
+        }
+    },
+
+    applyTheme(theme) {
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+        } else {
+            document.body.classList.remove('dark-theme');
+        }
+    }
+};
+
+// 初始化应用
 document.addEventListener('DOMContentLoaded', () => {
     App.init();
-
-    // 根据hash初始化页面
-    const hash = window.location.hash.slice(1);
-    if (hash && ['download', 'sponsor', 'sponsors'].includes(hash)) {
-        App.switchPage(hash);
-    }
+    ThemeManager.init();
 });

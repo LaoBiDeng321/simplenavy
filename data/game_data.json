@@ -1,0 +1,34 @@
+{
+  "gameInfo": {
+    "name": "Simple_NAVY",
+    "version": "Simple_NAVY_2025_09_21",
+    "developer": "@SuperQ_Louis",
+    "releaseDate": "2025-09-21",
+    "size": "619 MB",
+    "description": "《Simple_NAVY》 is an exciting naval-themed game developed with Unreal Engine.\n《simplenavy》是一款基于虚幻引擎开发的精彩海军主题游戏。",
+    "icon": "<img src='image/favicon.png' alt='Simple_NAVY' style='width: 120px; height: 120px; border-radius: 10px;'>"
+  },
+  "downloads": [
+    {
+      "platform": "Windows",
+      "icon": "<img src='svg/pc.svg' alt='PC' style='width: 32px; height: 32px; vertical-align: middle; margin-right: 8px;'>",
+      "size": "PC：619 MB",
+      "url": "https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS",
+      "version": "Simple_NAVY_2025_09_21"
+    },
+    {
+      "platform": "Android",
+      "icon": "<img src='svg/android.svg' alt='Android' style='width: 32px; height: 32px; vertical-align: middle; margin-right: 8px;'>",
+      "size": "Android：301 MB",
+      "url": "https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS",
+      "version": "Simple_NAVY_2025_09_21"
+    },
+    {
+      "platform": "QQ",
+      "icon": "<img src='svg/tencent-qq.svg' alt='QQ' style='width: 32px; height: 32px; vertical-align: middle; margin-right: 8px;'>",
+      "size": "PC：619 MB   Android：301MB",
+      "url": "https://qm.qq.com/q/AobviP1qJc",
+      "version": "Simple_NAVY_2025_09_21"
+    }
+  ]
+}

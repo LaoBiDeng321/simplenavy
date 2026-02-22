@@ -4,17 +4,81 @@
     box-sizing: border-box;
 }
 
+/* CSS变量定义 - 浅色模式 */
+:root {
+    /* 背景色 */
+    --bg-primary: #cbd5e1;
+    --bg-secondary: #94a3b8;
+    --bg-card: #e2e8f0;
+    --bg-nav: #f1f5f9;
+    --bg-button: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    --bg-button-hover: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    --bg-active: rgba(37, 99, 235, 0.12);
+    --bg-hover: rgba(37, 99, 235, 0.08);
+    
+    /* 文字颜色 */
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --text-light: #fff;
+    --text-link: #2563eb;
+    
+    /* 边框颜色 */
+    --border-light: #94a3b8;
+    --border-medium: #64748b;
+    --border-focus: #2563eb;
+    
+    /* 阴影 */
+    --shadow-sm: 0 2px 20px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+    
+    /* 过渡动画 */
+    --transition: all 0.3s ease;
+}
+
+/* 深色模式 */
+body.dark-theme {
+    /* 背景色 */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #132031;
+    --bg-nav: #1e293b;
+    --bg-button: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    --bg-button-hover: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    --bg-active: rgba(37, 99, 235, 0.2);
+    --bg-hover: rgba(37, 99, 235, 0.15);
+    
+    /* 文字颜色 */
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-light: #fff;
+    --text-link: #60a5fa;
+    
+    /* 边框颜色 */
+    --border-light: #475569;
+    --border-medium: #64748b;
+    --border-focus: #60a5fa;
+    
+    /* 阴影 */
+    --shadow-sm: 0 2px 20px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 30px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    background: var(--bg-primary);
     min-height: 100vh;
-    color: #333;
+    color: var(--text-primary);
+    transition: var(--transition);
 }
 
 /* 导航栏 */
 .navbar {
-    background: #fff;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    background: var(--bg-nav);
+    box-shadow: var(--shadow-sm);
     padding: 0 40px;
     display: flex;
     justify-content: space-between;
@@ -25,27 +89,30 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
+    transition: var(--transition);
 }
 
 .nav-brand {
     font-size: 24px;
     font-weight: 700;
-    color: #2563eb;
+    color: var(--text-link);
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
     gap: 10px;
+    transition: var(--transition);
 }
 
 .nav-logo {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--bg-card);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--border-light);
+    transition: var(--transition);
 }
 
 .nav-menu {
@@ -56,29 +123,31 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: #64748b;
+    color: var(--text-secondary);
     font-size: 15px;
     font-weight: 500;
     padding: 10px 24px;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     cursor: pointer;
 }
 
 .nav-link:hover {
-    color: #2563eb;
-    background: rgba(37, 99, 235, 0.08);
+    color: var(--text-link);
+    background: var(--bg-hover);
 }
 
 .nav-link.active {
-    color: #2563eb;
-    background: rgba(37, 99, 235, 0.12);
+    color: var(--text-link);
+    background: var(--bg-active);
 }
 
 /* 主内容区 */
 .main-content {
     padding-top: 70px;
     min-height: 100vh;
+    background: var(--bg-primary);
+    transition: var(--transition);
 }
 
 .page {
@@ -111,36 +180,38 @@ body {
 .loading {
     text-align: center;
     padding: 60px;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 15px;
+    transition: var(--transition);
 }
 
 .no-data {
     text-align: center;
     padding: 80px 40px;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 15px;
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
 /* 游戏下载模块 */
 .game-info {
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 20px;
     padding: 50px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
     display: flex;
     gap: 50px;
     align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: var(--transition);
 }
 
 .game-info:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-lg);
 }
 
 .game-cover {
@@ -160,9 +231,10 @@ body {
 
 .game-details h1 {
     font-size: 36px;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 16px;
     font-weight: 700;
+    transition: var(--transition);
 }
 
 .game-meta {
@@ -173,27 +245,19 @@ body {
 }
 
 .game-meta span {
-    color: #64748b;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.game-meta span {
-    color: #2563eb;
+    color: var(--text-link);
     font-weight: 600;
-    background: rgba(37, 99, 235, 0.1);
+    background: var(--bg-hover);
     padding: 4px 12px;
     border-radius: 20px;
     margin-right: 12px;
     display: inline-block;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     cursor: pointer;
 }
 
 .game-meta span:hover {
-    background: rgba(37, 99, 235, 0.2);
+    background: var(--bg-active);
     transform: translateY(-2px);
     box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
 }
@@ -205,32 +269,35 @@ body {
 
 .game-meta .version {
     /* 保持version类的优先级 */
-    color: #2563eb;
+    color: var(--text-link);
     font-weight: 600;
-    background: rgba(37, 99, 235, 0.1);
+    background: var(--bg-hover);
     padding: 4px 12px;
     border-radius: 20px;
 }
 
 .game-description {
-    color: #64748b;
+    color: var(--text-secondary);
     line-height: 1.8;
     font-size: 15px;
+    transition: var(--transition);
 }
 
 /* 下载区域 */
 .download-section {
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
 }
 
 .download-section h2 {
     font-size: 22px;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 30px;
     font-weight: 600;
+    transition: var(--transition);
 }
 
 .download-grid {
@@ -240,15 +307,16 @@ body {
 }
 
 .download-card {
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--border-light);
     border-radius: 16px;
     padding: 28px;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     cursor: pointer;
+    background: var(--bg-card);
 }
 
 .download-card:hover {
-    border-color: #2563eb;
+    border-color: var(--border-focus);
     transform: translateY(-4px);
     box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
 }
@@ -256,37 +324,39 @@ body {
 .download-card .platform {
     font-size: 18px;
     font-weight: 600;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 10px;
+    transition: var(--transition);
 }
 
 .download-card .platform img {
     background: #3c9cfd;
     padding: 4px;
     border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-light);
 }
 
 .download-card .size {
     font-size: 13px;
-    color: #94a3b8;
+    color: var(--text-muted);
     margin-bottom: 20px;
+    transition: var(--transition);
 }
 
 .download-btn {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    color: #fff;
+    background: var(--bg-button);
+    color: var(--text-light);
     border: none;
     border-radius: 10px;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 .download-btn:hover {
@@ -303,21 +373,24 @@ body {
 
 .sponsor-header h1 {
     font-size: 42px;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 12px;
     font-weight: 700;
+    transition: var(--transition);
 }
 
 .sponsor-header p {
-    color: #64748b;
+    color: var(--text-secondary);
     font-size: 17px;
+    transition: var(--transition);
 }
 
 .sponsor-content {
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 20px;
     padding: 50px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
 }
 
 .sponsor-methods {
@@ -326,9 +399,10 @@ body {
 
 .sponsor-methods h3 {
     font-size: 18px;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 24px;
     font-weight: 600;
+    transition: var(--transition);
 }
 
 .method-grid {
@@ -338,23 +412,23 @@ body {
 }
 
 .method-card {
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--border-light);
     border-radius: 12px;
     padding: 24px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     cursor: pointer;
-    background: #f8fafc;
+    background: var(--bg-secondary);
 }
 
 .method-card:hover {
-    border-color: #cbd5e1;
-    background: #f1f5f9;
+    border-color: var(--border-medium);
+    background: var(--bg-secondary);
 }
 
 .method-card.active {
-    border-color: #2563eb;
-    background: rgba(37, 99, 235, 0.06);
+    border-color: var(--border-focus);
+    background: var(--bg-active);
 }
 
 /* 支付宝特定样式 */
@@ -380,14 +454,14 @@ body {
 }
 
 .amount-card.disabled:hover {
-    border-color: #e2e8f0;
+    border-color: var(--border-light);
     transform: none;
 }
 
 .amount-card.disabled.active {
-    border-color: #e2e8f0;
-    background: #f8fafc;
-    color: #64748b;
+    border-color: var(--border-light);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
 }
 
 .method-card .icon {
@@ -397,15 +471,17 @@ body {
 
 .method-card .name {
     font-size: 15px;
-    color: #1e293b;
+    color: var(--text-primary);
     font-weight: 500;
+    transition: var(--transition);
 }
 
 .sponsor-amounts h3 {
     font-size: 18px;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 24px;
     font-weight: 600;
+    transition: var(--transition);
 }
 
 .amount-grid {
@@ -416,23 +492,24 @@ body {
 }
 
 .amount-card {
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--border-light);
     border-radius: 12px;
     padding: 24px 16px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     cursor: pointer;
+    background: var(--bg-secondary);
 }
 
 .amount-card:hover {
-    border-color: #2563eb;
+    border-color: var(--border-focus);
     transform: translateY(-2px);
 }
 
 .amount-card.active {
-    border-color: #2563eb;
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    color: #fff;
+    border-color: var(--border-focus);
+    background: var(--bg-button);
+    color: var(--text-light);
 }
 
 /* 支付宝主题 */
@@ -468,22 +545,94 @@ body {
     opacity: 0.8;
 }
 
+/* 自定义金额输入框样式 */
+.custom-amount-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+}
+
+.custom-amount-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.error-message {
+    font-size: 12px;
+    color: #ff4d4f;
+    margin-top: 8px;
+    min-height: 16px;
+}
+
+.success-message {
+    font-size: 12px;
+    color: #52c41a;
+    margin-top: 8px;
+    min-height: 16px;
+}
+
+/* 自定义金额卡片激活状态 */
+.custom-amount-card.active {
+    border-color: var(--border-focus);
+    background: var(--bg-button);
+    color: var(--text-light);
+}
+
+/* 支付宝主题下的自定义金额卡片 */
+.theme-alipay .custom-amount-card:hover {
+    border-color: #1677ff;
+}
+
+.theme-alipay .custom-amount-card.active {
+    border-color: #1677ff;
+    background: linear-gradient(135deg, #1677ff 0%, #0958d9 100%);
+}
+
+.theme-alipay .custom-amount-card.active .success-message {
+    color: #52c41a;
+}
+
+/* 微信主题下的自定义金额卡片 */
+.theme-wechat .custom-amount-card:hover {
+    border-color: #07c160;
+}
+
+.theme-wechat .custom-amount-card.active {
+    border-color: #07c160;
+    background: linear-gradient(135deg, #07c160 0%, #059644 100%);
+}
+
+.theme-wechat .custom-amount-card.active .success-message {
+    color: #1100ff;
+}
+
+/* 禁用状态下的自定义金额输入框 */
+.custom-amount-card.disabled .custom-amount-input {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
 .sponsor-action {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--border-light);
 }
 
 .sponsor-btn {
     padding: 16px 60px;
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    color: #fff;
+    background: var(--bg-button);
+    color: var(--text-light);
     border: none;
     border-radius: 12px;
     font-size: 17px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 .sponsor-btn:hover {
@@ -501,6 +650,24 @@ body {
     box-shadow: none;
 }
 
+/* 支付宝主题下的赞助按钮 */
+.theme-alipay .sponsor-btn {
+    background: #1677ff;
+}
+
+.theme-alipay .sponsor-btn:hover {
+    box-shadow: 0 8px 30px rgba(22, 119, 255, 0.4);
+}
+
+/* 微信主题下的赞助按钮 */
+.theme-wechat .sponsor-btn {
+    background: #07c160;
+}
+
+.theme-wechat .sponsor-btn:hover {
+    box-shadow: 0 8px 30px rgba(7, 193, 96, 0.4);
+}
+
 /* 赞助名单模块 */
 .sponsors-header {
     text-align: center;
@@ -510,14 +677,16 @@ body {
 
 .sponsors-header h1 {
     font-size: 42px;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 12px;
     font-weight: 700;
+    transition: var(--transition);
 }
 
 .sponsors-header p {
-    color: #64748b;
+    color: var(--text-secondary);
     font-size: 17px;
+    transition: var(--transition);
 }
 
 .sponsors-stats {
@@ -528,42 +697,47 @@ body {
 }
 
 .stat-card {
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 16px;
     padding: 28px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
 .stat-card:hover {
     transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
 }
 
 .stat-card .number {
     font-size: 36px;
     font-weight: 700;
-    color: #2563eb;
+    color: var(--text-link);
     margin-bottom: 8px;
+    transition: var(--transition);
 }
 
 .stat-card .label {
     font-size: 14px;
-    color: #64748b;
+    color: var(--text-secondary);
+    transition: var(--transition);
 }
 
 .sponsors-list {
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
 }
 
 .sponsors-list h3 {
     font-size: 18px;
-    color: #1e293b;
+    color: var(--text-primary);
     margin-bottom: 24px;
     font-weight: 600;
+    transition: var(--transition);
 }
 
 .sponsor-table {
@@ -575,50 +749,59 @@ body {
 .sponsor-table td {
     padding: 16px;
     text-align: left;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border-light);
+    transition: var(--transition);
 }
 
 .sponsor-table th {
-    color: #64748b;
+    color: var(--text-secondary);
     font-weight: 600;
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transition: var(--transition);
 }
 
 .sponsor-table td {
-    color: #1e293b;
+    color: var(--text-primary);
     font-size: 15px;
+    transition: var(--transition);
 }
 
 .sponsor-table tr:hover {
-    background: rgba(37, 99, 235, 0.02);
+    background: var(--bg-hover);
 }
 
-
-
 .sponsor-table .amount {
-    color: #2563eb;
+    color: var(--text-link);
     font-weight: 600;
+    transition: var(--transition);
 }
 
 .sponsor-table .message {
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 14px;
     max-width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    transition: var(--transition);
 }
 
 /* 响应式设计 */
-@media (max-width: 616px) {
+@media (max-width: 629px) {
     .navbar {
         padding: 0 20px;
+        height: 55px;
     }
 
     .nav-brand {
         font-size: 18px;
+    }
+
+    .nav-logo {
+        width: 30px;
+        height: 30px;
     }
 
     .nav-brand span {
@@ -662,5 +845,196 @@ body {
     .sponsor-content,
     .sponsors-list {
         padding: 30px;
+    }
+}
+
+/* 针对屏幕宽度小于320px的移动设备的响应式布局优化 */
+@media (max-width: 320px) {
+    .navbar {
+        padding: 0 15px;
+        height: 50px;
+    }
+
+    .nav-logo {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nav-menu {
+        gap: 2px;
+    }
+
+    .nav-link {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .page {
+        padding: 15px;
+    }
+
+    .game-info {
+        padding: 20px;
+    }
+
+    .game-cover {
+        width: 120px;
+        height: 120px;
+        font-size: 48px;
+    }
+
+    .game-details h1 {
+        font-size: 24px;
+    }
+
+    .control-panel {
+        top: 60px;
+        right: 10px;
+        gap: 8px;
+    }
+
+    .control-btn {
+        padding: 10px;
+        font-size: 12px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .control-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* 响应式自定义金额输入框 */
+    .custom-amount-input {
+        font-size: 24px;
+    }
+
+    .error-message {
+        font-size: 11px;
+    }
+}
+
+/* 控制面板 */
+.control-panel {
+    position: fixed;
+    top: 90px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 1001;
+}
+
+/* 控制按钮 */
+.control-btn {
+    padding: 16px;
+    border: 2px solid var(--border-light);
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    width: 56px;
+    height: 56px;
+    box-shadow: var(--shadow-sm);
+}
+
+.control-btn:hover {
+    border-color: var(--border-focus);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+/* 主题切换按钮 */
+#themeToggle .icon {
+    position: absolute;
+    transition: var(--transition);
+}
+
+#themeToggle .light {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+#themeToggle .dark {
+    opacity: 1;
+    transform: scale(1);
+}
+
+body.dark-theme #themeToggle .light {
+    opacity: 1;
+    transform: scale(1);
+}
+
+body.dark-theme #themeToggle .light img {
+    filter: brightness(0) invert(1);
+}
+
+body.dark-theme #themeToggle .dark img {
+    filter: brightness(0) invert(1);
+}
+
+body.dark-theme #themeToggle .dark {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+/* 语言切换按钮 */
+#languageToggle .lang {
+    position: absolute;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+#languageToggle .zh {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+#languageToggle .en {
+    opacity: 1;
+    transform: scale(1);
+}
+
+body.en-language #languageToggle .zh {
+    opacity: 1;
+    transform: scale(1);
+}
+
+body.en-language #languageToggle .en {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+/* 响应式设计 - 控制按钮 */
+@media (max-width: 616px) {
+    .control-panel {
+        top: 70px;
+        right: 10px;
+        gap: 12px;
+    }
+    
+    .control-btn {
+        padding: 12px;
+        font-size: 13px;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .control-btn img {
+        width: 18px;
+        height: 18px;
     }
 }

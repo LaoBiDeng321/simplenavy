@@ -1,0 +1,11 @@
+{
+  "sponsorMethods": [
+    { "id": "alipay", "name": "支付宝/alipay", "webp": "image/alipay.webp" },
+    { "id": "wechat", "name": "微信支付/wechat", "webp": "image/wechat.webp" }
+  ],
+  "sponsorAmounts": [
+    { "amount": 1, "unit": "元/yuan" },
+    { "amount": 3, "unit": "元/yuan" },
+    { "amount": 5, "unit": "元/yuan" }
+  ]
+}
