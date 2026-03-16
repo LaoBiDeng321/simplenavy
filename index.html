@@ -3,68 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google" content="notranslate">
-    <title>Simple_NAVY</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="image/favicon.png" type="image/png">
+    <title>Simple NAVY - 轻度肝氪单机海战游戏</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">
-            <img src="image/favicon.png" alt="Logo" class="nav-logo">
-            <span>Simple_NAVY</span>
-        </div>
-        <ul class="nav-menu">
-            <li><a href="#download" class="nav-link active" data-page="download">游戏下载</a></li>
-            <li><a href="#sponsor" class="nav-link" data-page="sponsor">赞助支持</a></li>
-            <li><a href="#sponsors" class="nav-link" data-page="sponsors">赞助名单</a></li>
-        </ul>
-    </nav>
-
-    <!-- 控制按钮区域 -->
-    <div class="control-panel">
-        <button id="themeToggle" class="control-btn theme-btn" aria-label="切换主题">
-            <span class="icon light"><img src="svg/sun.svg" alt="浅色模式" width="20" height="20"></span>
-            <span class="icon dark"><img src="svg/moon-fill.svg" alt="深色模式" width="20" height="20"></span>
+    <div class="theme-toggle">
+        <button id="themeBtn" aria-label="切换主题">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
         </button>
     </div>
 
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="game-title">Simple NAVY</h1>
+            <p class="game-subtitle">轻度肝氪单机海战游戏</p>
+            <div class="download-podium">
+                <div class="podium-row podium-bottom">
+                    <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank" rel="noopener noreferrer" class="download-btn qq-btn">
+                        <img src="image/QQ.svg" alt="QQ" class="btn-icon" />
+                        <span class="btn-text">
+                            <span class="btn-title">QQ 群下载</span>
+                        </span>
+                    </a>
+                    <a href="https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS" target="_blank" rel="noopener noreferrer" class="download-btn baidu-btn">
+                        <img src="image/baiduyuanpan.svg" alt="百度网盘" class="btn-icon" />
+                        <span class="btn-text">
+                            <span class="btn-title">百度网盘下载</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="podium-row podium-top">
+                    <a href="https://www.taptap.cn/app/827792?os=pc" target="_blank" rel="noopener noreferrer" class="download-btn taptap-btn">
+                        <img src="image/taptap_logo.svg" alt="TapTap" class="btn-icon" />
+                        <span class="btn-text">
+                            <span class="btn-title">TapTap 下载</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg"></div>
+    </header>
+
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#intro" class="nav-link">
+                    <img src="image/info-circle.svg" alt="" class="nav-icon" />
+                    游戏介绍
+                </a></li>
+                <li><a href="#features" class="nav-link">
+                    <img src="image/check.svg" alt="" class="nav-icon" />
+                    特色玩法
+                </a></li>
+                <li><a href="#requirements" class="nav-link">
+                    <img src="image/display.svg" alt="" class="nav-icon" />
+                    系统需求
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
     <main class="main-content">
-        <!-- 游戏下载模块 -->
-        <section id="download" class="page active">
+        <section id="intro" class="section">
             <div class="container">
-                <div class="game-info" id="gameInfo">
-                    <div class="loading">加载中...</div>
+                <h2 class="section-title">
+                    <img src="image/info-circle.svg" alt="" class="section-icon" />
+                    游戏介绍
+                </h2>
+                <div class="card">
+                    <h3>关于游戏</h3>
+                    <p>Simple NAVY 是一款轻度肝氪的单机海战游戏，由独立开发者倾力打造。开发者体验过众多海战游戏，怀揣着对海战的热爱，决心为玩家带来一款不会因服务器关闭而无法游玩的海战游戏。</p>
+                    <p>本游戏将陆续更新来自人类海军历史或架空设计的不同类型的舰船，以及丰富多样的玩法，为玩家带来原汁原味的海战体验。</p>
+                    <div class="warning-box">
+                        <img src="image/exclamation-triangle.svg" alt="" class="warning-icon" />
+                        <span>当前版本存在一些BUG，建议非迫不得已先不要下载试玩，待功能完善后再体验</span>
+                    </div>
                 </div>
-                <div class="download-section" id="downloadSection">
-                    <div class="loading">加载中...</div>
+                <div class="card">
+                    <h3>100%进度模式</h3>
+                    <p>本游戏支持100%进度模式，即解锁全部内容！</p>
+                    <ul class="feature-list">
+                        <li>在港口当中按下 <kbd>U</kbd> 键或点击主界面左下角的菜单 → debug → unlock all asset but not save</li>
+                    </ul>
+                    <div class="info-box">
+                        <img src="image/info-circle.svg" alt="" class="info-icon" />
+                        <span>注意：一旦在游戏运行中按下此键，后续获得的资源是不可保存的，除非重启游戏</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 赞助模块 -->
-        <section id="sponsor" class="page">
+        <section id="features" class="section">
             <div class="container">
-                <div class="sponsor-content" id="sponsorContent">
-                    <div class="loading">加载中...</div>
+                <h2 class="section-title">
+                    <img src="image/check.svg" alt="" class="section-icon" />
+                    特色玩法
+                </h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="image/people.svg" alt="" />
+                        </div>
+                        <h3>单机海战</h3>
+                        <p>真正的单机游戏，无需联网即可畅玩，不用担心服务器关闭而无法游玩</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="image/bell.svg" alt="" />
+                        </div>
+                        <h3>轻度肝氪</h3>
+                        <p>不肝不氪的轻松玩法，让玩家享受纯粹的游戏乐趣</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="image/grid.svg" alt="" />
+                        </div>
+                        <h3>多种舰船</h3>
+                        <p>来自人类海军历史或架空设计的不同类型舰船</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="image/star.svg" alt="" />
+                        </div>
+                        <h3>丰富玩法</h3>
+                        <p>多样化的游戏玩法，带来不同的海战体验</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="image/gear.svg" alt="" />
+                        </div>
+                        <h3>深度自定义</h3>
+                        <p>全新的自定义涂装机制，打造专属你的独特战舰</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="image/bell.svg" alt="" />
+                        </div>
+                        <h3>武器系统</h3>
+                        <p>武器轮射数控制、分组控制、自动化控制等多种武器系统</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 赞助名单模块 -->
-        <section id="sponsors" class="page">
+        <section id="requirements" class="section">
             <div class="container">
-                <div class="sponsors-stats" id="sponsorsStats">
-                    <div class="loading">加载中...</div>
-                </div>
-                <div class="sponsors-list" id="sponsorsList">
-                    <div class="loading">加载中...</div>
+                <h2 class="section-title">
+                    <img src="image/display.svg" alt="" class="section-icon" />
+                    系统需求
+                </h2>
+                <div class="requirements-grid">
+                    <div class="requirements-card">
+                        <h3>Windows 最低配置</h3>
+                        <ul class="requirements-list">
+                            <li>
+                                <span class="req-label">操作系统</span>
+                                <span class="req-value">Windows 10（64 位）</span>
+                            </li>
+                            <li>
+                                <span class="req-label">处理器</span>
+                                <span class="req-value">AMD Ryzen™ 5 5600G</span>
+                            </li>
+                            <li>
+                                <span class="req-label">内存</span>
+                                <span class="req-value">8GB</span>
+                            </li>
+                            <li>
+                                <span class="req-label">显卡</span>
+                                <span class="req-value">GTX 1050 Ti</span>
+                            </li>
+                            <li>
+                                <span class="req-label">存储空间</span>
+                                <span class="req-value">5GB</span>
+                            </li>
+                            <li>
+                                <span class="req-label">DirectX</span>
+                                <span class="req-value">11</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="requirements-card">
+                        <h3>Windows 推荐配置</h3>
+                        <ul class="requirements-list">
+                            <li>
+                                <span class="req-label">操作系统</span>
+                                <span class="req-value">Windows 11（64 位）</span>
+                            </li>
+                            <li>
+                                <span class="req-label">处理器</span>
+                                <span class="req-value">AMD Ryzen™ 9 7945HX</span>
+                            </li>
+                            <li>
+                                <span class="req-label">内存</span>
+                                <span class="req-value">16GB</span>
+                            </li>
+                            <li>
+                                <span class="req-label">显卡</span>
+                                <span class="req-value">RTX 4060</span>
+                            </li>
+                            <li>
+                                <span class="req-label">存储空间</span>
+                                <span class="req-value">10GB</span>
+                            </li>
+                            <li>
+                                <span class="req-label">DirectX</span>
+                                <span class="req-value">11</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="js/api.js"></script>
-    <script src="js/app.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-brand">
+                        <h1>Simple NAVY</h1>
+                    </div>
+                    <div class="footer-details">
+                        <p><span class="footer-label">开发</span><span class="footer-value">彼岸游戏工作室</span></p>
+                        <p><span class="footer-label">供应商</span><span class="footer-value">luoshaoqing</span></p>
+                        <p><span class="footer-label">官方 QQ 群</span><span class="footer-value">586424072</span></p>
+                        <p><span class="footer-label">支持语言</span><span class="footer-value">zh-CN, en-US</span></p>
+                        <p><span class="footer-label">适龄分级</span><span class="footer-value">12周岁+</span></p>
+                        <p><span class="footer-label">版本号</span><span class="footer-value">25.09.21</span></p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <img src="image/taptap_logo.svg" alt="TapTap" class="taptap-logo" />
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Simple NAVY.</p>
+                <p>网页开发与游戏开发非同一人</p>
+                <p>相关信息仅供參考</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
