@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simple NAVY - 下载</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="themeBtn" aria-label="切换主题">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+    </div>
+
+    <main class="container">
+        <div class="header">
+            <h1 class="title">Simple NAVY</h1>
+            <p class="subtitle">移动端页面</p>
+        </div>
+
+        <div class="download-section">
+            <a href="https://www.taptap.cn/app/827792?os=pc" target="_blank" rel="noopener noreferrer" class="download-btn taptap-btn">
+                <img src="image/taptap_logo.svg" alt="TapTap" class="btn-icon" />
+                <span class="btn-text">TapTap 下载</span>
+            </a>
+
+            <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank" rel="noopener noreferrer" class="download-btn qq-btn">
+                <img src="image/QQ.svg" alt="QQ" class="btn-icon" />
+                <span class="btn-text">QQ 交流群下载</span>
+            </a>
+
+            <a href="https://pan.baidu.com/s/1KLz4UOuFFYhID-o49cuypA?pwd=OSGS" target="_blank" rel="noopener noreferrer" class="download-btn baidu-btn">
+                <img src="image/baiduyuanpan.svg" alt="百度网盘" class="btn-icon" />
+                <span class="btn-text">百度网盘下载</span>
+            </a>
+        </div>
+
+        <div class="info-section">
+            <p class="version">版本号: 25.09.21</p>
+        </div>
+    </main>
+
+    <script>
+        const themeBtn = document.getElementById('themeBtn');
+        const html = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>
