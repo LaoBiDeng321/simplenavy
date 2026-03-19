@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OtherShareGameStudio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <span class="logo-icon">◈</span>
+                <span class="logo-text">OtherShare<span class="logo-accent">Game</span>Studio</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">首页</a></li>
+                <li><a href="#about">简介</a></li>
+                <li><a href="#team">团队</a></li>
+                <li><a href="#games">游戏</a></li>
+                <li><a href="#news">动态</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">OtherShare<span class="accent">Game</span>Studio</h1>
+                <p class="hero-subtitle">彼岸游戏工作室</p>
+                <div class="hero-cta">
+                    <a href="#games" class="btn btn-primary">查看作品</a>
+                    <a href="#about" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-bg">
+                <div class="hero-shape shape-1"></div>
+                <div class="hero-shape shape-2"></div>
+                <div class="hero-shape shape-3"></div>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title">工作室简介</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>OtherShareGameStudio 是一个专注于独立游戏开发的工作室。</p>
+                        <p>我是占位符我是占位符我是占位符我是占位符我是占位符我是占位符我是占位符我是占位符我是占位符</p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">1</span>
+                                <span class="stat-label">款在研游戏</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2</span>
+                                <span class="stat-label">位核心成员</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">创意可能</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-placeholder">
+                            <span class="placeholder-text">无logo，无图片，无人可用，三无网站</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="section team">
+            <div class="container">
+                <h2 class="section-title">核心团队</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <svg viewBox="0 0 100 100" fill="none">
+                                <circle cx="50" cy="35" r="20" stroke="currentColor" stroke-width="2"/>
+                                <path d="M15 90c0-19.33 15.67-35 35-35s35 15.67 35 35" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="team-name">SuperQ_Louis</h3>
+                        <span class="team-role">总负责人</span>
+                        <div class="team-social">
+                            <a href="https://space.bilibili.com/3493093733042776" target="_blank" rel="noopener" aria-label="B站主页">
+                                <img src="image/Bilibili_tv.svg" alt="B站" class="team-icon">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <svg viewBox="0 0 100 100" fill="none">
+                                <circle cx="50" cy="35" r="20" stroke="currentColor" stroke-width="2"/>
+                                <path d="M15 90c0-19.33 15.67-35 35-35s35 15.67 35 35" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="team-name">xy_black_cross</h3>
+                        <span class="team-role">开发负责人</span>
+                        <div class="team-social">
+                            <a href="https://space.bilibili.com/3546814473046169" target="_blank" rel="noopener" aria-label="B站主页">
+                                <img src="image/Bilibili_tv.svg" alt="B站" class="team-icon">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <svg viewBox="0 0 100 100" fill="none">
+                                <circle cx="50" cy="35" r="20" stroke="currentColor" stroke-width="2"/>
+                                <path d="M15 90c0-19.33 15.67-35 35-35s35 15.67 35 35" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="team-name">请设置群昵称</h3>
+                        <span class="team-role">网页开发与维护</span>
+                        <div class="team-social">
+                            <a href="https://space.bilibili.com/3546689231128952" target="_blank" rel="noopener" aria-label="B站主页">
+                                <img src="image/Bilibili_tv.svg" alt="B站" class="team-icon">
+                            </a>
+                            <a href="https://github.com/LaoBiDeng321" target="_blank" rel="noopener" aria-label="GitHub">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="games" class="section games">
+            <div class="container">
+                <h2 class="section-title">游戏作品</h2>
+                <div class="games-grid">
+                    <a href="../index.html" target="_blank" class="game-card">
+                        <div class="game-cover" style="background-image: url('image/游戏库背景壁纸.png');">
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-title">Simple NAVY</h3>
+                            <p class="game-desc">一款轻度肝氪的单机海战游戏，100%进度模式，带给你原汁原味的海战体验。</p>
+                            <div class="game-links">
+                            </div>
+                            <span class="game-status developing">测试中</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="games-notice">
+                    <p>更多游戏作品即将上线，敬请期待！</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="section news">
+            <div class="container">
+                <h2 class="section-title">新闻动态</h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-date">
+                            <span class="year-format"><i>20</i>/21</span>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">工作室成立</h3>
+                            <p class="news-excerpt">OtherShareGameStudio 正式成立</p>
+                        </div>
+                    </article>
+                    <article class="news-card">
+                        <div class="news-date">
+                            <span class="year-format"><i>20</i>/24</span>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">首个游戏项目启动</h3>
+                            <p class="news-excerpt">团队正式启动首个游戏项目的开发工作，目前正在紧张有序地推进中。</p>
+                        </div>
+                    </article>
+                    <article class="news-card">
+                        <div class="news-date">
+                            <span class="year-format"><i>20</i>/26</span>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">官方网站上线</h3>
+                            <p class="news-excerpt">工作室官方网站正式上线，欢迎各位玩家关注我们的最新动态！</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background-image: url('image/qq.svg'); background-size: 28px; background-repeat: no-repeat; background-position: center;">
+                        </div>
+                        <div class="contact-details">
+                            <h3>QQ交流群</h3>
+                            <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank" rel="noopener">点击加入</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="image/Bilibili_tv.svg" alt="B站" class="icon-img">
+                        </div>
+                        <div class="contact-details">
+                            <h3>B站 - 总负责人</h3>
+                            <a href="https://space.bilibili.com/3493093733042776" target="_blank" rel="noopener">点击访问</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="image/Bilibili_tv.svg" alt="B站" class="icon-img">
+                        </div>
+                        <div class="contact-details">
+                            <h3>B站 - 开发负责人</h3>
+                            <a href="https://space.bilibili.com/3546814473046169" target="_blank" rel="noopener">点击访问</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="image/Bilibili_tv.svg" alt="B站" class="icon-img">
+                        </div>
+                        <div class="contact-details">
+                            <h3>B站 - 网页开发</h3>
+                            <a href="https://space.bilibili.com/3546689231128952" target="_blank" rel="noopener">点击访问</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>GitHub - 网页</h3>
+                            <a href="https://github.com/LaoBiDeng321" target="_blank" rel="noopener">点击访问</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-brand">
+                        <h1>OtherShareGameStudio</h1>
+                    </div>
+                    <div class="footer-details">
+                        <p><span class="footer-label">游戏</span><span class="footer-value"><a href="../index.html">Simple NAVY</a></span></p>
+                        <p><span class="footer-label">官方 QQ 群</span><span class="footer-value"><a href="https://qm.qq.com/q/AobviP1qJc">586424072</a></span></p>
+                        <p><span class="footer-label">B站主页</span><span class="footer-value"><a href="https://space.bilibili.com/3493093733042776">点击访问</a></span></p>
+                        <p><span class="footer-label">GitHub</span><span class="footer-value"><a href="https://github.com/LaoBiDeng321">点击访问</a></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 OtherShareGameStudio.</p>
+                <p>网页开发与游戏开发非同一人</p>
+                <p>相关信息仅供參考</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
