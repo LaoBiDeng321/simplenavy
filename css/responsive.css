@@ -160,10 +160,16 @@
         --space-3xl: 2.5rem;
     }
     
+    /* section保持全屏高度 */
+    .fp-section {
+        height: 100vh;
+        min-height: 600px;
+        padding: 0;
+    }
+    
     /* 页脚 */
     #footer.fp-section {
-        height: auto;
-        min-height: 100vh;
+        min-height: auto;
         padding: var(--space-2xl) 0;
     }
     
@@ -380,6 +386,13 @@
    手机竖屏 (< 480px)
    ------------------------------------------ */
 @media (max-width: 479px) {
+    /* section保持全屏高度 */
+    .fp-section {
+        height: 100vh;
+        min-height: 500px;
+        padding: 0;
+    }
+    
     /* Hero 区域 */
     .hero-title {
         font-size: 2rem;
@@ -391,7 +404,6 @@
     
     /* 页脚 */
     #footer.fp-section {
-        height: auto;
         min-height: auto;
         padding: var(--space-2xl) 0;
     }
