@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 初始化全屏滚动
     initFullPage();
     
-    // 初始化主题切换
-    initThemeToggle();
-    
     // 初始化愚人节弹窗
     initAprilFools();
     
@@ -74,31 +71,6 @@ function animateSectionElements(section) {
         setTimeout(() => {
             el.classList.add('is-visible');
         }, index * 100 + 200);
-    });
-}
-
-/**
- * 初始化主题切换
- */
-function initThemeToggle() {
-    const themeBtn = document.getElementById('themeBtn');
-    const html = document.documentElement;
-    
-    // 从localStorage读取保存的主题
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', savedTheme);
-    
-    themeBtn.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // 触发自定义事件
-        window.dispatchEvent(new CustomEvent('themechange', {
-            detail: { theme: newTheme }
-        }));
     });
 }
 

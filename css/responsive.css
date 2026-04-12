@@ -160,17 +160,6 @@
         --space-3xl: 2.5rem;
     }
     
-    /* 主题切换按钮 */
-    .theme-toggle {
-        top: var(--space-md);
-        right: var(--space-md);
-    }
-    
-    .theme-toggle button {
-        width: 40px;
-        height: 40px;
-    }
-    
     /* Hero 区域 */
     .hero-content {
         padding: 0 var(--space-md);
@@ -577,7 +566,6 @@
    ------------------------------------------ */
 @media print {
     .fp-nav,
-    .theme-toggle,
     .scroll-hint,
     .download-section {
         display: none !important;
