@@ -491,6 +491,8 @@
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
             transition: all var(--transition-base);
+            text-decoration: none;
+            color: inherit;
         }
         
         .contact-item:hover {
@@ -518,28 +520,21 @@
         .contact-details h3 {
             font-size: var(--font-size-xs);
             font-weight: var(--font-weight-semibold);
-            margin-bottom: 2px;
-        }
-        
-        .contact-details a {
-            font-size: var(--font-size-xs);
-            color: var(--color-accent);
-        }
-        
-        .contact-details a:hover {
-            text-decoration: underline;
         }
         
         /* Footer Section */
         #footer.fp-section {
-            align-items: center;
+            align-items: flex-start;
+            height: auto;
+            min-height: 100vh;
         }
         
         #footer .fp-content {
             align-items: center;
             flex-direction: column;
             justify-content: flex-start;
-            padding-top: 100px;
+            padding: 40px var(--space-md);
+            height: auto;
         }
         
         #footer .container {
@@ -547,12 +542,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100%;
+            gap: var(--space-xl);
         }
         
         .contact-section {
-            margin-bottom: auto;
-            margin-top: auto;
+            width: 100%;
         }
         
         .footer {
@@ -651,12 +645,6 @@
                 display: none;
             }
             
-            #footer.fp-section {
-                height: auto;
-                min-height: 100vh;
-                padding: var(--space-2xl) 0;
-            }
-            
             .about-content {
                 grid-template-columns: 1fr;
                 gap: var(--space-lg);
@@ -697,20 +685,38 @@
         }
         
         @media (max-width: 767px) {
-            #footer.fp-section {
-                height: auto;
-                min-height: auto;
-                padding: var(--space-2xl) 0;
-            }
-            
             .hero-title {
                 font-size: 1.75rem;
             }
             
             .team-grid {
-                grid-template-columns: 1fr;
-                max-width: 300px;
-                margin: 0 auto;
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-sm);
+            }
+            
+            .team-card {
+                padding: var(--space-sm);
+            }
+            
+            .team-avatar {
+                width: 40px;
+                height: 40px;
+                margin-bottom: var(--space-xs);
+            }
+            
+            .team-avatar svg {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .team-name {
+                font-size: var(--font-size-xs);
+                margin-bottom: 2px;
+            }
+            
+            .team-role {
+                font-size: 10px;
+                margin-bottom: var(--space-xs);
             }
             
             .contact-grid {
@@ -728,6 +734,55 @@
             .contact-grid {
                 grid-template-columns: repeat(2, 1fr);
                 max-width: none;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .team-card {
+                padding: 8px;
+            }
+            
+            .team-avatar {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .team-avatar svg {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .team-name {
+                font-size: 10px;
+            }
+            
+            .team-role {
+                font-size: 9px;
+            }
+            
+            .team-social {
+                gap: 4px;
+            }
+            
+            .team-social a {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .team-social img,
+            .team-social svg {
+                width: 12px;
+                height: 12px;
+            }
+        }
+        
+        /* 短屏幕 - 隐藏顶部导航 */
+        @media (max-height: 700px) {
+            .header {
+                display: none;
             }
         }
         
@@ -963,43 +1018,39 @@
                     <div class="contact-section">
                         <h2 class="section-title animate-on-scroll">联系我们</h2>
                         <div class="contact-grid animate-on-scroll">
-                            <div class="contact-item">
+                            <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank" class="contact-item">
                                 <div class="contact-icon">
                                     <img src="image/qq.svg" alt="QQ">
                                 </div>
                                 <div class="contact-details">
                                     <h3>QQ交流群</h3>
-                                    <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank">点击加入</a>
                                 </div>
-                            </div>
-                            <div class="contact-item">
+                            </a>
+                            <a href="https://space.bilibili.com/3493093733042776" target="_blank" class="contact-item">
                                 <div class="contact-icon">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </div>
                                 <div class="contact-details">
                                     <h3>B站 - 总负责人</h3>
-                                    <a href="https://space.bilibili.com/3493093733042776" target="_blank">点击访问</a>
                                 </div>
-                            </div>
-                            <div class="contact-item">
+                            </a>
+                            <a href="https://space.bilibili.com/3546814473046169" target="_blank" class="contact-item">
                                 <div class="contact-icon">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </div>
                                 <div class="contact-details">
                                     <h3>B站 - 开发负责人</h3>
-                                    <a href="https://space.bilibili.com/3546814473046169" target="_blank">点击访问</a>
                                 </div>
-                            </div>
-                            <div class="contact-item">
+                            </a>
+                            <a href="https://space.bilibili.com/3546689231128952" target="_blank" class="contact-item">
                                 <div class="contact-icon">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </div>
                                 <div class="contact-details">
                                     <h3>B站 - 网页开发</h3>
-                                    <a href="https://space.bilibili.com/3546689231128952" target="_blank">点击访问</a>
                                 </div>
-                            </div>
-                            <div class="contact-item">
+                            </a>
+                            <a href="https://github.com/LaoBiDeng321" target="_blank" class="contact-item">
                                 <div class="contact-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
@@ -1007,9 +1058,8 @@
                                 </div>
                                 <div class="contact-details">
                                     <h3>GitHub - 网页</h3>
-                                    <a href="https://github.com/LaoBiDeng321" target="_blank">点击访问</a>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     

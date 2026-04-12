@@ -33,16 +33,38 @@ class FullPage {
         
         this.setupStyles();
         this.bindEvents();
-        this.goToSection(0, false);
+        
+        // 不自动跳转，根据当前滚动位置确定当前section
+        this.updateCurrentIndexFromScroll();
         
         // 触发初始化完成事件
         this.emit('init');
     }
     
+    updateCurrentIndexFromScroll() {
+        // 根据当前滚动位置计算当前section索引
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        
+        let closestIndex = 0;
+        let minDistance = Infinity;
+        
+        this.sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const distance = Math.abs(rect.top);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestIndex = index;
+            }
+        });
+        
+        this.currentIndex = closestIndex;
+    }
+    
     setupStyles() {
-        // 设置body样式
-        document.body.style.overflow = 'hidden';
-        document.body.style.height = '100vh';
+        // 不强制设置body样式，允许正常滚动
+        // document.body.style.overflow = 'hidden';
+        // document.body.style.height = '100vh';
         
         // 设置容器样式
         this.container.style.position = 'relative';

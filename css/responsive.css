@@ -251,13 +251,13 @@
     }
     
     .feature-card h3 {
-        font-size: var(--font-size-base);
-        margin-bottom: var(--space-xs);
+        display: none;
     }
     
     .feature-card p {
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-sm);
         line-height: 1.4;
+        margin-bottom: 0;
     }
     
     /* 介绍卡片 */

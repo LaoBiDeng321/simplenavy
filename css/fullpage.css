@@ -393,6 +393,14 @@
 /* ------------------------------------------
    Intro Section
    ------------------------------------------ */
+.intro-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .intro-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -518,6 +526,48 @@
 .shortcut-desc {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
+}
+
+/* ------------------------------------------
+   Unlock Section (100%进度)
+   ------------------------------------------ */
+.unlock-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.unlock-card {
+    background: var(--color-bg-card);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    width: 100%;
+    transition: all var(--transition-base);
+}
+
+.unlock-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-lg);
+}
+
+.unlock-desc {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.unlock-method {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-md);
+    text-align: center;
 }
 
 /* ------------------------------------------
