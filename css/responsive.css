@@ -160,6 +160,13 @@
         --space-3xl: 2.5rem;
     }
     
+    /* 页脚 */
+    #footer.fp-section {
+        height: auto;
+        min-height: 100vh;
+        padding: var(--space-2xl) 0;
+    }
+    
     /* Hero 区域 */
     .hero-content {
         padding: 0 var(--space-md);
@@ -382,6 +389,13 @@
         display: none;
     }
     
+    /* 页脚 */
+    #footer.fp-section {
+        height: auto;
+        min-height: auto;
+        padding: var(--space-2xl) 0;
+    }
+    
     /* 下载按钮 */
     .download-card {
         padding: var(--space-sm);
@@ -487,6 +501,12 @@
         min-height: 100vh;
         height: auto;
         padding: var(--space-xl) 0;
+    }
+    
+    #footer.fp-section {
+        min-height: auto;
+        height: auto;
+        padding-bottom: var(--space-xl);
     }
     
     .hero-content {

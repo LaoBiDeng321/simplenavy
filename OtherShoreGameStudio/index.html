@@ -38,15 +38,7 @@
             backdrop-filter: blur(var(--blur-md));
             -webkit-backdrop-filter: blur(var(--blur-md));
             border-bottom: 1px solid var(--color-border);
-        }
-        
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             padding: var(--space-md) var(--space-xl);
-            max-width: var(--container-2xl);
-            margin: 0 auto;
         }
         
         .logo {
@@ -65,58 +57,6 @@
         
         .logo-accent {
             color: var(--color-accent);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: var(--space-xl);
-            list-style: none;
-        }
-        
-        .nav-links a {
-            font-size: var(--font-size-sm);
-            font-weight: var(--font-weight-medium);
-            color: var(--color-text-secondary);
-            transition: color var(--transition-fast);
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--color-accent);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-accent);
-            transition: width var(--transition-fast);
-        }
-        
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            padding: var(--space-sm);
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .mobile-menu-btn span {
-            width: 24px;
-            height: 2px;
-            background: var(--color-text-primary);
         }
         
         /* 全屏滚动容器 */
@@ -707,16 +647,14 @@
         
         /* 响应式 */
         @media (max-width: 1023px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: flex;
-            }
-            
             .fp-nav {
                 display: none;
+            }
+            
+            #footer.fp-section {
+                height: auto;
+                min-height: 100vh;
+                padding: var(--space-2xl) 0;
             }
             
             .about-content {
@@ -759,6 +697,12 @@
         }
         
         @media (max-width: 767px) {
+            #footer.fp-section {
+                height: auto;
+                min-height: auto;
+                padding: var(--space-2xl) 0;
+            }
+            
             .hero-title {
                 font-size: 1.75rem;
             }
@@ -770,13 +714,20 @@
             }
             
             .contact-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 500px;
                 margin: 0 auto;
             }
             
             .footer-details {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 479px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
             }
         }
         
@@ -796,25 +747,10 @@
 <body>
     <!-- 导航栏 -->
     <header class="header">
-        <nav class="nav">
-            <a href="../index.html" class="logo">
-                <span class="logo-icon">◈</span>
-                <span>OtherShore<span class="logo-accent">Game</span>Studio</span>
-            </a>
-            <ul class="nav-links">
-                <li><a data-section="0" class="active">首页</a></li>
-                <li><a data-section="1">简介</a></li>
-                <li><a data-section="2">团队</a></li>
-                <li><a data-section="3">游戏</a></li>
-                <li><a data-section="4">动态</a></li>
-                <li><a data-section="5">联系</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
+        <a href="../index.html" class="logo">
+            <span class="logo-icon">◈</span>
+            <span>OtherShore<span class="logo-accent">Game</span>Studio</span>
+        </a>
     </header>
 
     <!-- 导航指示器 -->
@@ -1101,7 +1037,6 @@
         // 全屏滚动
         const container = document.getElementById('fullpage');
         const sections = document.querySelectorAll('.fp-section');
-        const navLinks = document.querySelectorAll('.nav-links a');
         const fpNavLinks = document.querySelectorAll('.fp-nav-link');
         
         let currentIndex = 0;
@@ -1132,10 +1067,6 @@
         }
         
         function updateNavigation() {
-            navLinks.forEach((link, index) => {
-                link.classList.toggle('active', index === currentIndex);
-            });
-            
             fpNavLinks.forEach((link, index) => {
                 link.classList.toggle('active', index === currentIndex);
             });
@@ -1224,14 +1155,7 @@
             }
         }, { passive: true });
         
-        // 导航点击
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const index = parseInt(link.dataset.section);
-                goToSection(index);
-            });
-        });
-        
+        // 右侧导航点击
         fpNavLinks.forEach(link => {
             link.addEventListener('click', () => {
                 const index = parseInt(link.dataset.section);
