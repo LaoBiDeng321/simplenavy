@@ -62,13 +62,20 @@ class FullPage {
     }
     
     bindEvents() {
+        // 加载动画期间锁定所有输入
+        const inputLocked = () => document.body.classList.contains('is-loading');
+
         // 鼠标滚轮事件 - 使用window监听
         if (this.options.mousewheel) {
             let wheelTimeout;
             let wheelAccumulator = 0;
             const wheelThreshold = 50;
-            
+
             window.addEventListener('wheel', (e) => {
+                if (inputLocked()) {
+                    e.preventDefault();
+                    return;
+                }
                 if (this.isScrolling) {
                     e.preventDefault();
                     return;
@@ -98,7 +105,7 @@ class FullPage {
         // 键盘事件
         if (this.options.keyboard) {
             window.addEventListener('keydown', (e) => {
-                if (this.isScrolling) return;
+                if (inputLocked() || this.isScrolling) return;
                 
                 switch(e.key) {
                     case 'ArrowDown':
@@ -130,7 +137,7 @@ class FullPage {
             }, { passive: true });
             
             window.addEventListener('touchend', (e) => {
-                if (this.isScrolling) return;
+                if (inputLocked() || this.isScrolling) return;
                 this.touchEndY = e.changedTouches[0].clientY;
                 this.handleSwipe();
             }, { passive: true });
@@ -238,6 +245,9 @@ class FullPage {
     }
     
     animateSection(index) {
+        // 加载动画期间不提前触发入场动画（由 loader:done 统一驱动）
+        if (document.body.classList.contains('is-loading')) return;
+
         const section = this.sections[index];
         const animatedElements = section.querySelectorAll('.animate-on-scroll');
         

@@ -5,18 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple NAVY - 单机海战游戏</title>
     <link rel="icon" type="image/png" href="image/favicon.png">
-    
+
     <!-- 预加载关键资源 -->
     <link rel="preload" href="image/游戏库背景壁纸.png" as="image">
-    
+
     <!-- 样式表 -->
     <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/loader.css">
     <link rel="stylesheet" href="css/fullpage.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- 导航指示器 -->
+    <!-- 启动加载层：最左竖向加载条 0→100 → 遮罩左→右滑场 → 停顿 → 主体渐显 -->
+    <div id="loader" class="loader" role="status" aria-live="polite">
+        <div class="loader-panel">
+            <!-- 最左侧竖向加载条 -->
+            <div class="loader-bar">
+                <div class="loader-bar-fill"></div>
+            </div>
+            <div class="loader-ui">
+                <div class="loader-row">
+                    <span class="loader-brand">SIMPLE<span class="brand-dash">//</span>NAVY</span>
+                    <span class="loader-rec">REC</span>
+                </div>
+                <div class="loader-mid"></div>
+                <div class="loader-foot">
+                    <div class="loader-count"><span id="loaderCount">000</span><span class="loader-pct">%</span></div>
+                    <div class="loader-status-row">
+                        <span class="loader-status"><span data-i18n="loader.status"></span><span class="status-cursor"></span></span>
+                        <span class="loader-ver">VER 25.09.21</span>
+                    </div>
+                    <div class="loader-track">
+                        <div class="loader-track-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 固定顶栏 -->
+    <header class="topbar">
+        <div class="topbar-brand">
+            <span class="brand-mark">SIMPLE<span class="accent">//</span>NAVY</span>
+            <span class="brand-sub" data-i18n="topbar.brandSub"></span>
+        </div>
+        <nav class="topbar-nav" aria-label="快速导航">
+            <a href="#hero" class="tb-link" data-goto="0" data-i18n="nav.home"></a>
+            <a href="#intro" class="tb-link" data-goto="1" data-i18n="nav.intro"></a>
+            <a href="#unlock" class="tb-link" data-goto="2" data-i18n="nav.unlock"></a>
+            <a href="#features" class="tb-link" data-goto="3" data-i18n="nav.features"></a>
+            <a href="#requirements" class="tb-link" data-goto="4" data-i18n="nav.requirements"></a>
+            <a href="#footer" class="tb-link" data-goto="5" data-i18n="nav.footer"></a>
+            <div class="topbar-lang" role="group" aria-label="语言切换">
+                <button type="button" class="lang-btn" data-lang="zh-CN">CN</button>
+                <button type="button" class="lang-btn" data-lang="en-US">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 右侧导航指示器 -->
     <nav class="fp-nav" aria-label="页面导航">
         <ul class="fp-nav-list">
             <li><a href="#hero" class="fp-nav-link active" data-section="0" aria-label="首页"></a></li>
@@ -30,7 +78,7 @@
 
     <!-- 全屏滚动容器 -->
     <div id="fullpage" class="fullpage-container">
-        
+
         <!-- Section 1: Hero -->
         <section class="fp-section" id="hero" data-anchor="hero">
             <div class="fp-bg">
@@ -38,19 +86,21 @@
                 <div class="hero-bg-overlay"></div>
                 <div class="hero-bg-particles"></div>
             </div>
+            <div class="corner-ticks" aria-hidden="true"></div>
             <div class="fp-content">
                 <div class="hero-content">
-                    <h1 class="hero-title animate-on-scroll">
+                    <span class="hero-kicker animate-on-scroll" data-i18n="hero.kicker"></span>
+                    <h1 class="hero-title animate-on-scroll" data-delay="1">
                         <span class="title-line">Simple</span>
-                        <span class="title-line accent">NAVY</span>
+                        <span class="title-line accent">Navy<span class="title-cursor" aria-hidden="true"></span></span>
                     </h1>
-                    <p class="hero-subtitle animate-on-scroll">单机海战游戏</p>
-                    <p class="hero-description animate-on-scroll">真正的单机海战体验，无需联网，永不关服</p>
-                    
-                    <div class="download-section animate-on-scroll">
+                    <p class="hero-subtitle animate-on-scroll" data-delay="2" data-i18n="hero.subtitle"></p>
+                    <p class="hero-description animate-on-scroll" data-delay="3" data-i18n="hero.description"></p>
+
+                    <div class="download-section animate-on-scroll" data-delay="4">
                         <div class="download-podium">
                             <div class="podium-item primary">
-                                <a href="https://www.taptap.cn/app/827792?os=pc" target="_blank" rel="noopener noreferrer" class="download-card taptap">
+                                <a href="https://www.taptap.cn/app/827792?os=pc" target="_blank" rel="noopener noreferrer" class="download-card taptap" aria-label="TapTap">
                                     <img src="image/taptap_logo.svg" alt="TapTap">
                                 </a>
                             </div>
@@ -60,7 +110,7 @@
                                         <div class="download-icon">
                                             <img src="image/QQ.svg" alt="QQ">
                                         </div>
-                                        <span class="download-name">QQ群下载</span>
+                                        <span class="download-name" data-i18n="hero.qq"></span>
                                     </a>
                                 </div>
                                 <div class="podium-item">
@@ -68,7 +118,7 @@
                                         <div class="download-icon">
                                             <img src="image/baiduyuanpan.svg" alt="百度网盘">
                                         </div>
-                                        <span class="download-name">百度网盘</span>
+                                        <span class="download-name" data-i18n="hero.baidu"></span>
                                     </a>
                                 </div>
                             </div>
@@ -76,41 +126,43 @@
                     </div>
                 </div>
             </div>
+            <span class="hero-vertical" aria-hidden="true" data-i18n="hero.vertical"></span>
+            <div class="hero-readout" aria-hidden="true">
+                <span data-i18n="hero.readout1"></span>
+                <span class="readout-accent" data-i18n="hero.readout2"></span>
+            </div>
             <div class="scroll-hint">
-                <span class="scroll-text">向下滚动</span>
-                <div class="scroll-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 5v14M19 12l-7 7-7-7"/>
-                    </svg>
-                </div>
+                <span class="scroll-text" data-i18n="hero.scroll"></span>
+                <div class="scroll-arrow" aria-hidden="true"></div>
             </div>
         </section>
 
         <!-- Section 2: 关于游戏 -->
         <section class="fp-section" id="intro" data-anchor="intro">
             <div class="fp-bg">
-                <div class="section-bg-gradient"></div>
+                <div class="section-bg-grid"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
                     <div class="section-header animate-on-scroll">
-                        <div class="section-icon">
-                            <img src="image/info-circle.svg" alt="">
+                        <span class="section-index">01</span>
+                        <div class="section-titles">
+                            <h2 class="section-title" data-i18n="intro.title"></h2>
+                            <span class="section-tag" data-i18n="intro.tag"></span>
                         </div>
-                        <h2 class="section-title">关于游戏</h2>
                     </div>
-                    
+
                     <div class="intro-content">
-                        <div class="intro-card animate-on-scroll">
+                        <div class="intro-card animate-on-scroll" data-delay="1">
                             <div class="card-body">
-                                <p>Simple NAVY 是一款轻度肝氪的单机海战游戏，由独立开发者倾力打造。开发者体验过众多海战游戏，怀揣着对海战的热爱，决心为玩家带来一款不会因服务器关闭而无法游玩的海战游戏。</p>
-                                <p>本游戏将陆续更新来自人类海军历史或架空设计的不同类型的舰船，以及丰富多样的玩法，为玩家带来原汁原味的海战体验。</p>
+                                <p data-i18n="intro.p1"></p>
+                                <p data-i18n="intro.p2"></p>
                             </div>
                             <div class="warning-box">
                                 <div class="warning-icon">
                                     <img src="image/exclamation-triangle.svg" alt="">
                                 </div>
-                                <span>当前版本存在一些BUG，建议非迫不得已先不要下载试玩，待功能完善后再体验</span>
+                                <span data-i18n="intro.warning"></span>
                             </div>
                         </div>
                     </div>
@@ -121,32 +173,33 @@
         <!-- Section 3: 100%进度模式 -->
         <section class="fp-section" id="unlock" data-anchor="unlock">
             <div class="fp-bg">
-                <div class="section-bg-gradient alt"></div>
+                <div class="section-bg-grid alt"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
                     <div class="section-header animate-on-scroll">
-                        <div class="section-icon">
-                            <img src="image/check.svg" alt="">
+                        <span class="section-index">02</span>
+                        <div class="section-titles">
+                            <h2 class="section-title" data-i18n="unlock.title"></h2>
+                            <span class="section-tag" data-i18n="unlock.tag"></span>
                         </div>
-                        <h2 class="section-title">100%进度模式</h2>
                     </div>
-                    
+
                     <div class="unlock-content">
-                        <div class="unlock-card animate-on-scroll">
+                        <div class="unlock-card animate-on-scroll" data-delay="1">
                             <div class="card-body">
-                                <p class="unlock-desc">本游戏支持100%进度模式，即解锁全部内容！</p>
+                                <p class="unlock-desc" data-i18n="unlock.desc"></p>
                                 <div class="shortcut-box">
-                                    <span class="shortcut-label">快捷键</span>
+                                    <span class="shortcut-label" data-i18n="unlock.shortcut"></span>
                                     <kbd class="shortcut-key">U</kbd>
                                 </div>
-                                <p class="unlock-method">或在主界面左下角菜单 → debug → unlock all asset but not save</p>
+                                <p class="unlock-method" data-i18n="unlock.method"></p>
                             </div>
                             <div class="info-box">
                                 <div class="info-icon">
                                     <img src="image/info-circle.svg" alt="">
                                 </div>
-                                <span>注意：一旦在游戏运行中按下此键，后续获得的资源是不可保存的，除非重启游戏</span>
+                                <span data-i18n="unlock.note"></span>
                             </div>
                         </div>
                     </div>
@@ -157,64 +210,71 @@
         <!-- Section 4: 特色玩法 -->
         <section class="fp-section" id="features" data-anchor="features">
             <div class="fp-bg">
-                <div class="section-bg-gradient alt"></div>
+                <div class="section-bg-grid"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
                     <div class="section-header animate-on-scroll">
-                        <div class="section-icon">
-                            <img src="image/check.svg" alt="">
+                        <span class="section-index">03</span>
+                        <div class="section-titles">
+                            <h2 class="section-title" data-i18n="features.title"></h2>
+                            <span class="section-tag" data-i18n="features.tag"></span>
                         </div>
-                        <h2 class="section-title">特色玩法</h2>
                     </div>
-                    
+
                     <div class="features-grid">
                         <div class="feature-card animate-on-scroll">
+                            <span class="feature-index">01</span>
                             <div class="feature-icon-wrapper">
                                 <img src="image/people.svg" alt="">
                             </div>
-                            <h3>单机海战</h3>
-                            <p>真正的单机游戏，无需联网即可畅玩</p>
+                            <h3 data-i18n="features.1.title"></h3>
+                            <p data-i18n="features.1.desc"></p>
                         </div>
-                        
-                        <div class="feature-card animate-on-scroll">
+
+                        <div class="feature-card animate-on-scroll" data-delay="1">
+                            <span class="feature-index">02</span>
                             <div class="feature-icon-wrapper">
                                 <img src="image/bell.svg" alt="">
                             </div>
-                            <h3>轻度肝氪</h3>
-                            <p>不肝不氪的轻松玩法，享受纯粹乐趣</p>
+                            <h3 data-i18n="features.2.title"></h3>
+                            <p data-i18n="features.2.desc"></p>
                         </div>
-                        
-                        <div class="feature-card animate-on-scroll">
+
+                        <div class="feature-card animate-on-scroll" data-delay="2">
+                            <span class="feature-index">03</span>
                             <div class="feature-icon-wrapper">
                                 <img src="image/grid.svg" alt="">
                             </div>
-                            <h3>多种舰船</h3>
-                            <p>来自历史或架空设计的各类舰船</p>
+                            <h3 data-i18n="features.3.title"></h3>
+                            <p data-i18n="features.3.desc"></p>
                         </div>
-                        
-                        <div class="feature-card animate-on-scroll">
+
+                        <div class="feature-card animate-on-scroll" data-delay="3">
+                            <span class="feature-index">04</span>
                             <div class="feature-icon-wrapper">
                                 <img src="image/star.svg" alt="">
                             </div>
-                            <h3>丰富玩法</h3>
-                            <p>多样化的游戏玩法，不同海战体验</p>
+                            <h3 data-i18n="features.4.title"></h3>
+                            <p data-i18n="features.4.desc"></p>
                         </div>
-                        
-                        <div class="feature-card animate-on-scroll">
+
+                        <div class="feature-card animate-on-scroll" data-delay="4">
+                            <span class="feature-index">05</span>
                             <div class="feature-icon-wrapper">
                                 <img src="image/gear.svg" alt="">
                             </div>
-                            <h3>深度自定义</h3>
-                            <p>自定义涂装机制，打造专属战舰</p>
+                            <h3 data-i18n="features.5.title"></h3>
+                            <p data-i18n="features.5.desc"></p>
                         </div>
-                        
-                        <div class="feature-card animate-on-scroll">
+
+                        <div class="feature-card animate-on-scroll" data-delay="5">
+                            <span class="feature-index">06</span>
                             <div class="feature-icon-wrapper">
                                 <img src="image/display.svg" alt="">
                             </div>
-                            <h3>武器系统</h3>
-                            <p>轮射、分组、自动化等多种控制</p>
+                            <h3 data-i18n="features.6.title"></h3>
+                            <p data-i18n="features.6.desc"></p>
                         </div>
                     </div>
                 </div>
@@ -224,76 +284,77 @@
         <!-- Section 5: 系统需求 -->
         <section class="fp-section" id="requirements" data-anchor="requirements">
             <div class="fp-bg">
-                <div class="section-bg-gradient"></div>
+                <div class="section-bg-grid alt"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
                     <div class="section-header animate-on-scroll">
-                        <div class="section-icon">
-                            <img src="image/display.svg" alt="">
+                        <span class="section-index">04</span>
+                        <div class="section-titles">
+                            <h2 class="section-title" data-i18n="requirements.title"></h2>
+                            <span class="section-tag" data-i18n="requirements.tag"></span>
                         </div>
-                        <h2 class="section-title">系统需求</h2>
                     </div>
-                    
+
                     <div class="requirements-grid">
                         <div class="requirement-card animate-on-scroll">
-                            <div class="card-badge">最低配置</div>
-                            <h3>Windows 最低配置</h3>
+                            <div class="card-badge" data-i18n="requirements.min.badge"></div>
+                            <h3 data-i18n="requirements.min.title"></h3>
                             <ul class="requirement-list">
                                 <li>
-                                    <span class="req-label">操作系统</span>
-                                    <span class="req-value">Windows 10（64 位）</span>
+                                    <span class="req-label" data-i18n="req.os"></span>
+                                    <span class="req-value" data-i18n="req.min.os"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">处理器</span>
-                                    <span class="req-value">AMD Ryzen 5 5600G</span>
+                                    <span class="req-label" data-i18n="req.cpu"></span>
+                                    <span class="req-value" data-i18n="req.min.cpu"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">内存</span>
-                                    <span class="req-value">8 GB</span>
+                                    <span class="req-label" data-i18n="req.ram"></span>
+                                    <span class="req-value" data-i18n="req.min.ram"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">显卡</span>
-                                    <span class="req-value">GTX 1050 Ti</span>
+                                    <span class="req-label" data-i18n="req.gpu"></span>
+                                    <span class="req-value" data-i18n="req.min.gpu"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">存储空间</span>
-                                    <span class="req-value">5 GB</span>
+                                    <span class="req-label" data-i18n="req.disk"></span>
+                                    <span class="req-value" data-i18n="req.min.disk"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">DirectX</span>
-                                    <span class="req-value">版本 11</span>
+                                    <span class="req-label" data-i18n="req.dx"></span>
+                                    <span class="req-value" data-i18n="req.min.dx"></span>
                                 </li>
                             </ul>
                         </div>
-                        
-                        <div class="requirement-card animate-on-scroll recommended">
-                            <div class="card-badge recommended">推荐配置</div>
-                            <h3>Windows 推荐配置</h3>
+
+                        <div class="requirement-card recommended animate-on-scroll" data-delay="1">
+                            <div class="card-badge recommended" data-i18n="requirements.rec.badge"></div>
+                            <h3 data-i18n="requirements.rec.title"></h3>
                             <ul class="requirement-list">
                                 <li>
-                                    <span class="req-label">操作系统</span>
-                                    <span class="req-value">Windows 11（64 位）</span>
+                                    <span class="req-label" data-i18n="req.os"></span>
+                                    <span class="req-value" data-i18n="req.rec.os"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">处理器</span>
-                                    <span class="req-value">AMD Ryzen 9 7945HX</span>
+                                    <span class="req-label" data-i18n="req.cpu"></span>
+                                    <span class="req-value" data-i18n="req.rec.cpu"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">内存</span>
-                                    <span class="req-value">16 GB</span>
+                                    <span class="req-label" data-i18n="req.ram"></span>
+                                    <span class="req-value" data-i18n="req.rec.ram"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">显卡</span>
-                                    <span class="req-value">RTX 4060</span>
+                                    <span class="req-label" data-i18n="req.gpu"></span>
+                                    <span class="req-value" data-i18n="req.rec.gpu"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">存储空间</span>
-                                    <span class="req-value">10 GB</span>
+                                    <span class="req-label" data-i18n="req.disk"></span>
+                                    <span class="req-value" data-i18n="req.rec.disk"></span>
                                 </li>
                                 <li>
-                                    <span class="req-label">DirectX</span>
-                                    <span class="req-value">版本 11</span>
+                                    <span class="req-label" data-i18n="req.dx"></span>
+                                    <span class="req-value" data-i18n="req.rec.dx"></span>
                                 </li>
                             </ul>
                         </div>
@@ -305,70 +366,71 @@
         <!-- Section 6: Footer -->
         <section class="fp-section" id="footer" data-anchor="footer">
             <div class="fp-bg">
-                <div class="section-bg-gradient alt"></div>
+                <div class="section-bg-grid"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
                     <div class="footer-hero">
-                        <h2 class="footer-title animate-on-scroll">感谢支持</h2>
-                        <p class="footer-subtitle animate-on-scroll">感谢每一位玩家的支持与陪伴</p>
-                        <p class="footer-desc animate-on-scroll">Simple NAVY 将持续更新，为玩家带来更多精彩内容</p>
-                        
-                        <div class="footer-social animate-on-scroll">
+                        <h2 class="footer-title animate-on-scroll" data-i18n="footer.title"></h2>
+                        <p class="footer-subtitle animate-on-scroll" data-delay="1" data-i18n="footer.subtitle"></p>
+                        <p class="footer-desc animate-on-scroll" data-delay="2" data-i18n="footer.desc"></p>
+
+                        <div class="footer-social animate-on-scroll" data-delay="3">
                             <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank" rel="noopener noreferrer" class="social-link qq">
                                 <img src="image/QQ.svg" alt="QQ">
-                                <span>加入QQ群</span>
+                                <span data-i18n="footer.qq"></span>
                             </a>
                             <a href="https://www.taptap.cn/app/827792?os=pc" target="_blank" rel="noopener noreferrer" class="social-link taptap">
                                 <img src="image/taptap_logo.svg" alt="TapTap">
                             </a>
                         </div>
                     </div>
-                    
+
                     <footer class="main-footer">
+                        <div class="hazard-stripe" aria-hidden="true"></div>
                         <div class="footer-content">
                             <div class="footer-brand">
-                                <h2><span class="title-line">Simple</span> <span class="title-line accent">NAVY</span></h2>
-                                <p>单机海战游戏</p>
+                                <h2>Simple<span class="accent">//</span>Navy</h2>
+                                <p data-i18n="footer.brandSub"></p>
                             </div>
-                            
+
                             <div class="footer-info">
                                 <div class="info-group">
-                                    <span class="info-label">开发</span>
-                                    <a href="OtherShoreGameStudio/index.html" class="info-value">彼岸游戏工作室</a>
+                                    <span class="info-label" data-i18n="footer.dev.label"></span>
+                                    <a href="OtherShoreGameStudio/index.html" class="info-value" data-i18n="footer.dev.value"></a>
                                 </div>
                                 <div class="info-group">
-                                    <span class="info-label">供应商</span>
-                                    <span class="info-value">luoshaoqing</span>
+                                    <span class="info-label" data-i18n="footer.vendor.label"></span>
+                                    <span class="info-value" data-i18n="footer.vendor.value"></span>
                                 </div>
                                 <div class="info-group">
-                                    <span class="info-label">官方 QQ 群</span>
+                                    <span class="info-label" data-i18n="footer.qqgroup.label"></span>
                                     <a href="https://qm.qq.com/q/AobviP1qJc" class="info-value">586424072</a>
                                 </div>
                                 <div class="info-group">
-                                    <span class="info-label">支持语言</span>
-                                    <span class="info-value">zh-CN, en-US</span>
+                                    <span class="info-label" data-i18n="footer.lang.label"></span>
+                                    <span class="info-value" data-i18n="footer.lang.value"></span>
                                 </div>
                                 <div class="info-group">
-                                    <span class="info-label">适龄分级</span>
-                                    <span class="info-value">12周岁+</span>
+                                    <span class="info-label" data-i18n="footer.rating.label"></span>
+                                    <span class="info-value" data-i18n="footer.rating.value"></span>
                                 </div>
                                 <div class="info-group">
-                                    <span class="info-label">版本号</span>
-                                    <span class="info-value">25.09.21</span>
+                                    <span class="info-label" data-i18n="footer.version.label"></span>
+                                    <span class="info-value" data-i18n="footer.version.value"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="footer-links">
                                 <a href="https://www.taptap.cn/app/827792?os=pc" target="_blank" rel="noopener noreferrer" class="taptap-link">
                                     <img src="image/taptap_logo.svg" alt="TapTap">
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="footer-bottom">
-                            <p>&copy; 2026 Simple NAVY.</p>
-                            <p>网页开发与游戏开发非同一人 | 相关信息仅供参考</p>
+                            <p data-i18n="footer.copy"></p>
+                            <p data-i18n="footer.note"></p>
                         </div>
                     </footer>
                 </div>
@@ -376,7 +438,7 @@
         </section>
     </div>
 
-    <!-- 愚人节弹窗 -->
+    <!-- 愚人节弹窗（强制选择：不可点击遮罩关闭） -->
     <div id="aprilFoolsModal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <div class="modal-icon">
@@ -387,16 +449,18 @@
                     <line x1="15" y1="9" x2="15.01" y2="9"/>
                 </svg>
             </div>
-            <h3 class="modal-title">愚人节玩笑</h3>
-            <p class="modal-message">你被愚人节玩笑选中了，是否下载原神</p>
+            <h3 class="modal-title" data-i18n="modal.title"></h3>
+            <p class="modal-message" data-i18n="modal.message"></p>
             <div class="modal-buttons">
-                <button id="aprilFoolsYes" class="modal-btn confirm-btn">是</button>
-                <button id="aprilFoolsNo" class="modal-btn cancel-btn">否</button>
+                <button id="aprilFoolsYes" class="modal-btn" data-i18n="modal.yes"></button>
+                <button id="aprilFoolsNo" class="modal-btn" data-i18n="modal.no"></button>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript（顺序：i18n → 加载动画 → 全屏滚动 → 主逻辑） -->
+    <script src="js/i18n.js"></script>
+    <script src="js/loader.js"></script>
     <script src="js/fullpage.js"></script>
     <script src="js/main.js"></script>
 </body>

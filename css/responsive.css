@@ -1,6 +1,6 @@
 /* ============================================
-   Responsive Styles
-   响应式设计样式
+   Responsive Styles - ENDFIELD Edition
+   响应式设计：覆盖平板 / 移动端断点
    ============================================ */
 
 /* ------------------------------------------
@@ -10,148 +10,132 @@
     .container {
         max-width: var(--container-2xl);
     }
-    
+
     .features-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-2xl);
+        gap: var(--space-xl);
     }
-    
+
     .feature-card {
-        padding: var(--space-3xl);
+        padding: var(--space-2xl);
     }
 }
 
 /* ------------------------------------------
-   平板横屏 (1024px - 1439px)
+   平板 (768px - 1439px)
    ------------------------------------------ */
 @media (max-width: 1439px) {
     .fp-nav {
         right: var(--space-md);
     }
-    
+
+    /* 固定列数 */
     .features-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-lg);
-    }
-    
-    .intro-grid {
-        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
     }
 }
 
-/* ------------------------------------------
-   平板竖屏 (768px - 1023px)
-   ------------------------------------------ */
 @media (max-width: 1023px) {
     :root {
         --space-3xl: 3rem;
         --space-4xl: 4rem;
     }
-    
-    /* 导航指示器调整 */
+
+    /* 顶栏：隐藏中间快速导航，保留品牌 + 语言 */
+    .topbar-nav .tb-link {
+        display: none;
+    }
+
+    .topbar {
+        padding: 0 var(--space-lg);
+    }
+
+    /* 右侧指示器隐藏 */
     .fp-nav {
         display: none;
     }
-    
-    /* Hero 区域 */
+
+    /* Hero */
     .hero-title {
-        font-size: clamp(2.5rem, 8vw, 4rem);
+        font-size: clamp(2.5rem, 9vw, 4.5rem);
     }
-    
-    .podium-item.primary {
-        transform: scale(1);
+
+    .hero-vertical {
+        display: none;
     }
-    
+
     .podium-secondary {
         flex-direction: column;
         width: 100%;
         max-width: 300px;
     }
-    
+
+    .podium-secondary .podium-item {
+        min-width: 0;
+    }
+
     .download-card {
         width: 100%;
-        justify-content: center;
     }
-    
-    /* 特性网格 */
+
+    /* 特性网格：固定 2 列 */
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-lg);
+        gap: var(--space-md);
     }
-    
+
     .feature-card {
-        padding: var(--space-xl);
+        padding: var(--space-lg);
     }
-    
-    /* 介绍区域 */
-    .intro-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    /* 需求区域 - 平板优化 */
+
+    /* 需求卡片 */
     .requirements-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--space-md);
     }
-    
+
     .requirement-card {
         padding: var(--space-lg);
     }
-    
+
     .requirement-card h3 {
         font-size: var(--font-size-base);
         margin-bottom: var(--space-md);
     }
-    
+
     .requirement-list {
         gap: var(--space-sm);
     }
-    
+
     .requirement-list li {
         padding-bottom: var(--space-sm);
     }
-    
+
     .req-label,
     .req-value {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-xs);
     }
-    
+
     .card-badge {
         font-size: 10px;
-        padding: 2px 8px;
+        padding: 4px 10px;
     }
-    
-    /* Footer - 保持多列布局 */
+
+    /* Footer */
     .footer-content {
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: 1fr;
         gap: var(--space-xl);
     }
-    
+
     .footer-info {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--space-sm) var(--space-md);
     }
-    
-    .info-group {
-        flex-direction: column;
-        gap: var(--space-xs);
-    }
-    
-    .info-label {
-        font-size: 10px;
-    }
-    
-    .info-value {
-        font-size: var(--font-size-xs);
-    }
-    
-    .footer-links {
-        justify-content: center;
-    }
 }
 
 /* ------------------------------------------
-   手机横屏 (480px - 767px)
+   移动端 (<= 768px)
    ------------------------------------------ */
 @media (max-width: 767px) {
     :root {
@@ -159,335 +143,249 @@
         --space-2xl: 2rem;
         --space-3xl: 2.5rem;
     }
-    
-    /* section保持全屏高度 */
+
     .fp-section {
         height: 100vh;
-        min-height: 600px;
-        padding: 0;
+        min-height: 640px;
     }
-    
-    /* 页脚 */
-    #footer.fp-section {
-        min-height: auto;
-        padding: var(--space-2xl) 0;
-    }
-    
-    /* Hero 区域 */
-    .hero-content {
+
+    /* 顶栏收窄 */
+    .topbar {
+        height: 52px;
         padding: 0 var(--space-md);
     }
-    
+
+    .brand-sub {
+        display: none;
+    }
+
+    /* Hero */
+    .hero-content {
+        padding-left: 0;
+    }
+
     .hero-title {
-        font-size: clamp(2rem, 12vw, 3rem);
+        font-size: clamp(2.2rem, 11vw, 3.2rem);
     }
-    
+
+    .hero-title .title-line.accent {
+        -webkit-text-stroke-width: 1.5px;
+    }
+
+    .hero-kicker {
+        letter-spacing: 0.14em;
+    }
+
     .hero-subtitle {
-        font-size: var(--font-size-base);
+        letter-spacing: 0.2em;
     }
-    
+
     .hero-description {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-xs);
     }
-    
-    .download-section {
-        margin-top: var(--space-xl);
+
+    .hero-readout {
+        display: none;
     }
-    
+
+    .download-podium {
+        width: 100%;
+    }
+
+    .podium-item.primary {
+        max-width: 100%;
+    }
+
     .download-card {
         padding: var(--space-sm) var(--space-md);
+        height: 56px;
     }
-    
+
     .download-icon {
-        width: 36px;
-        height: 36px;
+        width: 22px;
+        height: 22px;
     }
-    
+
     .download-name {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-xs);
     }
-    
+
+    /* 滚动提示避让下载区 */
+    .scroll-hint {
+        display: none;
+    }
+
     /* Section 通用 */
     .fp-content {
-        padding: var(--space-md);
+        padding: var(--space-lg) var(--space-md);
     }
-    
+
     .section-header {
-        margin-bottom: var(--space-xl);
+        margin-bottom: var(--space-lg);
+        gap: var(--space-md);
     }
-    
-    .section-icon {
-        width: 40px;
-        height: 40px;
+
+    .section-index {
+        font-size: 2rem;
     }
-    
-    .section-icon img {
-        width: 24px;
-        height: 24px;
-    }
-    
+
     .section-title {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-xl);
     }
-    
-    /* 特性网格 */
+
+    /* 特性网格：固定 1 列，横向紧凑排布 */
     .features-grid {
         grid-template-columns: 1fr;
         gap: var(--space-sm);
     }
-    
+
     .feature-card {
         padding: var(--space-md);
-        text-align: left;
         display: flex;
         align-items: center;
-        gap: var(--space-sm);
+        gap: var(--space-md);
     }
-    
+
+    .feature-index {
+        display: none;
+    }
+
     .feature-icon-wrapper {
         width: 44px;
         height: 44px;
-        margin: 0;
+        margin-bottom: 0;
         flex-shrink: 0;
     }
-    
+
     .feature-icon-wrapper img {
         width: 22px;
         height: 22px;
     }
-    
+
     .feature-card h3 {
-        display: none;
-    }
-    
-    .feature-card p {
-        font-size: var(--font-size-sm);
-        line-height: 1.4;
-        margin-bottom: 0;
-    }
-    
-    /* 介绍卡片 */
-    .intro-grid {
-        gap: var(--space-md);
-    }
-    
-    .intro-card {
-        padding: var(--space-md);
-    }
-    
-    .card-header h3 {
         font-size: var(--font-size-base);
-        margin-bottom: var(--space-md);
+        margin-bottom: 2px;
     }
-    
+
+    .feature-card p {
+        font-size: var(--font-size-xs);
+        line-height: 1.45;
+    }
+
+    /* 卡片 */
+    .intro-card,
+    .unlock-card {
+        padding: var(--space-lg);
+    }
+
     .card-body p {
         font-size: var(--font-size-sm);
-        margin-bottom: var(--space-sm);
     }
-    
+
+    .warning-box,
+    .info-box {
+        padding: var(--space-sm);
+        font-size: var(--font-size-xs);
+    }
+
     .shortcut-box {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-sm);
         padding: var(--space-sm);
     }
-    
-    .warning-box,
-    .info-box {
-        padding: var(--space-sm);
-        font-size: var(--font-size-sm);
+
+    /* 需求卡片：固定 1 列 */
+    .requirements-grid {
+        grid-template-columns: 1fr;
     }
-    
-    /* 需求卡片 */
+
     .requirement-card {
-        padding: var(--space-md);
+        padding: var(--space-lg);
     }
-    
+
     .requirement-card h3 {
         font-size: var(--font-size-base);
         margin-bottom: var(--space-md);
-        padding-top: var(--space-lg);
+        padding-top: var(--space-md);
     }
-    
-    .requirement-list {
-        gap: var(--space-xs);
-    }
-    
+
     .requirement-list li {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--space-xs);
+        gap: 2px;
         padding-bottom: var(--space-xs);
     }
-    
-    .req-label,
-    .req-value {
-        font-size: var(--font-size-xs);
+
+    /* Footer */
+    .footer-hero {
+        padding: var(--space-xl) 0;
     }
-    
-    .card-badge {
-        font-size: 10px;
-        padding: 2px 8px;
-        top: var(--space-sm);
-        right: var(--space-sm);
-    }
-    
-    /* Footer - 保持多列布局 */
-    .footer-content {
-        display: flex;
+
+    .footer-social {
         flex-wrap: wrap;
-        justify-content: space-between;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
         gap: var(--space-lg);
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-lg);
+        text-align: left;
     }
-    
-    .footer-brand {
-        flex: 0 0 auto;
-    }
-    
+
     .footer-info {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-xs) var(--space-sm);
-        flex: 1;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
     }
-    
-    .info-group {
+
+    .footer-bottom {
         flex-direction: column;
-        gap: 2px;
+        align-items: flex-start;
     }
-    
-    .info-label {
-        font-size: 9px;
-    }
-    
-    .info-value {
-        font-size: 11px;
-    }
-    
-    .footer-links {
-        flex: 0 0 auto;
-    }
-    
+
     /* 弹窗 */
     .modal-content {
-        padding: var(--space-2xl);
-        margin: var(--space-md);
+        padding: var(--space-xl);
     }
-    
+
     .modal-buttons {
         flex-direction: column;
     }
-    
+
     .modal-btn {
         width: 100%;
     }
+
+    /* 加载界面 */
+    .loader-ui {
+        padding: var(--space-lg) var(--space-lg) var(--space-lg) 32px;
+    }
+
+    .loader-count {
+        font-size: 3rem;
+    }
 }
 
 /* ------------------------------------------
-   手机竖屏 (< 480px)
+   超小屏幕 (< 480px)
    ------------------------------------------ */
 @media (max-width: 479px) {
-    /* section保持全屏高度 */
     .fp-section {
-        height: 100vh;
-        min-height: 500px;
-        padding: 0;
+        min-height: 560px;
     }
-    
-    /* Hero 区域 */
+
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.1rem;
     }
-    
-    .scroll-hint {
-        display: none;
-    }
-    
-    /* 页脚 */
-    #footer.fp-section {
-        min-height: auto;
-        padding: var(--space-2xl) 0;
-    }
-    
-    /* 下载按钮 */
-    .download-card {
-        padding: var(--space-sm);
-    }
-    
-    .download-icon {
-        width: 32px;
-        height: 32px;
-    }
-    
-    /* 特性卡片 */
-    .feature-card {
-        padding: var(--space-md);
-    }
-    
-    .feature-icon-wrapper {
-        width: 48px;
-        height: 48px;
-    }
-    
-    /* Footer - 超小屏幕保持多列 */
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .footer-info {
-        grid-template-columns: repeat(3, 1fr);
-        width: 100%;
-    }
-    
-    .feature-icon-wrapper img {
-        width: 24px;
-        height: 24px;
-    }
-    
-    /* 警告/信息框 */
-    .warning-box,
-    .info-box {
-        flex-direction: column;
+
+    .topbar-nav {
         gap: var(--space-sm);
     }
-    
-    /* 需求列表 */
-    .card-badge {
-        position: static;
-        display: inline-block;
-        margin-bottom: var(--space-sm);
-    }
-    
-    .requirement-card h3 {
-        padding-top: 0;
-    }
 }
 
 /* ------------------------------------------
-   超小屏幕 (< 360px)
-   ------------------------------------------ */
-@media (max-width: 359px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .section-title {
-        font-size: var(--font-size-xl);
-    }
-    
-    .feature-card {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .feature-icon-wrapper {
-        margin: 0 auto;
-    }
-}
-
-/* ------------------------------------------
-   高度适配 (短屏幕)
+   高度适配（短屏幕）
    ------------------------------------------ */
 @media (max-height: 700px) {
     .fp-section {
@@ -495,13 +393,9 @@
         height: auto;
         padding: var(--space-2xl) 0;
     }
-    
+
     .scroll-hint {
         display: none;
-    }
-    
-    .hero-content {
-        padding-top: var(--space-xl);
     }
 }
 
@@ -514,60 +408,32 @@
         height: auto;
         padding: var(--space-xl) 0;
     }
-    
-    #footer.fp-section {
-        min-height: auto;
-        height: auto;
-        padding-bottom: var(--space-xl);
-    }
-    
+
     .hero-content {
         padding-top: 60px;
     }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .download-section {
-        margin-top: var(--space-lg);
-    }
-    
-    .podium-secondary {
-        flex-direction: row;
-    }
-    
+
     .scroll-hint {
         display: none;
     }
-    
+
     .features-grid {
         grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .feature-card {
-        padding: var(--space-md);
     }
 }
 
 /* ------------------------------------------
-   触摸设备优化
+   触摸设备：去除悬停位移
    ------------------------------------------ */
 @media (hover: none) and (pointer: coarse) {
     .card:hover,
     .feature-card:hover,
     .intro-card:hover,
+    .unlock-card:hover,
     .requirement-card:hover,
-    .download-card:hover {
+    .download-card:hover,
+    .social-link:hover {
         transform: none;
-    }
-    
-    .fp-nav-link:hover {
-        transform: none;
-    }
-    
-    .fp-nav-link.active {
-        transform: scale(1.3);
     }
 }
 
@@ -581,35 +447,16 @@
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
     }
-    
+
     .animate-on-scroll {
         opacity: 1;
         transform: none;
     }
-    
-    .scroll-hint {
-        animation: none;
-    }
-}
 
-/* ------------------------------------------
-   打印样式
-   ------------------------------------------ */
-@media print {
-    .fp-nav,
-    .scroll-hint,
-    .download-section {
-        display: none !important;
-    }
-    
-    .fp-section {
-        height: auto;
-        page-break-inside: avoid;
-    }
-    
-    body {
-        background: white;
-        color: black;
+    .topbar {
+        opacity: 1;
+        transform: none;
     }
 }

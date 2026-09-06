@@ -1,10 +1,126 @@
 /* ============================================
-   Components Styles
-   组件样式：弹窗、按钮等
+   Components Styles - ENDFIELD Edition
+   组件样式：顶栏、弹窗、工具类
    ============================================ */
 
 /* ------------------------------------------
-   Modal 弹窗
+   固定顶栏：品牌 + 快速导航 + 语言切换
+   ------------------------------------------ */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    z-index: var(--z-fixed);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: 0 var(--space-xl);
+    background: rgba(16, 17, 16, 0.78);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* 顶栏入场：加载完成后淡入 */
+.topbar {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+
+.topbar.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+.topbar-brand {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    white-space: nowrap;
+}
+
+.brand-mark {
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-lg);
+    letter-spacing: 0.06em;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+}
+
+.brand-mark .accent {
+    color: var(--color-accent);
+}
+
+.brand-sub {
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.topbar-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.tb-link {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tb-link:hover {
+    color: var(--color-text-primary);
+}
+
+.tb-link.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
+/* 语言切换：等权两个按钮 */
+.topbar-lang {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border-strong);
+}
+
+.lang-btn {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.1em;
+    padding: 5px 10px;
+    color: var(--color-text-secondary);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.lang-btn + .lang-btn {
+    border-left: 1px solid var(--color-border-strong);
+}
+
+.lang-btn:hover {
+    color: var(--color-text-primary);
+}
+
+.lang-btn.active {
+    background: var(--color-accent);
+    color: #101110;
+    font-weight: var(--font-weight-bold);
+}
+
+/* ------------------------------------------
+   Modal 弹窗：强制选择（禁止点击外部关闭）
    ------------------------------------------ */
 .modal-overlay {
     position: fixed;
@@ -12,13 +128,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(var(--blur-sm));
+    -webkit-backdrop-filter: blur(var(--blur-sm));
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
+    z-index: var(--z-modal);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -30,37 +146,35 @@
 }
 
 .modal-content {
-    background: var(--color-bg-card);
-    backdrop-filter: blur(var(--blur-lg));
-    -webkit-backdrop-filter: blur(var(--blur-lg));
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--space-3xl);
+    background: var(--color-bg-overlay);
+    border: 1px solid var(--color-border-strong);
+    border-top: 3px solid var(--color-accent);
+    padding: var(--space-2xl);
     text-align: center;
     max-width: 420px;
     width: 90%;
-    transform: scale(0.9) translateY(20px);
+    transform: translateY(16px);
     transition: transform 0.3s ease;
 }
 
 .modal-overlay.show .modal-content {
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
 }
 
 .modal-icon {
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     margin: 0 auto var(--space-lg);
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--color-accent-subtle);
-    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border-strong);
 }
 
 .modal-icon svg {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     color: var(--color-accent);
 }
 
@@ -69,6 +183,7 @@
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
+    letter-spacing: 0.06em;
 }
 
 .modal-message {
@@ -78,6 +193,7 @@
     line-height: var(--line-height-relaxed);
 }
 
+/* 同级按钮等权重：同为描边样式，避免视觉诱导 */
 .modal-buttons {
     display: flex;
     gap: var(--space-md);
@@ -86,36 +202,21 @@
 
 .modal-btn {
     padding: var(--space-sm) var(--space-xl);
-    border-radius: var(--radius-md);
+    font-family: var(--font-family-mono);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
+    letter-spacing: 0.1em;
     cursor: pointer;
-    transition: all var(--transition-base);
-    min-width: 100px;
-}
-
-.confirm-btn {
-    background: var(--color-accent);
-    color: var(--color-bg-primary);
-    border: none;
-}
-
-.confirm-btn:hover {
-    background: var(--color-accent-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.cancel-btn {
+    min-width: 110px;
     background: transparent;
-    color: var(--color-text-secondary);
-    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-strong);
+    transition: border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.cancel-btn:hover {
-    background: var(--color-bg-tertiary);
-    color: var(--color-text-primary);
-    border-color: var(--color-border-hover);
+.modal-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 /* ------------------------------------------
@@ -123,8 +224,8 @@
    ------------------------------------------ */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(26px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .animate-on-scroll.is-visible {
@@ -133,85 +234,58 @@
 }
 
 /* 延迟动画 */
-.animate-on-scroll[data-delay="1"] { transition-delay: 0.1s; }
-.animate-on-scroll[data-delay="2"] { transition-delay: 0.2s; }
-.animate-on-scroll[data-delay="3"] { transition-delay: 0.3s; }
-.animate-on-scroll[data-delay="4"] { transition-delay: 0.4s; }
-.animate-on-scroll[data-delay="5"] { transition-delay: 0.5s; }
-.animate-on-scroll[data-delay="6"] { transition-delay: 0.6s; }
+.animate-on-scroll[data-delay="1"] { transition-delay: 0.08s; }
+.animate-on-scroll[data-delay="2"] { transition-delay: 0.16s; }
+.animate-on-scroll[data-delay="3"] { transition-delay: 0.24s; }
+.animate-on-scroll[data-delay="4"] { transition-delay: 0.32s; }
+.animate-on-scroll[data-delay="5"] { transition-delay: 0.4s; }
+.animate-on-scroll[data-delay="6"] { transition-delay: 0.48s; }
 
 /* ------------------------------------------
-   滚动条样式
+   滚动条样式：轨道透明，滑块墨线，悬停信号黄
    ------------------------------------------ */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--color-bg-secondary);
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-text-muted);
-    border-radius: var(--radius-full);
+    background: var(--color-border-strong);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-text-secondary);
+    background: var(--color-accent);
 }
 
 /* Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-text-muted) var(--color-bg-secondary);
+    scrollbar-color: var(--color-border-strong) transparent;
 }
 
 /* ------------------------------------------
-   选中文字样式
+   选中文字样式：信号黄底 + 墨字
    ------------------------------------------ */
 ::selection {
     background: var(--color-accent);
-    color: var(--color-bg-primary);
+    color: #101110;
 }
 
 ::-moz-selection {
     background: var(--color-accent);
-    color: var(--color-bg-primary);
+    color: #101110;
 }
 
 /* ------------------------------------------
-   焦点样式（无障碍）
+   焦点样式（无障碍）：信号黄焦点环
    ------------------------------------------ */
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-}
-
-/* ------------------------------------------
-   加载状态
-   ------------------------------------------ */
-.loading {
-    position: relative;
-    pointer-events: none;
-}
-
-.loading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin: -10px 0 0 -10px;
-    border: 2px solid var(--color-border);
-    border-top-color: var(--color-accent);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
+    outline-offset: 1px;
 }
 
 /* ------------------------------------------
@@ -228,10 +302,10 @@ button:focus-visible {
     left: 50%;
     transform: translateX(-50%) translateY(-8px);
     padding: var(--space-xs) var(--space-sm);
-    background: var(--color-bg-tertiary);
+    background: var(--color-bg-overlay);
     color: var(--color-text-primary);
     font-size: var(--font-size-xs);
-    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-strong);
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
