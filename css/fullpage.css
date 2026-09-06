@@ -115,22 +115,33 @@
     gap: var(--space-md);
 }
 
+/* 点击热区 40×22px：刻度线由伪元素绘制，热区放大便于点按 */
 .fp-nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 22px;
+    background: transparent;
+}
+
+.fp-nav-link::before {
+    content: '';
     display: block;
     width: 20px;
     height: 3px;
     background: var(--color-border-strong);
     opacity: 0.6;
-    transition: all var(--transition-base);
-    position: relative;
+    transition: width var(--transition-base), background-color var(--transition-base), opacity var(--transition-base);
 }
 
-.fp-nav-link:hover {
-    opacity: 1;
+.fp-nav-link:hover::before {
+    width: 26px;
     background: var(--color-text-secondary);
+    opacity: 1;
 }
 
-.fp-nav-link.active {
+.fp-nav-link.active::before {
     width: 32px;
     background: var(--color-accent);
     opacity: 1;
@@ -163,14 +174,16 @@
         linear-gradient(180deg, rgba(16, 17, 16, 0.6) 0%, transparent 30%, rgba(16, 17, 16, 0.85) 100%);
 }
 
-/* 信号黄环境光晕（极轻，只许更轻不许更响） */
+/* 环境光晕（极轻：信号黄主光 + 信号青海色辅光，只许更轻不许更响） */
 .hero-bg-particles {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse 60% 45% at 18% 62%, rgba(255, 245, 0, 0.06) 0%, transparent 70%);
+    background:
+        radial-gradient(ellipse 60% 45% at 18% 62%, rgba(255, 245, 0, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 78% 24%, rgba(0, 229, 255, 0.05) 0%, transparent 70%);
 }
 
 /* Hero 内容：左对齐，靠近左侧竖排注记 */
@@ -352,7 +365,7 @@
     transform: translateY(-2px);
 }
 
-/* 副按钮：墨色描边，悬停黄框黄字 */
+/* 副按钮：墨色描边；悬停以信号色点亮（QQ→蓝 / 网盘→青，呼应品牌色系） */
 .download-card.qq,
 .download-card.baidu {
     background: rgba(16, 17, 16, 0.55);
@@ -360,12 +373,18 @@
     -webkit-backdrop-filter: blur(var(--blur-sm));
     border: 1px solid var(--color-border-strong);
     color: var(--color-text-primary);
+    transition: color var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
 }
 
-.download-card.qq:hover,
+.download-card.qq:hover {
+    border-color: var(--color-signal-blue);
+    color: var(--color-signal-blue);
+    transform: translateY(-2px);
+}
+
 .download-card.baidu:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    border-color: var(--color-signal-cyan);
+    color: var(--color-signal-cyan);
     transform: translateY(-2px);
 }
 
@@ -501,6 +520,16 @@
     color: var(--color-accent);
 }
 
+/* 分区信号色：黄是主信号，各分区以专属信号色作辅助读数（短杠 + 注记） */
+#intro .section-header::after { background: var(--color-signal-cyan); }
+#intro .section-tag { color: var(--color-signal-cyan); }
+
+#unlock .section-header::after { background: var(--color-signal-green); }
+#unlock .section-tag { color: var(--color-signal-green); }
+
+#requirements .section-header::after { background: var(--color-signal-orange); }
+#requirements .section-tag { color: var(--color-signal-orange); }
+
 /* ------------------------------------------
    Intro Section（关于游戏）
    ------------------------------------------ */
@@ -615,8 +644,8 @@
 .info-icon img {
     width: 100%;
     height: 100%;
-    /* 染成信号黄 */
-    filter: brightness(0) saturate(100%) invert(92%) sepia(63%) saturate(1352%) hue-rotate(357deg) brightness(102%);
+    /* 染成信号青 */
+    filter: brightness(0) saturate(100%) invert(71%) sepia(89%) saturate(2371%) hue-rotate(160deg) brightness(104%) contrast(104%);
 }
 
 /* 快捷键框 */
@@ -739,22 +768,66 @@
     transition: border-color var(--transition-base), transform var(--transition-base), background-color var(--transition-base);
 }
 
+/* 特性卡信号色变量：每卡专属信号色驱动 角标/图标/悬停边框（黄为主，卡色为辅） */
+.feature-card {
+    --fc: var(--color-accent);
+    --fc-subtle: color-mix(in srgb, var(--fc) 8%, transparent);
+    --fc-strong: color-mix(in srgb, var(--fc) 14%, transparent);
+    --fc-dye: brightness(0) saturate(100%) invert(92%) sepia(63%) saturate(1352%) hue-rotate(357deg) brightness(102%);
+}
+
+/* 01-06 依次分配信号色：青 / 绿 / 橙 / 粉 / 紫 / 蓝 */
+.feature-card:nth-child(1) {
+    --fc: var(--color-signal-cyan);
+    --fc-dye: brightness(0) saturate(100%) invert(71%) sepia(89%) saturate(2371%) hue-rotate(160deg) brightness(104%) contrast(104%);
+}
+
+.feature-card:nth-child(2) {
+    --fc: var(--color-signal-green);
+    --fc-dye: brightness(0) saturate(100%) invert(80%) sepia(31%) saturate(635%) hue-rotate(103deg) brightness(102%) contrast(85%);
+}
+
+.feature-card:nth-child(3) {
+    --fc: var(--color-signal-orange);
+    --fc-dye: brightness(0) saturate(100%) invert(66%) sepia(67%) saturate(1352%) hue-rotate(338deg) brightness(104%) contrast(101%);
+}
+
+.feature-card:nth-child(4) {
+    --fc: var(--color-signal-pink);
+    --fc-dye: brightness(0) saturate(100%) invert(52%) sepia(32%) saturate(4457%) hue-rotate(291deg) brightness(95%) contrast(89%);
+}
+
+.feature-card:nth-child(5) {
+    --fc: var(--color-signal-purple);
+    --fc-dye: brightness(0) saturate(100%) invert(68%) sepia(27%) saturate(1483%) hue-rotate(224deg) brightness(103%) contrast(96%);
+}
+
+.feature-card:nth-child(6) {
+    --fc: var(--color-signal-blue);
+    --fc-dye: brightness(0) saturate(100%) invert(53%) sepia(66%) saturate(2162%) hue-rotate(216deg) brightness(101%) contrast(97%);
+}
+
 .feature-card:hover {
-    border-color: var(--color-accent);
+    border-color: var(--fc);
     transform: translateY(-4px);
     background: rgba(24, 26, 24, 0.95);
 }
 
-/* 卡片序号：等宽描边小字 */
+/* 卡片序号：等宽小字，随卡色点亮 */
 .feature-index {
     position: absolute;
     top: var(--space-md);
     right: var(--space-md);
     font-family: var(--font-family-mono);
     font-size: var(--font-size-xs);
-    color: var(--color-text-muted);
+    color: var(--fc);
+    opacity: 0.55;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.1em;
+}
+
+.feature-card:hover .feature-index {
+    opacity: 1;
 }
 
 .feature-icon-wrapper {
@@ -764,21 +837,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-accent-subtle);
+    background: var(--fc-subtle);
     border: 1px solid var(--color-border);
     transition: border-color var(--transition-base), background-color var(--transition-base);
 }
 
 .feature-card:hover .feature-icon-wrapper {
-    border-color: var(--color-accent);
-    background: rgba(255, 245, 0, 0.14);
+    border-color: var(--fc);
+    background: var(--fc-strong);
 }
 
 .feature-icon-wrapper img {
     width: 26px;
     height: 26px;
-    /* 染成信号黄 */
-    filter: brightness(0) saturate(100%) invert(92%) sepia(63%) saturate(1352%) hue-rotate(357deg) brightness(102%);
+    /* 染成卡片专属信号色 */
+    filter: var(--fc-dye);
 }
 
 .feature-card h3 {
@@ -825,6 +898,7 @@
     border-color: var(--color-accent);
 }
 
+/* 默认徽章（最低配置）：钢灰描边字，弱于推荐位 */
 .card-badge {
     position: absolute;
     top: 0;
@@ -836,7 +910,7 @@
     font-family: var(--font-family-mono);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
-    color: var(--color-text-secondary);
+    color: var(--color-signal-steel);
     letter-spacing: 0.14em;
     text-transform: uppercase;
 }
@@ -969,6 +1043,12 @@
     color: var(--color-accent);
 }
 
+/* QQ 社交位：悬停信号蓝（仅边框/文字，logo 保持原色不染色） */
+.social-link.qq:hover {
+    border-color: var(--color-signal-blue);
+    color: var(--color-signal-blue);
+}
+
 .social-link.taptap {
     padding: var(--space-sm);
     min-width: 56px;
@@ -1076,8 +1156,9 @@ a.info-value:hover {
     transition: border-color var(--transition-base);
 }
 
+/* TapTap 悬停边框用官方品牌青（logo 本体不染色） */
 .taptap-link:hover {
-    border-color: var(--color-accent);
+    border-color: #00d9c5;
 }
 
 .taptap-link img {

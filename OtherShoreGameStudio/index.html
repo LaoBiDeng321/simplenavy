@@ -5,870 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彼岸游戏工作室 - Other Shore Game Studio</title>
     <link rel="icon" type="image/png" href="../image/favicon.png">
-    
+
+    <!-- 样式表：设计令牌 → 加载层 → 组件 → 分区 → 响应式 -->
     <link rel="stylesheet" href="../css/design-system.css">
-    <style>
-        /* 基础样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html, body {
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        body {
-            font-family: var(--font-family-base);
-            background-color: var(--color-bg-primary);
-            color: var(--color-text-primary);
-            line-height: var(--line-height-normal);
-        }
-        
-        /* 导航栏 */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: var(--z-fixed);
-            background: var(--color-bg-card);
-            backdrop-filter: blur(var(--blur-md));
-            -webkit-backdrop-filter: blur(var(--blur-md));
-            border-bottom: 1px solid var(--color-border);
-            padding: var(--space-md) var(--space-xl);
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            font-size: var(--font-size-lg);
-            font-weight: var(--font-weight-bold);
-            color: var(--color-text-primary);
-        }
-        
-        .logo-icon {
-            font-size: 1.5rem;
-            color: var(--color-accent);
-        }
-        
-        .logo-accent {
-            color: var(--color-accent);
-        }
-        
-        /* 全屏滚动容器 */
-        .fullpage-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-        
-        .fp-section {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .fp-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        
-        .fp-content {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px var(--space-xl) var(--space-xl);
-        }
-        
-        .container {
-            width: 100%;
-            max-width: var(--container-xl);
-            margin: 0 auto;
-        }
-        
-        /* 背景渐变 */
-        .section-bg-gradient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--color-bg-primary);
-            background-image: 
-                radial-gradient(ellipse at 0% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 100% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
-        }
-        
-        .section-bg-gradient.alt {
-            background-image: 
-                radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 0% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
-        }
-        
-        /* Hero区域 */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--color-bg-primary);
-        }
-        
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
-        }
-        
-        .hero-content {
-            text-align: center;
-        }
-        
-        .hero-title {
-            font-size: clamp(2rem, 6vw, 4rem);
-            font-weight: var(--font-weight-bold);
-            margin-bottom: var(--space-md);
-            white-space: nowrap;
-        }
-        
-        .hero-title .accent {
-            color: var(--color-accent);
-        }
-        
-        .hero-subtitle {
-            font-size: var(--font-size-xl);
-            color: var(--color-text-secondary);
-            margin-bottom: var(--space-2xl);
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: var(--space-md);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-sm) var(--space-xl);
-            font-size: var(--font-size-base);
-            font-weight: var(--font-weight-medium);
-            border-radius: var(--radius-md);
-            transition: all var(--transition-base);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary {
-            background: var(--color-accent);
-            color: var(--color-bg-primary);
-        }
-        
-        .btn-primary:hover {
-            background: var(--color-accent-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .btn-secondary {
-            background: var(--color-bg-card);
-            color: var(--color-text-primary);
-            border: 1px solid var(--color-border);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--color-accent);
-            background: var(--color-accent-subtle);
-        }
-        
-        /* Section通用样式 */
-        .section-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: var(--font-weight-bold);
-            text-align: center;
-            margin-bottom: var(--space-2xl);
-            color: var(--color-text-primary);
-        }
-        
-        /* 关于我们 */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-2xl);
-            align-items: center;
-        }
-        
-        .about-text p {
-            color: var(--color-text-secondary);
-            margin-bottom: var(--space-md);
-            line-height: var(--line-height-relaxed);
-            font-size: var(--font-size-sm);
-        }
-        
-        .about-stats {
-            display: flex;
-            gap: var(--space-xl);
-            margin-top: var(--space-lg);
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            display: block;
-            font-size: var(--font-size-3xl);
-            font-weight: var(--font-weight-bold);
-            color: var(--color-accent);
-        }
-        
-        .stat-label {
-            font-size: var(--font-size-xs);
-            color: var(--color-text-muted);
-        }
-        
-        .about-image {
-            display: flex;
-            justify-content: center;
-        }
-        
-        .image-placeholder {
-            width: 100%;
-            max-width: 300px;
-            aspect-ratio: 4/3;
-            background: var(--color-bg-card);
-            border: 2px dashed var(--color-border);
-            border-radius: var(--radius-xl);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-muted);
-            font-size: var(--font-size-sm);
-        }
-        
-        /* 团队 */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-lg);
-        }
-        
-        .team-card {
-            background: var(--color-bg-card);
-            backdrop-filter: blur(var(--blur-md));
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl);
-            text-align: center;
-            transition: all var(--transition-base);
-        }
-        
-        .team-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--color-accent);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .team-avatar {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto var(--space-md);
-            background: var(--color-accent-subtle);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-accent);
-        }
-        
-        .team-avatar svg {
-            width: 36px;
-            height: 36px;
-        }
-        
-        .team-name {
-            font-size: var(--font-size-base);
-            font-weight: var(--font-weight-semibold);
-            margin-bottom: var(--space-xs);
-        }
-        
-        .team-role {
-            display: block;
-            font-size: var(--font-size-xs);
-            color: var(--color-text-muted);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .team-social {
-            display: flex;
-            gap: var(--space-sm);
-            justify-content: center;
-        }
-        
-        .team-social a {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--color-bg-tertiary);
-            border-radius: var(--radius-md);
-            transition: all var(--transition-fast);
-        }
-        
-        .team-social a:hover {
-            background: var(--color-accent);
-        }
-        
-        .team-social img,
-        .team-social svg {
-            width: 18px;
-            height: 18px;
-        }
-        
-        /* 游戏 */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-xl);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .game-card {
-            display: block;
-            background: var(--color-bg-card);
-            backdrop-filter: blur(var(--blur-md));
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            transition: all var(--transition-base);
-        }
-        
-        .game-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--color-accent);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .game-cover {
-            height: 160px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .game-status {
-            position: absolute;
-            top: var(--space-sm);
-            right: var(--space-sm);
-            padding: var(--space-xs) var(--space-sm);
-            background: var(--color-accent);
-            color: var(--color-bg-primary);
-            font-size: var(--font-size-xs);
-            font-weight: var(--font-weight-semibold);
-            border-radius: var(--radius-full);
-        }
-        
-        .game-info {
-            padding: var(--space-lg);
-        }
-        
-        .game-title {
-            font-size: var(--font-size-lg);
-            font-weight: var(--font-weight-semibold);
-            margin-bottom: var(--space-xs);
-        }
-        
-        .game-desc {
-            font-size: var(--font-size-sm);
-            color: var(--color-text-secondary);
-            line-height: var(--line-height-relaxed);
-        }
-        
-        .games-notice {
-            text-align: center;
-            margin-top: var(--space-xl);
-            padding: var(--space-md);
-            background: var(--color-bg-card);
-            border: 1px dashed var(--color-border);
-            border-radius: var(--radius-lg);
-            color: var(--color-text-muted);
-            font-size: var(--font-size-sm);
-        }
-        
-        /* 新闻 */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-lg);
-        }
-        
-        .news-card {
-            background: var(--color-bg-card);
-            backdrop-filter: blur(var(--blur-md));
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-xl);
-            padding: var(--space-lg);
-            display: flex;
-            gap: var(--space-md);
-            transition: all var(--transition-base);
-        }
-        
-        .news-card:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-4px);
-        }
-        
-        .news-date {
-            flex-shrink: 0;
-            text-align: center;
-        }
-        
-        .year-format {
-            font-size: var(--font-size-xl);
-            font-weight: var(--font-weight-bold);
-            color: var(--color-accent);
-        }
-        
-        .year-format i {
-            font-style: normal;
-            opacity: 0.6;
-        }
-        
-        .news-content h3 {
-            font-size: var(--font-size-base);
-            font-weight: var(--font-weight-semibold);
-            margin-bottom: var(--space-xs);
-        }
-        
-        .news-content p {
-            font-size: var(--font-size-xs);
-            color: var(--color-text-secondary);
-        }
-        
-        /* 联系 */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-md);
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-md);
-            background: var(--color-bg-card);
-            backdrop-filter: blur(var(--blur-md));
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            transition: all var(--transition-base);
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .contact-item:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-4px);
-        }
-        
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--color-accent-subtle);
-            border-radius: var(--radius-md);
-            flex-shrink: 0;
-        }
-        
-        .contact-icon img,
-        .contact-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-        
-        .contact-details h3 {
-            font-size: var(--font-size-xs);
-            font-weight: var(--font-weight-semibold);
-        }
-        
-        /* Footer Section */
-        #footer.fp-section {
-            align-items: flex-start;
-            height: auto;
-            min-height: 100vh;
-        }
-        
-        #footer .fp-content {
-            align-items: center;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding: 40px var(--space-md);
-            height: auto;
-        }
-        
-        #footer .container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-xl);
-        }
-        
-        .contact-section {
-            width: 100%;
-        }
-        
-        .footer {
-            width: 100%;
-            text-align: center;
-            padding: var(--space-lg) 0;
-        }
-        
-        .footer-brand {
-            margin-bottom: var(--space-md);
-        }
-        
-        .footer-brand h1 {
-            font-size: var(--font-size-xl);
-            font-weight: var(--font-weight-bold);
-            color: var(--color-text-primary);
-            margin-bottom: var(--space-xs);
-        }
-        
-        .footer-brand p {
-            font-size: var(--font-size-sm);
-            color: var(--color-text-muted);
-        }
-        
-        .footer-info {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-md);
-            flex-wrap: wrap;
-        }
-        
-        .footer-info a {
-            font-size: var(--font-size-sm);
-            color: var(--color-text-secondary);
-            transition: color var(--transition-fast);
-        }
-        
-        .footer-info a:hover {
-            color: var(--color-accent);
-        }
-        
-        .footer-divider {
-            width: 60px;
-            height: 1px;
-            background: var(--color-border);
-            margin: var(--space-md) auto;
-        }
-        
-        .footer-copyright {
-            font-size: var(--font-size-xs);
-            color: var(--color-text-muted);
-        }
-        
-        /* 导航指示器 */
-        .fp-nav {
-            position: fixed;
-            right: var(--space-xl);
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: var(--z-fixed);
-        }
-        
-        .fp-nav-list {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-            list-style: none;
-        }
-        
-        .fp-nav-link {
-            display: block;
-            width: 10px;
-            height: 10px;
-            border-radius: var(--radius-full);
-            background: var(--color-text-muted);
-            opacity: 0.4;
-            transition: all var(--transition-base);
-            cursor: pointer;
-        }
-        
-        .fp-nav-link:hover {
-            opacity: 0.8;
-            transform: scale(1.2);
-        }
-        
-        .fp-nav-link.active {
-            background: var(--color-accent);
-            opacity: 1;
-            transform: scale(1.3);
-        }
-        
-        /* 响应式 */
-        @media (max-width: 1023px) {
-            .fp-nav {
-                display: none;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
-            }
-            
-            .about-image {
-                display: none;
-            }
-            
-            .team-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: var(--space-md);
-            }
-            
-            .team-card {
-                padding: var(--space-md);
-            }
-            
-            .news-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-md);
-            }
-            
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: var(--space-md);
-                text-align: center;
-            }
-            
-            .footer-details {
-                grid-template-columns: repeat(3, 1fr);
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .hero-title {
-                font-size: 1.75rem;
-            }
-            
-            .team-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: var(--space-sm);
-            }
-            
-            .team-card {
-                padding: var(--space-sm);
-            }
-            
-            .team-avatar {
-                width: 40px;
-                height: 40px;
-                margin-bottom: var(--space-xs);
-            }
-            
-            .team-avatar svg {
-                width: 24px;
-                height: 24px;
-            }
-            
-            .team-name {
-                font-size: var(--font-size-xs);
-                margin-bottom: 2px;
-            }
-            
-            .team-role {
-                font-size: 10px;
-                margin-bottom: var(--space-xs);
-            }
-            
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 500px;
-                margin: 0 auto;
-            }
-            
-            .footer-details {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 479px) {
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: none;
-            }
-            
-            .team-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-            
-            .team-card {
-                padding: 8px;
-            }
-            
-            .team-avatar {
-                width: 32px;
-                height: 32px;
-            }
-            
-            .team-avatar svg {
-                width: 20px;
-                height: 20px;
-            }
-            
-            .team-name {
-                font-size: 10px;
-            }
-            
-            .team-role {
-                font-size: 9px;
-            }
-            
-            .team-social {
-                gap: 4px;
-            }
-            
-            .team-social a {
-                width: 20px;
-                height: 20px;
-            }
-            
-            .team-social img,
-            .team-social svg {
-                width: 12px;
-                height: 12px;
-            }
-        }
-        
-        /* 短屏幕 - 隐藏顶部导航 */
-        @media (max-height: 700px) {
-            .header {
-                display: none;
-            }
-        }
-        
-        /* 动画 */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="css/oss-loader.css">
+    <link rel="stylesheet" href="css/oss-components.css">
+    <link rel="stylesheet" href="css/oss-sections.css">
+    <link rel="stylesheet" href="css/oss-responsive.css">
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- 启动加载层：底部通栏进度条 0→100 → 遮罩自底向上滑场 → 停顿 → 主体渐显 -->
+    <div id="loader" class="oss-loader" role="status" aria-live="polite">
+        <div class="oss-loader-panel">
+            <div class="oss-loader-ui">
+                <div class="oss-loader-row">
+                    <span class="oss-loader-brand">OTHERSHORE<span class="brand-dash">//</span>GAMESTUDIO</span>
+                    <span class="oss-loader-rec">REC</span>
+                </div>
+                <div class="oss-loader-mid">
+                    <!-- 中部品牌大字标（Game 部分强调色，与顶栏 logo 呼应） -->
+                    <div class="oss-loader-name" aria-hidden="true">OtherShore<span class="name-accent">Game</span>Studio</div>
+                </div>
+                <div class="oss-loader-foot">
+                    <div class="oss-loader-count"><span id="ossLoaderCount">000</span><span class="oss-loader-pct">%</span></div>
+                    <div class="oss-loader-status-row">
+                        <span class="oss-loader-status"><span data-i18n="oss.loader.status"></span><span class="status-cursor"></span></span>
+                        <span class="oss-loader-ver">VER 26.09.06</span>
+                    </div>
+                    <!-- 底部通栏横向进度条 -->
+                    <div class="oss-loader-track">
+                        <div class="oss-loader-track-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 固定顶栏：品牌 + 语言切换 -->
     <header class="header">
-        <a href="../index.html" class="logo">
-            <span class="logo-icon">◈</span>
+        <a href="../index.html" class="logo" data-i18n-aria="oss.nav.home" aria-label="返回首页">
+            <span class="logo-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l10 10-10 10L2 12z"/>
+                </svg>
+            </span>
             <span>OtherShore<span class="logo-accent">Game</span>Studio</span>
         </a>
+        <div class="topbar-lang" role="group" aria-label="语言切换">
+            <button type="button" class="lang-btn" data-lang="zh-CN">CN</button>
+            <button type="button" class="lang-btn" data-lang="en-US">EN</button>
+        </div>
     </header>
 
-    <!-- 导航指示器 -->
-    <nav class="fp-nav">
+    <!-- 右侧导航指示器 -->
+    <nav class="fp-nav" aria-label="页面导航">
         <ul class="fp-nav-list">
-            <li><span class="fp-nav-link active" data-section="0"></span></li>
-            <li><span class="fp-nav-link" data-section="1"></span></li>
-            <li><span class="fp-nav-link" data-section="2"></span></li>
-            <li><span class="fp-nav-link" data-section="3"></span></li>
-            <li><span class="fp-nav-link" data-section="4"></span></li>
-            <li><span class="fp-nav-link" data-section="5"></span></li>
+            <li><span class="fp-nav-link active" data-section="0" aria-label="首页"></span></li>
+            <li><span class="fp-nav-link" data-section="1" aria-label="工作室简介"></span></li>
+            <li><span class="fp-nav-link" data-section="2" aria-label="核心团队"></span></li>
+            <li><span class="fp-nav-link" data-section="3" aria-label="游戏作品"></span></li>
+            <li><span class="fp-nav-link" data-section="4" aria-label="新闻动态"></span></li>
+            <li><span class="fp-nav-link" data-section="5" aria-label="联系我们"></span></li>
         </ul>
     </nav>
 
     <!-- 全屏滚动容器 -->
     <div class="fullpage-container" id="fullpage">
+
         <!-- Section 1: Hero -->
         <section class="fp-section" data-anchor="home">
             <div class="fp-bg">
                 <div class="hero-bg"></div>
             </div>
+            <div class="corner-ticks" aria-hidden="true"></div>
             <div class="fp-content">
                 <div class="hero-content">
+                    <span class="hero-kicker animate-on-scroll" data-i18n="oss.hero.kicker"></span>
                     <h1 class="hero-title animate-on-scroll">OtherShore<span class="accent">Game</span>Studio</h1>
-                    <p class="hero-subtitle animate-on-scroll">彼岸游戏工作室</p>
+                    <p class="hero-subtitle animate-on-scroll" data-i18n="oss.hero.subtitle"></p>
                     <div class="hero-cta animate-on-scroll">
-                        <button class="btn btn-primary" onclick="goToSection(3)">查看作品</button>
-                        <button class="btn btn-secondary" onclick="goToSection(1)">了解更多</button>
+                        <button type="button" class="btn btn-primary" onclick="goToSection(3)" data-i18n="oss.hero.cta.works"></button>
+                        <button type="button" class="btn btn-secondary" onclick="goToSection(1)" data-i18n="oss.hero.cta.about"></button>
                     </div>
                 </div>
+            </div>
+            <div class="hero-readout" aria-hidden="true" data-i18n="oss.hero.readout"></div>
+            <!-- 滚动提示：细线 + 光点下坠 -->
+            <div class="scroll-hint" aria-hidden="true">
+                <span class="scroll-text" data-i18n="oss.hero.scroll"></span>
+                <div class="scroll-arrow"></div>
             </div>
         </section>
 
         <!-- Section 2: 简介 -->
         <section class="fp-section" data-anchor="about">
             <div class="fp-bg">
-                <div class="section-bg-gradient"></div>
+                <div class="section-bg-grid"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
-                    <h2 class="section-title animate-on-scroll">工作室简介</h2>
+                    <div class="section-header animate-on-scroll">
+                        <span class="section-index">01</span>
+                        <div class="section-titles">
+                            <h2 class="section-title" data-i18n="oss.about.title"></h2>
+                            <span class="section-tag" data-i18n="oss.about.tag"></span>
+                        </div>
+                    </div>
+
                     <div class="about-content">
                         <div class="about-text animate-on-scroll">
-                            <p>OtherShoreGameStudio（彼岸游戏工作室）是一个专注于独立游戏开发的工作室。我们致力于打造优质的单机游戏体验，让玩家无需担心服务器关闭而无法游玩。</p>
-                            <p>我们的团队虽然规模不大，但充满热情与创意。我们相信，好的游戏应该经得起时间的考验。</p>
+                            <p data-i18n="oss.about.p1"></p>
+                            <p data-i18n="oss.about.p2"></p>
                             <div class="about-stats">
                                 <div class="stat-item">
                                     <span class="stat-number">1</span>
-                                    <span class="stat-label">款在研游戏</span>
+                                    <span class="stat-label" data-i18n="oss.about.stat1"></span>
                                 </div>
                                 <div class="stat-item">
                                     <span class="stat-number">2</span>
-                                    <span class="stat-label">位核心成员</span>
+                                    <span class="stat-label" data-i18n="oss.about.stat2"></span>
                                 </div>
                                 <div class="stat-item">
                                     <span class="stat-number">∞</span>
-                                    <span class="stat-label">创意可能</span>
+                                    <span class="stat-label" data-i18n="oss.about.stat3"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="about-image animate-on-scroll">
                             <div class="image-placeholder">
-                                <span>工作室 Logo 区域</span>
+                                <span data-i18n="oss.about.logo.placeholder"></span>
                             </div>
                         </div>
                     </div>
@@ -879,57 +144,66 @@
         <!-- Section 3: 团队 -->
         <section class="fp-section" data-anchor="team">
             <div class="fp-bg">
-                <div class="section-bg-gradient alt"></div>
+                <div class="section-bg-grid alt"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
-                    <h2 class="section-title animate-on-scroll">核心团队</h2>
+                    <div class="section-header animate-on-scroll">
+                        <span class="section-index">02</span>
+                        <div class="section-titles">
+                            <h2 class="section-title" data-i18n="oss.team.title"></h2>
+                            <span class="section-tag" data-i18n="oss.team.tag"></span>
+                        </div>
+                    </div>
+
                     <div class="team-grid">
                         <div class="team-card animate-on-scroll">
-                            <div class="team-avatar">
+                            <div class="team-avatar" aria-hidden="true">
                                 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="50" cy="35" r="20"/>
                                     <path d="M15 90c0-19.33 15.67-35 35-35s35 15.67 35 35"/>
                                 </svg>
                             </div>
                             <h3 class="team-name">SuperQ_Louis</h3>
-                            <span class="team-role">总负责人</span>
+                            <span class="team-role" data-i18n="oss.team.role1"></span>
                             <div class="team-social">
-                                <a href="https://space.bilibili.com/3493093733042776" target="_blank" rel="noopener">
+                                <a href="https://space.bilibili.com/3493093733042776" target="_blank" rel="noopener" aria-label="Bilibili">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </a>
                             </div>
                         </div>
+
                         <div class="team-card animate-on-scroll">
-                            <div class="team-avatar">
+                            <div class="team-avatar" aria-hidden="true">
                                 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="50" cy="35" r="20"/>
                                     <path d="M15 90c0-19.33 15.67-35 35-35s35 15.67 35 35"/>
                                 </svg>
                             </div>
                             <h3 class="team-name">xy_black_cross</h3>
-                            <span class="team-role">开发负责人</span>
+                            <span class="team-role" data-i18n="oss.team.role2"></span>
                             <div class="team-social">
-                                <a href="https://space.bilibili.com/3546814473046169" target="_blank" rel="noopener">
+                                <a href="https://space.bilibili.com/3546814473046169" target="_blank" rel="noopener" aria-label="Bilibili">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </a>
                             </div>
                         </div>
+
                         <div class="team-card animate-on-scroll">
-                            <div class="team-avatar">
+                            <div class="team-avatar" aria-hidden="true">
                                 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="50" cy="35" r="20"/>
                                     <path d="M15 90c0-19.33 15.67-35 35-35s35 15.67 35 35"/>
                                 </svg>
                             </div>
-                            <h3 class="team-name">请设置群昵称</h3>
-                            <span class="team-role">网页开发</span>
+                            <h3 class="team-name">LaoBiDeng</h3>
+                            <span class="team-role" data-i18n="oss.team.role3"></span>
                             <div class="team-social">
-                                <a href="https://space.bilibili.com/3546689231128952" target="_blank" rel="noopener">
+                                <a href="https://space.bilibili.com/3546689231128952" target="_blank" rel="noopener" aria-label="Bilibili">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </a>
-                                <a href="https://github.com/LaoBiDeng321" target="_blank" rel="noopener">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                <a href="https://github.com/LaoBiDeng321" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                     </svg>
                                 </a>
@@ -943,24 +217,32 @@
         <!-- Section 4: 游戏 -->
         <section class="fp-section" data-anchor="games">
             <div class="fp-bg">
-                <div class="section-bg-gradient"></div>
+                <div class="section-bg-grid"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
-                    <h2 class="section-title animate-on-scroll">游戏作品</h2>
+                    <div class="section-header animate-on-scroll">
+                        <span class="section-index">03</span>
+                        <div class="section-titles">
+                            <h2 class="section-title" data-i18n="oss.games.title"></h2>
+                            <span class="section-tag" data-i18n="oss.games.tag"></span>
+                        </div>
+                    </div>
+
                     <div class="games-grid">
                         <a href="../index.html" class="game-card animate-on-scroll">
-                            <div class="game-cover" style="background-image: url('image/游戏库背景壁纸.png');">
-                                <span class="game-status">测试中</span>
+                            <div class="game-cover" style="background-image: url('image/游戏库背景壁纸.png');" role="img" aria-label="Simple NAVY">
+                                <span class="game-status" data-i18n="oss.games.status"></span>
                             </div>
                             <div class="game-info">
                                 <h3 class="game-title">Simple NAVY</h3>
-                                <p class="game-desc">一款轻度肝氪的单机海战游戏，100%进度模式，带给你原汁原味的海战体验。</p>
+                                <p class="game-desc" data-i18n="oss.games.desc"></p>
                             </div>
                         </a>
                     </div>
+
                     <div class="games-notice animate-on-scroll">
-                        <p>更多游戏作品即将上线，敬请期待！</p>
+                        <p data-i18n="oss.games.notice"></p>
                     </div>
                 </div>
             </div>
@@ -969,37 +251,46 @@
         <!-- Section 5: 动态 -->
         <section class="fp-section" data-anchor="news">
             <div class="fp-bg">
-                <div class="section-bg-gradient alt"></div>
+                <div class="section-bg-grid alt"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
-                    <h2 class="section-title animate-on-scroll">新闻动态</h2>
+                    <div class="section-header animate-on-scroll">
+                        <span class="section-index">04</span>
+                        <div class="section-titles">
+                            <h2 class="section-title" data-i18n="oss.news.title"></h2>
+                            <span class="section-tag" data-i18n="oss.news.tag"></span>
+                        </div>
+                    </div>
+
                     <div class="news-grid">
                         <article class="news-card animate-on-scroll">
-                            <div class="news-date">
+                            <div class="news-date" aria-hidden="true">
                                 <span class="year-format"><i>20</i>/21</span>
                             </div>
                             <div class="news-content">
-                                <h3>工作室成立</h3>
-                                <p>OtherShoreGameStudio 正式成立</p>
+                                <h3 data-i18n="oss.news.1.title"></h3>
+                                <p data-i18n="oss.news.1.desc"></p>
                             </div>
                         </article>
+
                         <article class="news-card animate-on-scroll">
-                            <div class="news-date">
+                            <div class="news-date" aria-hidden="true">
                                 <span class="year-format"><i>20</i>/24</span>
                             </div>
                             <div class="news-content">
-                                <h3>首个游戏项目启动</h3>
-                                <p>团队正式启动首个游戏项目的开发工作</p>
+                                <h3 data-i18n="oss.news.2.title"></h3>
+                                <p data-i18n="oss.news.2.desc"></p>
                             </div>
                         </article>
+
                         <article class="news-card animate-on-scroll">
-                            <div class="news-date">
+                            <div class="news-date" aria-hidden="true">
                                 <span class="year-format"><i>20</i>/26</span>
                             </div>
                             <div class="news-content">
-                                <h3>官方网站上线</h3>
-                                <p>工作室官方网站正式上线</p>
+                                <h3 data-i18n="oss.news.3.title"></h3>
+                                <p data-i18n="oss.news.3.desc"></p>
                             </div>
                         </article>
                     </div>
@@ -1010,213 +301,92 @@
         <!-- Section 6: 联系与页脚 -->
         <section class="fp-section" id="footer" data-anchor="contact">
             <div class="fp-bg">
-                <div class="section-bg-gradient alt"></div>
+                <div class="section-bg-grid alt"></div>
             </div>
             <div class="fp-content">
                 <div class="container">
-                    <!-- 联系部分 - 居中 -->
+                    <!-- 联系部分 -->
                     <div class="contact-section">
-                        <h2 class="section-title animate-on-scroll">联系我们</h2>
+                        <div class="section-header animate-on-scroll">
+                            <span class="section-index">05</span>
+                            <div class="section-titles">
+                                <h2 class="section-title" data-i18n="oss.contact.title"></h2>
+                                <span class="section-tag" data-i18n="oss.contact.tag"></span>
+                            </div>
+                        </div>
+
                         <div class="contact-grid animate-on-scroll">
-                            <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank" class="contact-item">
+                            <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank" rel="noopener" class="contact-item">
                                 <div class="contact-icon">
                                     <img src="image/qq.svg" alt="QQ">
                                 </div>
                                 <div class="contact-details">
-                                    <h3>QQ交流群</h3>
+                                    <h3 data-i18n="oss.contact.qq"></h3>
                                 </div>
                             </a>
-                            <a href="https://space.bilibili.com/3493093733042776" target="_blank" class="contact-item">
+                            <a href="https://space.bilibili.com/3493093733042776" target="_blank" rel="noopener" class="contact-item">
                                 <div class="contact-icon">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </div>
                                 <div class="contact-details">
-                                    <h3>B站 - 总负责人</h3>
+                                    <h3 data-i18n="oss.contact.bili1"></h3>
                                 </div>
                             </a>
-                            <a href="https://space.bilibili.com/3546814473046169" target="_blank" class="contact-item">
+                            <a href="https://space.bilibili.com/3546814473046169" target="_blank" rel="noopener" class="contact-item">
                                 <div class="contact-icon">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </div>
                                 <div class="contact-details">
-                                    <h3>B站 - 开发负责人</h3>
+                                    <h3 data-i18n="oss.contact.bili2"></h3>
                                 </div>
                             </a>
-                            <a href="https://space.bilibili.com/3546689231128952" target="_blank" class="contact-item">
+                            <a href="https://space.bilibili.com/3546689231128952" target="_blank" rel="noopener" class="contact-item">
                                 <div class="contact-icon">
                                     <img src="image/Bilibili_tv.svg" alt="B站">
                                 </div>
                                 <div class="contact-details">
-                                    <h3>B站 - 网页开发</h3>
+                                    <h3 data-i18n="oss.contact.bili3"></h3>
                                 </div>
                             </a>
-                            <a href="https://github.com/LaoBiDeng321" target="_blank" class="contact-item">
+                            <a href="https://github.com/LaoBiDeng321" target="_blank" rel="noopener" class="contact-item">
                                 <div class="contact-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                                     </svg>
                                 </div>
                                 <div class="contact-details">
-                                    <h3>GitHub - 网页</h3>
+                                    <h3 data-i18n="oss.contact.github"></h3>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- 页脚部分 - 底部 -->
-                    <div class="footer animate-on-scroll">
-                        <div class="footer-brand">
-                            <h1>OtherShore<span class="logo-accent">Game</span>Studio</h1>
-                            <p>彼岸游戏工作室</p>
+
+                    <!-- 页脚部分 -->
+                    <div class="main-footer animate-on-scroll">
+                        <div class="hazard-stripe footer-top-stripe" aria-hidden="true"></div>
+                        <div class="footer">
+                            <div class="footer-brand">
+                                <h1>OtherShore<span class="logo-accent">Game</span>Studio</h1>
+                                <p data-i18n="oss.footer.sub"></p>
+                            </div>
+                            <div class="footer-info">
+                                <a href="../index.html">Simple NAVY</a>
+                                <a href="https://qm.qq.com/q/AobviP1qJc" target="_blank" rel="noopener">QQ: 586424072</a>
+                                <a href="https://space.bilibili.com/3493093733042776" target="_blank" rel="noopener">Bilibili</a>
+                                <a href="https://github.com/LaoBiDeng321" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                            <div class="footer-divider" aria-hidden="true"></div>
+                            <p class="footer-copyright" data-i18n="oss.footer.copy"></p>
                         </div>
-                        <div class="footer-info">
-                            <a href="../index.html">Simple NAVY</a>
-                            <a href="https://qm.qq.com/q/AobviP1qJc">QQ群: 586424072</a>
-                            <a href="https://space.bilibili.com/3493093733042776">B站主页</a>
-                            <a href="https://github.com/LaoBiDeng321">GitHub</a>
-                        </div>
-                        <div class="footer-divider"></div>
-                        <p class="footer-copyright">&copy; 2026 OtherShoreGameStudio. All rights reserved.</p>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <script>
-        // 全屏滚动
-        const container = document.getElementById('fullpage');
-        const sections = document.querySelectorAll('.fp-section');
-        const fpNavLinks = document.querySelectorAll('.fp-nav-link');
-        
-        let currentIndex = 0;
-        let isScrolling = false;
-        let touchStartY = 0;
-        
-        function goToSection(index) {
-            if (isScrolling || index < 0 || index >= sections.length) return;
-            if (index === currentIndex) return;
-            
-            isScrolling = true;
-            currentIndex = index;
-            
-            const offset = index * 100;
-            container.style.transform = `translateY(-${offset}vh)`;
-            
-            // 更新导航
-            updateNavigation();
-            
-            // 触发动画
-            setTimeout(() => {
-                animateSection(index);
-            }, 400);
-            
-            setTimeout(() => {
-                isScrolling = false;
-            }, 800);
-        }
-        
-        function updateNavigation() {
-            fpNavLinks.forEach((link, index) => {
-                link.classList.toggle('active', index === currentIndex);
-            });
-        }
-        
-        function animateSection(index) {
-            const section = sections[index];
-            const animatedElements = section.querySelectorAll('.animate-on-scroll');
-            
-            animatedElements.forEach(el => {
-                el.classList.remove('is-visible');
-            });
-            
-            animatedElements.forEach((el, i) => {
-                setTimeout(() => {
-                    el.classList.add('is-visible');
-                }, i * 100 + 100);
-            });
-        }
-        
-        // 鼠标滚轮
-        let wheelAccumulator = 0;
-        window.addEventListener('wheel', (e) => {
-            if (isScrolling) {
-                e.preventDefault();
-                return;
-            }
-            
-            wheelAccumulator += e.deltaY;
-            
-            if (Math.abs(wheelAccumulator) > 50) {
-                e.preventDefault();
-                
-                if (wheelAccumulator > 0) {
-                    goToSection(currentIndex + 1);
-                } else {
-                    goToSection(currentIndex - 1);
-                }
-                
-                wheelAccumulator = 0;
-            }
-        }, { passive: false });
-        
-        // 键盘
-        window.addEventListener('keydown', (e) => {
-            if (isScrolling) return;
-            
-            switch(e.key) {
-                case 'ArrowDown':
-                case 'PageDown':
-                    e.preventDefault();
-                    goToSection(currentIndex + 1);
-                    break;
-                case 'ArrowUp':
-                case 'PageUp':
-                    e.preventDefault();
-                    goToSection(currentIndex - 1);
-                    break;
-                case 'Home':
-                    e.preventDefault();
-                    goToSection(0);
-                    break;
-                case 'End':
-                    e.preventDefault();
-                    goToSection(sections.length - 1);
-                    break;
-            }
-        });
-        
-        // 触摸
-        window.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        }, { passive: true });
-        
-        window.addEventListener('touchend', (e) => {
-            if (isScrolling) return;
-            
-            const diff = touchStartY - e.changedTouches[0].clientY;
-            
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    goToSection(currentIndex + 1);
-                } else {
-                    goToSection(currentIndex - 1);
-                }
-            }
-        }, { passive: true });
-        
-        // 右侧导航点击
-        fpNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const index = parseInt(link.dataset.section);
-                goToSection(index);
-            });
-        });
-        
-        // 初始动画
-        setTimeout(() => {
-            animateSection(0);
-        }, 300);
-    </script>
+    <!-- JavaScript（顺序：i18n → 加载动画 → 全屏滚动） -->
+    <script src="js/i18n.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/fullpage.js"></script>
 </body>
 </html>

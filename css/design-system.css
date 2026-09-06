@@ -23,23 +23,33 @@
     --color-text-secondary: #898d89;
     --color-text-muted: #5a5d59;
 
-    /* 强调色 - 信号黄（终末地官网谷地黄） */
+    /* 强调色 - 信号黄（终末地官网谷地黄，全局主信号） */
     --color-accent: #fff500;
     --color-accent-rgb: 255, 245, 0;
     --color-accent-deep: #e8e000;
     --color-accent-subtle: rgba(255, 245, 0, 0.08);
+
+    /* 信号色系（终末地官网信号色板：分区/卡片辅助信号，黄仍是主信号） */
+    --color-signal-pink: #df52ac;
+    --color-signal-blue: #5a7efd;
+    --color-signal-red: #fa294b;
+    --color-signal-green: #7addb5;
+    --color-signal-orange: #ff8c42;
+    --color-signal-cyan: #00e5ff;
+    --color-signal-purple: #b287f8;
+    --color-signal-steel: #8e959e;
 
     /* 边线 */
     --color-border: #343633;
     --color-border-strong: #4a4d49;
     --color-border-hover: rgba(255, 245, 0, 0.55);
 
-    /* 语义状态色（不随主题切换） */
-    --color-warning: #ffb700;
-    --color-warning-bg: rgba(217, 130, 43, 0.12);
-    --color-info: #fff500;
-    --color-info-bg: rgba(255, 245, 0, 0.06);
-    --color-success: #4fbf5c;
+    /* 语义状态色（对齐信号色板：警示橙 / 信息青） */
+    --color-warning: var(--color-signal-orange);
+    --color-warning-bg: rgba(255, 140, 66, 0.1);
+    --color-info: var(--color-signal-cyan);
+    --color-info-bg: rgba(0, 229, 255, 0.06);
+    --color-success: var(--color-signal-green);
     --color-error: #ff6b61;
 
     /* 间距系统 */

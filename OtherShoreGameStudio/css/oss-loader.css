@@ -1,0 +1,235 @@
+/* ============================================
+   OtherShoreGameStudio - Loader 启动加载动画
+   序幕（与主站呼应，方向变化）：
+   1. 底部通栏横向进度条自左向右 0 → 100
+   2. 遮罩自底部向上滑出（下缘黄色前缘线上扫全屏）
+   3. 停顿片刻后，主体页面元素渐显
+   ============================================ */
+
+/* ------------------------------------------
+   加载遮罩层
+   ------------------------------------------ */
+.oss-loader {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-loader);
+    pointer-events: all;
+}
+
+/* 滑动面板：加载阶段铺满视口，完成后整体上滑离场 */
+.oss-loader-panel {
+    position: absolute;
+    inset: 0;
+    background: var(--color-bg-primary);
+    will-change: transform;
+    /* 下缘信号线：上滑离场时作为黄色前缘扫过全屏 */
+    border-bottom: 3px solid var(--color-accent);
+}
+
+/* 滑出状态：由 JS 在 100% 后添加（向上离场） */
+.oss-loader.is-wiping .oss-loader-panel {
+    transform: translateY(-102%);
+    transition: transform 780ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* 加载完成后的渐隐收尾 */
+.oss-loader.is-leaving {
+    opacity: 0;
+    transition: opacity 320ms ease;
+}
+
+/* ------------------------------------------
+   底部通栏横向进度条：自左向右 0 → 100
+   ------------------------------------------ */
+.oss-loader-track {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    /* 未填充部分也要可见：信号黄微光槽 + 内缘刻度线（box-shadow 不受 overflow 裁剪） */
+    background: rgba(255, 245, 0, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 245, 0, 0.22);
+    overflow: hidden;
+}
+
+/* 填充条：transform-origin 在左侧，scaleX 由 JS 驱动 */
+.oss-loader-track-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
+}
+
+/* 条上缘的细刻度线（槽内，避免被裁剪） */
+.oss-loader-track::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 245, 0, 0.3);
+}
+
+/* ------------------------------------------
+   加载界面 HUD（等宽字 / 技术注记风）
+   ------------------------------------------ */
+.oss-loader-ui {
+    position: absolute;
+    inset: 0 0 28px 0;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: var(--font-family-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.oss-loader-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+
+.oss-loader-brand {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.oss-loader-brand .brand-dash {
+    color: var(--color-accent);
+}
+
+.oss-loader-rec {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+/* [REC] 红点：录制指示 */
+.oss-loader-rec::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--color-error);
+    animation: blink 1.2s steps(1) infinite;
+}
+
+/* 中部：品牌大字标，居中并与底部数字同轴 */
+.oss-loader-mid {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oss-loader-name {
+    font-size: clamp(2.2rem, 6.5vw, 4.5rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--color-text-primary);
+    text-align: center;
+    /* 品牌名保持驼峰写法（与顶栏 logo 一致），不随 HUD 全大写 */
+    text-transform: none;
+    white-space: nowrap;
+}
+
+.oss-loader-name .name-accent {
+    color: var(--color-accent);
+}
+
+/* 底部：百分比 + 状态行（整体水平居中，与通栏进度条动线呼应） */
+.oss-loader-foot {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.oss-loader-count {
+    font-size: clamp(3.5rem, 9vw, 6rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    color: var(--color-text-primary);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+}
+
+.oss-loader-count .oss-loader-pct {
+    font-size: 0.4em;
+    color: var(--color-accent);
+    margin-left: 0.15em;
+}
+
+/* 状态行：左侧状态文本，右侧版本号 */
+.oss-loader-status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-sm);
+}
+
+.oss-loader-status {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    letter-spacing: 0.14em;
+}
+
+.oss-loader-status .status-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 12px;
+    background: var(--color-accent);
+    vertical-align: -1px;
+    margin-left: 4px;
+    animation: blink 1s steps(1) infinite;
+}
+
+.oss-loader-ver {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+/* ------------------------------------------
+   加载期间锁定页面交互
+   body.is-loading 时由 JS 屏蔽滚动/键盘/触摸输入
+   ------------------------------------------ */
+body.is-loading {
+    overflow: hidden;
+}
+
+/* ------------------------------------------
+   减少动态效果偏好：直接淡出，不上滑
+   ------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+    .oss-loader.is-wiping .oss-loader-panel {
+        transform: none;
+        transition: none;
+    }
+
+    .oss-loader.is-leaving {
+        transition-duration: 120ms;
+    }
+
+    .oss-loader-rec::before,
+    .oss-loader-status .status-cursor {
+        animation: none;
+    }
+}

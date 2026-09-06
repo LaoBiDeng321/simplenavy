@@ -1,0 +1,355 @@
+/* ============================================
+   OtherShoreGameStudio - Components
+   组件样式：顶栏、右侧导航指示器、按钮、页脚、全局点缀
+   依赖 ../css/design-system.css 的设计令牌
+   ============================================ */
+
+/* ------------------------------------------
+   基础锁定：全屏滚动页禁用窗口级滚动
+   ------------------------------------------ */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ------------------------------------------
+   固定顶栏：56px 高透明底 + 高斯模糊
+   ------------------------------------------ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    z-index: var(--z-fixed);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: 0 var(--space-xl);
+    background: rgba(16, 17, 16, 0.78);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* 品牌：SVG 菱形图标 + 字标 */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.logo-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--color-accent);
+}
+
+.logo-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.logo-accent {
+    color: var(--color-accent);
+}
+
+/* 语言切换：CN|EN 等权按钮 */
+.topbar-lang {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border-strong);
+}
+
+.lang-btn {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.1em;
+    padding: 5px 10px;
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.lang-btn + .lang-btn {
+    border-left: 1px solid var(--color-border-strong);
+}
+
+.lang-btn:hover {
+    color: var(--color-text-primary);
+}
+
+.lang-btn.active {
+    background: var(--color-accent);
+    color: #101110;
+    font-weight: var(--font-weight-bold);
+}
+
+/* ------------------------------------------
+   右侧导航指示器：短横线刻度（替换圆点）
+   ------------------------------------------ */
+.fp-nav {
+    position: fixed;
+    right: var(--space-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: var(--z-fixed);
+}
+
+.fp-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    list-style: none;
+}
+
+/* 点击热区 40×22px：刻度线由伪元素绘制，热区放大便于点按 */
+.fp-nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 22px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.fp-nav-link::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: var(--color-border-strong);
+    opacity: 0.6;
+    transition: width var(--transition-base), background-color var(--transition-base), opacity var(--transition-base);
+}
+
+.fp-nav-link:hover::before {
+    width: 26px;
+    background: var(--color-text-secondary);
+    opacity: 1;
+}
+
+.fp-nav-link.active::before {
+    width: 32px;
+    background: var(--color-accent);
+    opacity: 1;
+}
+
+/* ------------------------------------------
+   按钮：工业直角，主按钮切角信号黄
+   ------------------------------------------ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-xl);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
+}
+
+.btn-primary {
+    background: var(--color-accent);
+    color: #101110;
+    border: none;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+
+.btn-primary:hover {
+    background: var(--color-accent-deep);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-strong);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* ------------------------------------------
+   视口四角取景刻线（HUD 质感）
+   ------------------------------------------ */
+.corner-ticks {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.corner-ticks::before,
+.corner-ticks::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--color-border-strong);
+}
+
+.corner-ticks::before {
+    top: 76px;
+    left: 20px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-ticks::after {
+    bottom: 20px;
+    right: 20px;
+    border-left: none;
+    border-top: none;
+}
+
+/* ------------------------------------------
+   黄黑警示条纹（分隔点缀，仅页脚上方）
+   ------------------------------------------ */
+.hazard-stripe {
+    height: 6px;
+    width: 100%;
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--color-accent) 0 12px,
+        var(--color-bg-primary) 12px 24px
+    );
+    opacity: 0.85;
+}
+
+/* ------------------------------------------
+   页脚
+   ------------------------------------------ */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: var(--space-lg) 0;
+}
+
+.footer-brand {
+    margin-bottom: var(--space-md);
+}
+
+.footer-brand h1 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.footer-brand h1 .logo-accent {
+    color: var(--color-accent);
+}
+
+.footer-brand p {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.footer-info a {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.footer-info a:hover {
+    color: var(--color-accent);
+}
+
+.footer-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--color-border);
+    margin: var(--space-md) auto;
+}
+
+.footer-copyright {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------
+   动画状态类
+   ------------------------------------------ */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ------------------------------------------
+   滚动条 / 选中 / 焦点（与主站一致）
+   ------------------------------------------ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+}
+
+::selection {
+    background: var(--color-accent);
+    color: #101110;
+}
+
+::-moz-selection {
+    background: var(--color-accent);
+    color: #101110;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}

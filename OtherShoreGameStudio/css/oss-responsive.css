@@ -1,0 +1,271 @@
+/* ============================================
+   OtherShoreGameStudio - Responsive
+   响应式：平板 / 移动端断点，grid 固定列数 3→2→1
+   ============================================ */
+
+/* ------------------------------------------
+   平板及以下 (≤1023px)
+   ------------------------------------------ */
+@media (max-width: 1023px) {
+    .fp-nav {
+        display: none;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .about-image {
+        display: none;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-md);
+    }
+
+    .team-card {
+        padding: var(--space-md);
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-info {
+        gap: var(--space-md);
+    }
+}
+
+/* ------------------------------------------
+   移动端 (≤767px)
+   ------------------------------------------ */
+@media (max-width: 767px) {
+    .fp-section {
+        height: 100vh;
+        min-height: 640px;
+    }
+
+    /* 加载层品牌大字标：窄屏缩小防溢出 */
+    .oss-loader-name {
+        font-size: clamp(1.4rem, 7.5vw, 2rem);
+    }
+
+    .header {
+        height: 52px;
+        padding: 0 var(--space-md);
+    }
+
+    .fp-content {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 1.75rem;
+        white-space: normal;
+    }
+
+    .hero-kicker {
+        letter-spacing: 0.14em;
+    }
+
+    .hero-kicker::before,
+    .hero-kicker::after {
+        width: 20px;
+    }
+
+    .hero-subtitle {
+        letter-spacing: 0.2em;
+        font-size: var(--font-size-sm);
+    }
+
+    .hero-readout {
+        display: none;
+    }
+
+    /* Section 标题 */
+    .section-header {
+        margin-bottom: var(--space-lg);
+        gap: var(--space-md);
+    }
+
+    .section-index {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: var(--font-size-xl);
+    }
+
+    /* 统计 */
+    .about-stats {
+        gap: var(--space-md);
+    }
+
+    .stat-number {
+        font-size: var(--font-size-2xl);
+    }
+
+    /* 团队：固定 2 列 */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
+    }
+
+    .team-card {
+        padding: var(--space-sm);
+    }
+
+    .team-avatar {
+        width: 40px;
+        height: 40px;
+        margin-bottom: var(--space-xs);
+    }
+
+    .team-avatar svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .team-name {
+        font-size: var(--font-size-xs);
+        margin-bottom: 2px;
+    }
+
+    .team-role {
+        font-size: 10px;
+        margin-bottom: var(--space-xs);
+        letter-spacing: 0.08em;
+    }
+
+    .team-social a {
+        width: 26px;
+        height: 26px;
+    }
+
+    .team-social img,
+    .team-social svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* 联系：固定 2 列 */
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* 页脚 */
+    .footer-info {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}
+
+/* ------------------------------------------
+   超小屏 (≤479px)
+   ------------------------------------------ */
+@media (max-width: 479px) {
+    .fp-section {
+        min-height: 560px;
+    }
+
+    /* 团队：固定 1 列 */
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-card {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        text-align: left;
+        padding: var(--space-md);
+    }
+
+    .team-avatar {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .team-name {
+        margin-bottom: 2px;
+    }
+
+    .team-role {
+        margin-bottom: var(--space-xs);
+    }
+
+    .team-social {
+        justify-content: flex-start;
+    }
+
+    /* 联系：固定 1 列 */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        max-width: none;
+    }
+
+    .news-card {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    .news-date {
+        text-align: left;
+    }
+}
+
+/* ------------------------------------------
+   短屏幕：隐藏顶栏
+   ------------------------------------------ */
+@media (max-height: 700px) {
+    .header {
+        display: none;
+    }
+}
+
+/* ------------------------------------------
+   触摸设备：去除悬停位移
+   ------------------------------------------ */
+@media (hover: none) and (pointer: coarse) {
+    .team-card:hover,
+    .game-card:hover,
+    .news-card:hover,
+    .contact-item:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none;
+    }
+}
+
+/* ------------------------------------------
+   减少动态效果偏好
+   ------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+    }
+
+    .animate-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+
+    .fullpage-container {
+        transition: none;
+    }
+}
