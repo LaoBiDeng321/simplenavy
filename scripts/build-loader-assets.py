@@ -22,14 +22,17 @@ DOCS_OUT = os.path.join(ROOT, "js", "loader-docs.js")
 LOGO_OUT = os.path.join(ROOT, "js", "loader-logo.js")
 FAVICON = os.path.join(ROOT, "image", "favicon.png")
 
-TEXT_EXTS = {
-    ".html", ".htm", ".css", ".js", ".mjs", ".json", ".md", ".markdown",
-    ".txt", ".py", ".yml", ".yaml", ".xml", ".toml", ".ini", ".sh", ".ps1",
-}
-TEXT_NAMES = {"LICENSE", "README", "Makefile", ".gitignore", ".gitattributes"}
+# 只扫「真正的源码与文档」：html / css / js / md / py / LICENSE
+# 排除：json、xml、toml、ini、yml/yaml 这类中间物与配置项；svg 属于矢量图；其余为二进制
+TEXT_EXTS = {".html", ".htm", ".css", ".js", ".mjs", ".md", ".markdown", ".txt", ".py"}
+TEXT_NAMES = {"LICENSE", "README", "Makefile"}
 
 SKIP_DIRS = {".git", "domo_local", "node_modules", ".venv", "venv", "__pycache__", ".idea", ".vscode"}
-SKIP_EXTS = {".svg", ".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".woff", ".woff2", ".ttf", ".zip"}
+SKIP_EXTS = {
+    ".svg", ".json", ".xml", ".toml", ".ini", ".yml", ".yaml",
+    ".gitignore", ".gitattributes", ".lock",
+    ".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".woff", ".woff2", ".ttf", ".zip",
+}
 SKIP_FILES = {os.path.basename(DOCS_OUT), os.path.basename(LOGO_OUT)}
 
 LOGO_COLS = 96
