@@ -19,14 +19,16 @@ Simple NAVY 是一款轻度肝氪的单机海战游戏的非官方展示页面�
 |---|---|
 | [index.html](index.html) | 页面骨架：加载动画、顶栏、整屏容器、6 个 `section`、愚人节弹窗 |
 | [css/design-system.css](css/design-system.css) | 设计令牌：配色、字体、间距、全直角规则、按钮/卡片基础样式——改主题先改这里 |
-| [css/loader.css](css/loader.css) | 进场加载动画的版式 |
+| [css/loader.css](css/loader.css) | 进场加载动画的版式：终端窗外观、扫描线/光带、加载条 |
 | [css/fullpage.css](css/fullpage.css) | 整屏滚动与各屏版式：首屏背景、下载台、特色卡片、配置表、页脚 |
 | [css/components.css](css/components.css) | 通用组件：顶栏（品牌/语言切换/导航链接/提示气泡）、入场动画 `animate-on-scroll`、弹窗 |
 | [css/responsive.css](css/responsive.css) | 断点适配（桌面 → 平板 → 手机） |
 | [js/i18n.js](js/i18n.js) | 中英文案表 + 语言切换，全站文案的唯一来源 |
-| [js/loader.js](js/loader.js) | 启动时序：进度条 0→100 → 遮罩扫场 → 派发 `loader:done` 触发渐显 |
+| [js/loader-docs.js](js/loader-docs.js) | 开屏扫描用的文本清单（34 个文本文件 × 前 320 字符），由 `scripts/build-loader-docs.py` 生成 |
+| [js/loader.js](js/loader.js) | 启动时序：终端窗并行扫描 logo ASCII + 全部文本文件，进度按已扫描字数累计 → 遮罩扫场 → 派发 `loader:done` 触发渐显 |
 | [js/fullpage.js](js/fullpage.js) | 整屏滚动核心：滚轮/键盘/触摸切换、锚点导航、右侧指示点 |
 | [js/main.js](js/main.js) | 主逻辑：i18n 初始化、全屏滚动、入场动画、愚人节弹窗、首屏视差 |
+| [scripts/build-loader-docs.py](scripts/build-loader-docs.py) | 重新生成 `js/loader-docs.js`：改动任何文本文件后运行一次 |
 
 ### 开发者页
 

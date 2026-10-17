@@ -29,7 +29,10 @@
                     <span class="loader-brand">SIMPLE<span class="brand-dash">//</span>NAVY</span>
                     <span class="loader-rec">REC</span>
                 </div>
-                <div class="loader-mid"></div>
+                <div class="loader-mid">
+                    <!-- 扫描窗层：logo / README / LICENSE 依次扫描打印，位置由 JS 随机生成 -->
+                    <div class="loader-scan" id="loaderScan" aria-hidden="true"></div>
+                </div>
                 <div class="loader-foot">
                     <div class="loader-count"><span id="loaderCount">000</span><span class="loader-pct">%</span></div>
                     <div class="loader-status-row">
@@ -458,8 +461,9 @@
         </div>
     </div>
 
-    <!-- JavaScript（顺序：i18n → 加载动画 → 全屏滚动 → 主逻辑） -->
+    <!-- JavaScript（顺序：i18n → 扫描文档清单 → 加载动画 → 全屏滚动 → 主逻辑） -->
     <script src="js/i18n.js"></script>
+    <script src="js/loader-docs.js"></script>
     <script src="js/loader.js"></script>
     <script src="js/fullpage.js"></script>
     <script src="js/main.js"></script>
