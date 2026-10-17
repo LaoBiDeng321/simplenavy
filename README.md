@@ -24,11 +24,12 @@ Simple NAVY 是一款轻度肝氪的单机海战游戏的非官方展示页面�
 | [css/components.css](css/components.css) | 通用组件：顶栏（品牌/语言切换/导航链接/提示气泡）、入场动画 `animate-on-scroll`、弹窗 |
 | [css/responsive.css](css/responsive.css) | 断点适配（桌面 → 平板 → 手机） |
 | [js/i18n.js](js/i18n.js) | 中英文案表 + 语言切换，全站文案的唯一来源 |
-| [js/loader-docs.js](js/loader-docs.js) | 开屏扫描用的文本清单（34 个文本文件 × 前 320 字符），由 `scripts/build-loader-docs.py` 生成 |
-| [js/loader.js](js/loader.js) | 启动时序：终端窗并行扫描 logo ASCII + 全部文本文件，进度按已扫描字数累计 → 遮罩扫场 → 派发 `loader:done` 触发渐显 |
+| [js/loader-docs.js](js/loader-docs.js) | 开屏扫描清单：全部文本文件的路径（不含 svg / 图片），正文由浏览器 `fetch` 完整读取，不截断 |
+| [js/loader-logo.js](js/loader-logo.js) | `image/favicon.png` 的彩色 ASCII 点位图（6 色调色板 + 逐字颜色），保留原图配色 |
+| [js/loader.js](js/loader.js) | 启动时序：每个文本文件各开一个终端窗、全部同时扫描，进度 = 已扫描字数 / 总字数 → 遮罩扫场 → 派发 `loader:done` |
 | [js/fullpage.js](js/fullpage.js) | 整屏滚动核心：滚轮/键盘/触摸切换、锚点导航、右侧指示点 |
 | [js/main.js](js/main.js) | 主逻辑：i18n 初始化、全屏滚动、入场动画、愚人节弹窗、首屏视差 |
-| [scripts/build-loader-docs.py](scripts/build-loader-docs.py) | 重新生成 `js/loader-docs.js`：改动任何文本文件后运行一次 |
+| [scripts/build-loader-assets.py](scripts/build-loader-assets.py) | 重新生成 `loader-docs.js` + `loader-logo.js`：新增/改动文本文件后运行一次 |
 
 ### 开发者页
 

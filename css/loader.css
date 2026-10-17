@@ -346,10 +346,10 @@
 .term-win.is-logo .term-text {
     width: max-content;
     margin: 0 auto;
+    overflow: visible;
     font-size: 7px;
     line-height: 1.05;
     white-space: pre;
-    color: var(--color-accent);
 }
 
 /* 扫描光带：自上而下循环 */
