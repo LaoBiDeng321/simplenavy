@@ -100,7 +100,7 @@
             'footer.rating.label': '适龄分级',
             'footer.rating.value': '12周岁+',
             'footer.version.label': '版本号',
-            'footer.version.value': '25.09.21',
+            'footer.version.value': '26.10.17',
             'footer.copy': '© 2026 Simple NAVY.',
             'footer.note': '网页开发与游戏开发非同一人 | 相关信息仅供参考',
 
@@ -202,7 +202,7 @@
             'footer.rating.label': 'Age Rating',
             'footer.rating.value': '12+',
             'footer.version.label': 'Version',
-            'footer.version.value': '25.09.21',
+            'footer.version.value': '26.10.17',
             'footer.copy': '© 2026 Simple NAVY.',
             'footer.note': 'Web dev and game dev are different people | For reference only',
 

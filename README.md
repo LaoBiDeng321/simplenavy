@@ -30,6 +30,8 @@ Simple NAVY 是一款轻度肝氪的单机海战游戏的非官方展示页面�
 | [js/fullpage.js](js/fullpage.js) | 整屏滚动核心：滚轮/键盘/触摸切换、锚点导航、右侧指示点 |
 | [js/main.js](js/main.js) | 主逻辑：i18n 初始化、全屏滚动、入场动画、愚人节弹窗、首屏视差 |
 | [scripts/build-loader-assets.py](scripts/build-loader-assets.py) | 重新生成 `loader-docs.js` + `loader-logo.js`：新增/改动文本文件后运行一次 |
+| [scripts/sync-version.py](scripts/sync-version.py) | 同步站点版本号（加载动画 `VER` + 页脚版本），默认 `YY.MM.DD`，可 `python scripts/sync-version.py 26.10.17` 指定 |
+| [scripts/install-hooks.py](scripts/install-hooks.py) | 安装 git 钩子：`core.hooksPath → .githooks`，每次提交自动跑版本同步 |
 
 ### 开发者页
 

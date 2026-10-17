@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# 提交前自动同步站点版本号（VER = 当天 YY.MM.DD）
+# 安装：python scripts/install-hooks.py
+#
+set -e
+
+PY=""
+if command -v python >/dev/null 2>&1; then
+    PY="python"
+elif command -v py >/dev/null 2>&1; then
+    PY="py -3"
+fi
+
+if [ -z "$PY" ]; then
+    echo "[pre-commit] 未找到 python，跳过版本同步"
+    exit 0
+fi
+
+if ! $PY scripts/sync-version.py; then
+    echo "[pre-commit] 版本同步失败，已中止提交"
+    exit 1
+fi
+
+# 把被改写的版本号文件重新加入本次提交
+git add index.html js/i18n.js
