@@ -30,7 +30,7 @@ TEXT_NAMES = {"LICENSE", "README", "Makefile", ".gitignore", ".gitattributes"}
 
 SKIP_DIRS = {".git", "domo_local", "node_modules", ".venv", "venv", "__pycache__", ".idea", ".vscode"}
 SKIP_EXTS = {".svg", ".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".woff", ".woff2", ".ttf", ".zip"}
-SKIP_FILES = {DOCS_OUT, LOGO_OUT}
+SKIP_FILES = {os.path.basename(DOCS_OUT), os.path.basename(LOGO_OUT)}
 
 LOGO_COLS = 96
 LOGO_PALETTE_SIZE = 6
