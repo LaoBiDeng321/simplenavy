@@ -12,6 +12,11 @@
 
     var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* 扫描动画只给 UA 标识为 PC 的浏览器；移动端 / 平板直接跳过（省流量、省电） */
+    var UA = navigator.userAgent || '';
+    var IS_PC = !/(android|iphone|ipad|ipod|windows phone|iemobile|opera mini|mobile|tablet)/i.test(UA)
+        && !(/macintosh/i.test(UA) && navigator.maxTouchPoints > 1);
+
     var TIMING = {
         holdAtFull: 280,    // 满值后停顿
         wipe: 780,          // 遮罩左 → 右滑场时长（与 CSS 过渡一致）
@@ -76,8 +81,8 @@
             if (count) count.textContent = pad3(progress);
         }
 
-        /* 减少动态效果：不出扫描窗，直接快速收尾 */
-        if (REDUCED || !layer) {
+        /* 非 PC（UA）或减少动态效果：不出扫描窗，直接快速收尾 */
+        if (REDUCED || !IS_PC || !layer) {
             render(100);
             loader.classList.add('is-leaving');
             setTimeout(function () { finish(loader); }, 150);

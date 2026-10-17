@@ -26,7 +26,7 @@ Simple NAVY 是一款轻度肝氪的单机海战游戏的非官方展示页面�
 | [js/i18n.js](js/i18n.js) | 中英文案表 + 语言切换，全站文案的唯一来源 |
 | [js/loader-docs.js](js/loader-docs.js) | 开屏扫描清单：只收源码与文档（html / css / js / md / py / LICENSE，共 21 个），正文由浏览器 `fetch` 完整读取；排除 json / xml / toml / ini / yml 等配置中间物、svg 与图片 |
 | [js/loader-logo.js](js/loader-logo.js) | `image/favicon.png` 的彩色 ASCII 点位图（160 列 × 75 行、6 色调色板 + 逐字颜色），保留原图配色 |
-| [js/loader.js](js/loader.js) | 启动时序：每个源码/文档各开一个终端窗全部同时扫描（进度 = 已扫描字数 / 总字数）→ logo 最后登场、位于最上层居中打印点阵 → 遮罩扫场 → 派发 `loader:done` |
+| [js/loader.js](js/loader.js) | 启动时序：每个源码/文档各开一个终端窗全部同时扫描（进度 = 已扫描字数 / 总字数）→ logo 最后登场、位于最上层居中打印点阵 → 遮罩扫场 → 派发 `loader:done`；**扫描动画按 UA 只对 PC 启用**，移动端/平板直接快速放行 |
 | [js/fullpage.js](js/fullpage.js) | 整屏滚动核心：滚轮/键盘/触摸切换、锚点导航、右侧指示点 |
 | [js/main.js](js/main.js) | 主逻辑：i18n 初始化、全屏滚动、入场动画、愚人节弹窗、首屏视差 |
 | [scripts/build-loader-assets.py](scripts/build-loader-assets.py) | 重新生成 `loader-docs.js` + `loader-logo.js`：新增/改动文本文件后运行一次 |
