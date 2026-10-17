@@ -35,7 +35,7 @@ SKIP_EXTS = {
 }
 SKIP_FILES = {os.path.basename(DOCS_OUT), os.path.basename(LOGO_OUT)}
 
-LOGO_COLS = 96
+LOGO_COLS = 160
 LOGO_PALETTE_SIZE = 6
 
 
