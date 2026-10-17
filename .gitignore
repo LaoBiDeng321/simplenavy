@@ -1,0 +1,41 @@
+# =====================
+# 基础 .gitignore
+# =====================
+
+# ---- 以 local 结尾的文件夹（如 domo_local）----
+*local/
+domo_local/
+
+# ---- 操作系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 编辑器 / IDE ----
+.idea/
+.vscode/
+*.iml
+*.suo
+*.user
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# ---- Node ----
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- 日志 / 临时文件 ----
+*.log
+*.tmp
+*.swp
+*~
